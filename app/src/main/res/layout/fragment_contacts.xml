@@ -42,6 +42,15 @@
         android:layout_marginTop="@dimen/layout_margin_top"
         android:background="@drawable/button_shape"
         android:text="@string/save" />
+    <Button
+        android:id="@+id/btnViewContacts"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/tv_layout_margin_top"
+        android:background="@drawable/button_shape"
+        android:text="@string/view"
+        />
 
     <ListView
         android:id="@+id/contactsListView"

@@ -9,7 +9,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.yml.womensafety.R
 import kotlinx.android.synthetic.main.fragment_contacts.*
-import kotlinx.android.synthetic.main.fragment_home_page.*
 
 class ContactsFragment : Fragment(R.layout.fragment_contacts) {
     private lateinit var firebaseAuth: FirebaseAuth
@@ -31,7 +30,33 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
         contactSave.setOnClickListener {
             saveContactInfo()
         }
+        btnViewContacts.setOnClickListener {
+            viewContacts()
+        }
 
+//        ref.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                contactsList.clear()
+//                if (snapshot.exists()) {
+//                    for (i in snapshot.children) {
+//                        val contact = i.getValue(Contact::class.java)
+//                        contactsList.add(contact!!)
+//                    }
+//                    val adapter =
+//                        ContactsListAdapter(view.context, R.layout.contacts_list, contactsList)
+//                    contactsListView.adapter = adapter
+//                }
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//
+//            }
+//
+//        })
+
+
+    }
+    private fun viewContacts(){
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 contactsList.clear()
@@ -41,7 +66,7 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
                         contactsList.add(contact!!)
                     }
                     val adapter =
-                        ContactsListAdapter(view.context, R.layout.contacts_list, contactsList)
+                        view?.let { ContactsListAdapter(it.context, R.layout.contacts_list, contactsList) }
                     contactsListView.adapter = adapter
                 }
             }
@@ -51,8 +76,6 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
             }
 
         })
-
-
     }
 
     private fun saveContactInfo() {
@@ -66,12 +89,6 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
             contactNumber.requestFocus()
             return
         }
-//        if (contactNumber.text.toString().trim().isEmpty() || Integer.parseInt(contactNumber.text.toString()) < 10)
-//        {
-//            contactNumber.error = "This field can't be empty"
-//            contactNumber.requestFocus()
-//            return
-//        }
 
         val contactId = ref.push().key
         val contact = contactId?.let {

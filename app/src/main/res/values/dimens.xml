@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="app_name_font">40sp</dimen>
+    <dimen name="parent_padding">10dp</dimen>
+    <dimen name="tv_layout_margin_top">30dp</dimen>
+    <dimen name="et_layout_height">55dp</dimen>
+    <dimen name="layout_margin_top">50dp</dimen>
+    <dimen name="et_padding">15dp</dimen>
+    <dimen name="btn_width">200dp</dimen>
+    <dimen name="tv_font_size">20sp</dimen>
+    <dimen name="card_corner_radius">15dp</dimen>
+    <dimen name="layout_margin_start">92dp</dimen>
+</resources>

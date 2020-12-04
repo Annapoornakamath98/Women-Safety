@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_color"
+    android:orientation="vertical"
+    android:padding="@dimen/parent_padding"
+    tools:context=".navigationdrawer.ContactsFragment">
+
+    <EditText
+        android:id="@+id/contactName"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/et_layout_height"
+        android:layout_marginTop="@dimen/layout_margin_top"
+        android:autofillHints="abc"
+        android:background="@drawable/shape"
+        android:hint="@string/name"
+        android:inputType="text"
+        android:padding="@dimen/et_padding"
+        />
+
+    <EditText
+        android:id="@+id/contactNumber"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/et_layout_height"
+        android:layout_marginTop="@dimen/tv_layout_margin_top"
+        android:autofillHints="abc@gmail.com"
+        android:background="@drawable/shape"
+        android:hint="@string/phone_number"
+        android:inputType="number"
+        android:maxLength="10"
+        android:padding="@dimen/et_padding"
+        />
+
+    <Button
+        android:id="@+id/contactSave"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/layout_margin_top"
+        android:background="@drawable/button_shape"
+        android:text="@string/save" />
+
+    <ListView
+        android:id="@+id/contactsListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_color" />
+
+
+</LinearLayout>

@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WomenSafety">
-        <activity android:name=".navigationdrawer.HeaderActivity"></activity>
+        <activity android:name=".navigationdrawer.ViewContacts"></activity>
+        <activity android:name=".navigationdrawer.HeaderActivity" />
         <activity android:name=".navigationdrawer.HomePageActivity" />
         <activity android:name=".authentication.RegistrationActivity" />
         <activity android:name=".authentication.LoginActivity">

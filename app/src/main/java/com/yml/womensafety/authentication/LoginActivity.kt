@@ -55,11 +55,8 @@ class LoginActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     startActivity(Intent(this, HomePageActivity::class.java))
                     finish()
-//                    val user = auth.currentUser
-//                    updateUI(user)
                 } else {
                     Toast.makeText(applicationContext, "Login failed", Toast.LENGTH_LONG).show()
-                    //updateUI(null)
                 }
             }
 
@@ -68,9 +65,6 @@ class LoginActivity : AppCompatActivity() {
     private fun updateUI(currentUser: FirebaseUser?) {
         if(currentUser !=  null){
             startActivity(Intent(this, HomePageActivity::class.java))
-        }
-        else{
-            //Toast.makeText(applicationContext, "Login failed", Toast.LENGTH_LONG).show()
         }
     }
 }

@@ -14,7 +14,7 @@
         <activity android:name=".navigationdrawer.HeaderActivity" />
         <activity android:name=".navigationdrawer.home.HomePageActivity" />
         <activity android:name=".authentication.RegistrationActivity" />
-        <activity android:name=".SplashScreenActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

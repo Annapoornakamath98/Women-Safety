@@ -10,7 +10,7 @@ import android.widget.TextView
 import com.yml.womensafety.R
 import com.yml.womensafety.navigationdrawer.contacts.Contact
 
-class ContactsListAdapter(val mContext: Context, val layoutResId: Int, val contactsList: List<Contact>)
+class ContactsListAdapter(private val mContext: Context, private val layoutResId: Int, private val contactsList: List<Contact>)
     :ArrayAdapter<Contact>(mContext,layoutResId,contactsList){
 
     @SuppressLint("ViewHolder")

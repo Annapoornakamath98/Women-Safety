@@ -2,21 +2,22 @@ package com.yml.womensafety.navigationdrawer.home
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.yml.womensafety.FirebaseApplication
-import com.yml.womensafety.authentication.LoginActivity
 import com.yml.womensafety.R
+import com.yml.womensafety.authentication.LoginActivity
 import com.yml.womensafety.navigationdrawer.TipsToEscapeFragment
 import com.yml.womensafety.navigationdrawer.contacts.ContactsFragment
 import com.yml.womensafety.navigationdrawer.youtube.SelfDefenseVideoFragment
 import kotlinx.android.synthetic.main.activity_home_page.*
 
-class HomePageActivity : AppCompatActivity(){
+class HomePageActivity : AppCompatActivity() {
     private lateinit var contactsFragment: ContactsFragment
     private lateinit var tipsToEscapeFragment: TipsToEscapeFragment
     private lateinit var selfDefenseVideoFragment: SelfDefenseVideoFragment
@@ -24,15 +25,18 @@ class HomePageActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavBar)
-        bottomNavigationView.background = null
-        bottomNavigationView.menu.getItem(2).isEnabled = false
-        bottomNavigationView.itemIconTintList = null;
+        bottomNavigationView.apply {
+            background = null
+            menu.getItem(2).isEnabled = false
+            itemIconTintList = null;
+        }
+
 
         val firebaseApplication = FirebaseApplication()
         val user = firebaseApplication.u.currentUser
         val databaseReference = firebaseApplication.db.reference.child("name")
         val userReference = databaseReference.child(user?.uid!!)
-        userReference.addValueEventListener(object :ValueEventListener{
+        userReference.addValueEventListener(object : ValueEventListener {
             @SuppressLint("SetTextI18n")
             override fun onDataChange(snapshot: DataSnapshot) {
                 val userFullName = snapshot.child("fullName").value.toString()
@@ -49,7 +53,7 @@ class HomePageActivity : AppCompatActivity(){
             tipsToEscapeFragment = TipsToEscapeFragment()
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.flHomePage,tipsToEscapeFragment)
+                .replace(R.id.flHomePage, tipsToEscapeFragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .addToBackStack(null)
                 .commit()
@@ -59,13 +63,13 @@ class HomePageActivity : AppCompatActivity(){
             selfDefenseVideoFragment = SelfDefenseVideoFragment()
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.flHomePage,selfDefenseVideoFragment)
+                .replace(R.id.flHomePage, selfDefenseVideoFragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .addToBackStack(null)
                 .commit()
         }
         bottomNavigationView.setOnNavigationItemReselectedListener {
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.navHome -> {
                     startActivity(Intent(this, HomePageActivity::class.java))
                 }
@@ -78,7 +82,7 @@ class HomePageActivity : AppCompatActivity(){
                     contactsFragment = ContactsFragment()
                     supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.flHomePage,contactsFragment)
+                        .replace(R.id.flHomePage, contactsFragment)
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .commit()
 

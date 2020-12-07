@@ -5,6 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -15,6 +17,7 @@ import com.yml.womensafety.navigationdrawer.TipsToEscapeFragment
 import com.yml.womensafety.navigationdrawer.contacts.ContactsFragment
 import com.yml.womensafety.navigationdrawer.youtube.SelfDefenseVideoFragment
 import kotlinx.android.synthetic.main.activity_home_page.*
+import kotlinx.android.synthetic.main.activity_login.*
 
 class HomePageActivity : AppCompatActivity(){
     private lateinit var auth: FirebaseAuth
@@ -27,6 +30,7 @@ class HomePageActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
+
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavBar)
         bottomNavigationView.background = null
         bottomNavigationView.menu.getItem(2).isEnabled = false
@@ -61,6 +65,9 @@ class HomePageActivity : AppCompatActivity(){
                 .commit()
 
         }
+        cvTipsForWomenSafety.setOnClickListener {
+
+        }
         cvVideosForSelfDefense.setOnClickListener {
             selfDefenseVideoFragment = SelfDefenseVideoFragment()
             supportFragmentManager
@@ -69,6 +76,9 @@ class HomePageActivity : AppCompatActivity(){
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .addToBackStack(null)
                 .commit()
+        }
+        cvLaws.setOnClickListener {
+
         }
         bottomNavigationView.setOnNavigationItemReselectedListener {
             when(it.itemId){

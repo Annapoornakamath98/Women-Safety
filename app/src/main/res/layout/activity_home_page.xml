@@ -34,9 +34,11 @@
                 android:layout_marginTop="@dimen/hp_margin_top"
                 app:cardCornerRadius="@dimen/hp_corner_radius"
                 android:padding="@dimen/hp_padding_margin"
+                app:cardUseCompatPadding="true"
+                android:elevation="@dimen/hp_card_elevation"
                 app:layout_constraintTop_toBottomOf="@+id/tvLabel"
                 app:layout_constraintLeft_toLeftOf="parent">
-                <RelativeLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -45,21 +47,25 @@
                         android:layout_width="@dimen/hp_iv_width_height"
                         android:layout_height="@dimen/hp_iv_width_height"
                         android:layout_margin="@dimen/hp_padding_margin"
-                        app:srcCompat="@drawable/ic_directions_run" />
+                        app:srcCompat="@drawable/ic_directions_run"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
                     <TextView
                         android:id="@+id/labelEscapeThreat"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_margin="@dimen/hp_padding_margin"
+                        android:layout_marginStart="@dimen/hp_margin_start"
                         android:padding="@dimen/hp_padding_margin"
-                        android:layout_toEndOf="@+id/ivEscapeThreat"
                         android:text="@string/tips"
                         android:textAlignment="center"
-                        android:textSize="@dimen/hp_tv_font" />
+                        android:textSize="@dimen/hp_tv_font"
+                        app:layout_constraintLeft_toRightOf="@+id/ivEscapeThreat"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                </RelativeLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -68,9 +74,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/hp_margin_top"
                 app:cardCornerRadius="@dimen/hp_corner_radius"
+                app:cardUseCompatPadding="true"
+                android:elevation="@dimen/hp_card_elevation"
                 app:layout_constraintTop_toBottomOf="@+id/cvEscapeThreat"
                 app:layout_constraintRight_toRightOf="parent">
-                <RelativeLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -79,21 +87,25 @@
                         android:layout_width="@dimen/hp_iv_width_height"
                         android:layout_height="@dimen/hp_iv_width_height"
                         android:layout_margin="@dimen/hp_padding_margin"
-                        app:srcCompat="@drawable/ic_health_and_safety" />
+                        app:srcCompat="@drawable/ic_health_and_safety"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
 
                     <TextView
                         android:id="@+id/labelTipsForWomenSafety"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_margin="@dimen/hp_padding_margin"
                         android:padding="@dimen/hp_padding_margin"
-                        android:layout_toEndOf="@+id/ivTipsForWomenSafety"
+                        android:layout_marginStart="@dimen/hp_margin_start"
                         android:textAlignment="center"
+                        app:layout_constraintLeft_toRightOf="@+id/ivTipsForWomenSafety"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:text="@string/tips2"
                         android:textSize="@dimen/hp_tv_font" />
 
-                </RelativeLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -102,9 +114,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/hp_margin_top"
+                app:cardUseCompatPadding="true"
+                android:elevation="@dimen/hp_card_elevation"
                 app:layout_constraintTop_toBottomOf="@+id/cvTipsForWomenSafety"
                 app:layout_constraintLeft_toLeftOf="parent">
-                <RelativeLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -113,20 +127,24 @@
                         android:layout_width="@dimen/hp_iv_width_height"
                         android:layout_height="@dimen/hp_iv_width_height"
                         android:layout_margin="@dimen/hp_padding_margin"
-                        app:srcCompat="@drawable/ic_self_defense" />
+                        app:srcCompat="@drawable/ic_self_defense"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
                     <TextView
                         android:id="@+id/labelVideosSelfDefense"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_margin="@dimen/hp_padding_margin"
                         android:padding="@dimen/hp_padding_margin"
-                        android:layout_toEndOf="@+id/ivVideosForSelfDefense"
+                        android:layout_marginStart="@dimen/hp_margin_start"
                         android:text="@string/videos"
                         android:textAlignment="center"
+                        app:layout_constraintLeft_toRightOf="@+id/ivVideosForSelfDefense"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:textSize="@dimen/hp_tv_font" />
-                </RelativeLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -135,9 +153,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/hp_margin_top"
                 app:cardCornerRadius="@dimen/hp_corner_radius"
+                app:cardUseCompatPadding="true"
+                android:elevation="@dimen/hp_card_elevation"
                 app:layout_constraintTop_toBottomOf="@+id/cvVideosForSelfDefense"
                 app:layout_constraintRight_toRightOf="parent">
-                <RelativeLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -146,21 +166,25 @@
                         android:layout_width="@dimen/hp_iv_width_height"
                         android:layout_height="@dimen/hp_iv_width_height"
                         android:layout_margin="@dimen/hp_padding_margin"
-                        app:srcCompat="@drawable/ic_balance" />
+                        app:srcCompat="@drawable/ic_balance"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
                     <TextView
                         android:id="@+id/labelLaws"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_margin="@dimen/hp_padding_margin"
                         android:padding="@dimen/hp_padding_margin"
-                        android:layout_toEndOf="@+id/ivLaws"
+                        android:layout_marginStart="@dimen/hp_margin_start"
                         android:textAlignment="center"
                         android:text="@string/laws"
-                        android:textSize="@dimen/hp_tv_font" />
+                        android:textSize="@dimen/hp_tv_font"
+                        app:layout_constraintLeft_toRightOf="@+id/ivLaws"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
-                </RelativeLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
 

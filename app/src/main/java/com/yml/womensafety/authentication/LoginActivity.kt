@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.yml.womensafety.R
-import com.yml.womensafety.navigationdrawer.HomePageActivity
+import com.yml.womensafety.navigationdrawer.home.HomePageActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -70,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, HomePageActivity::class.java))
         }
         else{
-            Toast.makeText(applicationContext, "Login failed", Toast.LENGTH_LONG).show()
+            //Toast.makeText(applicationContext, "Login failed", Toast.LENGTH_LONG).show()
         }
     }
 }

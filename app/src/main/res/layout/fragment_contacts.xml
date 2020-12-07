@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/background_color"
-    android:orientation="vertical"
+    android:background="@color/white"
     android:padding="@dimen/parent_padding"
-    tools:context=".navigationdrawer.ContactsFragment">
+    tools:context=".navigationdrawer.contacts.ContactsFragment">
 
     <EditText
         android:id="@+id/contactName"
         android:layout_width="match_parent"
         android:layout_height="@dimen/et_layout_height"
-        android:layout_marginTop="@dimen/layout_margin_top"
+        android:layout_marginTop="100dp"
         android:autofillHints="abc"
         android:background="@drawable/shape"
         android:hint="@string/name"
@@ -25,7 +23,7 @@
         android:id="@+id/contactNumber"
         android:layout_width="match_parent"
         android:layout_height="@dimen/et_layout_height"
-        android:layout_marginTop="@dimen/tv_layout_margin_top"
+        android:layout_marginTop="180dp"
         android:autofillHints="abc@gmail.com"
         android:background="@drawable/shape"
         android:hint="@string/phone_number"
@@ -38,16 +36,17 @@
         android:id="@+id/contactSave"
         android:layout_width="@dimen/btn_width"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/layout_margin_top"
+        android:layout_marginStart="@dimen/layout_margin_start"
+        android:layout_marginTop="@dimen/btn_margin_top1"
         android:background="@drawable/button_shape"
         android:text="@string/save" />
+
     <Button
         android:id="@+id/btnViewContacts"
         android:layout_width="@dimen/btn_width"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/tv_layout_margin_top"
+        android:layout_marginStart="@dimen/layout_margin_start"
+        android:layout_marginTop="@dimen/btn_margin_top2"
         android:background="@drawable/button_shape"
         android:text="@string/view"
         />
@@ -56,7 +55,7 @@
         android:id="@+id/contactsListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_color" />
-
-
-</LinearLayout>
+        android:layout_marginTop="@dimen/list_margin_top"
+        android:layout_marginBottom="@dimen/list_margin_bottom"
+        android:background="@color/white" />
+</FrameLayout>

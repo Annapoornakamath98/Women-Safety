@@ -1,19 +1,13 @@
-package com.yml.womensafety.navigationdrawer
+package com.yml.womensafety.navigationdrawer.home
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.yml.womensafety.R
-import kotlinx.android.synthetic.main.fragment_home_page.*
 
 class HomePageFragment : Fragment(R.layout.fragment_home_page) {
     private lateinit var auth: FirebaseAuth

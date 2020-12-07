@@ -46,6 +46,12 @@ class RegistrationActivity : AppCompatActivity() {
             registerFullName.requestFocus()
             return
         }
+        if (registerPhone.text.toString().isEmpty()){
+            registerPhone.error = "Please enter your phone number"
+            registerPhone.requestFocus()
+            return
+        }
+
 
         if (!Patterns.EMAIL_ADDRESS.matcher(registerEmailId.text.toString()).matches()) {
             registerEmailId.error = "Please enter a valid email id"
@@ -62,6 +68,7 @@ class RegistrationActivity : AppCompatActivity() {
                     val userName= databaseReference?.child((user?.uid!!))
                     //val userName= databaseReference?.child((user?.uid!!))
                     userName?.child("fullName")?.setValue(registerFullName.text.toString())
+                    userName?.child("phoneNumber")?.setValue(registerPhone.text.toString())
                     Toast.makeText(applicationContext, "Registration success", Toast.LENGTH_SHORT)
                         .show()
                     startActivity(Intent(applicationContext, LoginActivity::class.java))

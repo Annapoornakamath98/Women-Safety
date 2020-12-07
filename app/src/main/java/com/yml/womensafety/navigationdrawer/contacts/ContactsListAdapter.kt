@@ -1,4 +1,4 @@
-package com.yml.womensafety.navigationdrawer
+package com.yml.womensafety.navigationdrawer.contacts
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.yml.womensafety.R
-import kotlinx.android.synthetic.main.contacts_list.view.*
+import com.yml.womensafety.navigationdrawer.contacts.Contact
 
 class ContactsListAdapter(val mContext: Context, val layoutResId: Int, val contactsList: List<Contact>)
     :ArrayAdapter<Contact>(mContext,layoutResId,contactsList){

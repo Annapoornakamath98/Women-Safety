@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_color"
+    android:background="@drawable/ic_wave__1_"
     android:padding="@dimen/parent_padding"
     tools:context=".authentication.LoginActivity">
+
 
     <TextView
         android:id="@+id/tvAppName"
@@ -15,55 +16,80 @@
         android:layout_marginTop="@dimen/tv_layout_margin_top"
         android:fontFamily="sans-serif-condensed"
         android:gravity="center"
+        android:paddingTop="@dimen/et_padding"
         android:text="@string/app_name"
         android:textColor="@color/black"
         android:textSize="@dimen/app_name_font"
         app:layout_constraintBaseline_toBaselineOf="parent" />
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textField"
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/parent_padding"
+        android:layout_height="@dimen/card_height"
         android:layout_marginTop="@dimen/layout_margin_top"
-        app:layout_constraintTop_toBottomOf="@+id/tvAppName"
-        app:layout_constraintBottom_toTopOf="@+id/loginEmailId"
-        >
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/et_layout_height"
-            android:padding="@dimen/et_padding"
-            android:background="@drawable/shape"
-            android:hint="Label"
-            />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <EditText
-        android:id="@+id/loginEmailId"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/et_layout_height"
-        android:layout_marginTop="@dimen/layout_margin_top"
-        android:autofillHints="abc@gmail.com"
-        android:background="@drawable/shape"
-        android:hint="@string/enter_email_id"
-        android:inputType="textEmailAddress"
-        android:padding="@dimen/et_padding"
-        app:layout_constraintBottom_toTopOf="@+id/loginPassword"
-        app:layout_constraintTop_toBottomOf="@+id/textField" />
-
-    <EditText
-        android:id="@+id/loginPassword"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/et_layout_height"
-        android:layout_marginTop="@dimen/tv_layout_margin_top"
-        android:autofillHints="abc@gmail.com"
-        android:background="@drawable/shape"
-        android:hint="@string/enter_password"
-        android:inputType="textPassword"
-        android:padding="@dimen/et_padding"
+        android:elevation="40dp"
+        app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toTopOf="@id/btnLogin"
-        app:layout_constraintTop_toBottomOf="@+id/loginEmailId" />
+        app:layout_constraintTop_toBottomOf="@id/tvAppName">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/card_height"
+            android:background="@drawable/card_shape"
+            android:orientation="vertical"
+            android:padding="@dimen/parent_padding"
+            android:paddingTop="@dimen/parent_padding"
+            android:paddingBottom="@dimen/parent_padding"
+            app:layout_constraintBottom_toTopOf="@id/btnLogin"
+            app:layout_constraintTop_toBottomOf="@id/tvAppName">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/hp_margin_top"
+                android:background="@drawable/borders"
+                app:endIconMode="clear_text"
+                app:layout_constraintBottom_toTopOf="@+id/textField"
+                app:layout_constraintTop_toBottomOf="@+id/tvAppName">
+
+                <EditText
+                    android:id="@+id/loginEmailId"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints="abc@gmail.com"
+                    android:background="@color/white"
+                    android:hint="@string/enter_email_id"
+                    android:inputType="textEmailAddress"
+                     />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/tv_layout_margin_top"
+                android:background="@drawable/borders"
+                app:endIconMode="password_toggle"
+                app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout1">
+
+                <EditText
+                    android:id="@+id/loginPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints="abc@gmail.com"
+                    android:background="@color/white"
+                    android:hint="@string/enter_password"
+                    android:inputType="textPassword"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/btnLogin"
@@ -76,7 +102,7 @@
         android:text="@string/login"
         app:layout_constraintBottom_toTopOf="@+id/registerHere"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <TextView
         android:id="@+id/registerHere"

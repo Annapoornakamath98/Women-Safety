@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/frameLayout"
-        android:background="@drawable/background_color"
+        android:background="@drawable/ic_wave_background"
         />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

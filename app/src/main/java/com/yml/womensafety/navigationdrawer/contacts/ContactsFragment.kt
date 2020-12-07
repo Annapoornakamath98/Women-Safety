@@ -1,6 +1,5 @@
-package com.yml.womensafety.navigationdrawer
+package com.yml.womensafety.navigationdrawer.contacts
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -67,7 +66,7 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
                     }
                     val adapter =
                         view?.let { ContactsListAdapter(it.context, R.layout.contacts_list, contactsList) }
-                    contactsListView.adapter = adapter
+                        contactsListView.adapter = adapter
                 }
             }
 

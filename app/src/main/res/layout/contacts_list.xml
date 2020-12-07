@@ -7,6 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="@dimen/card_corner_radius"
+        android:background="@color/bright_pink"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
@@ -17,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
-            android:layout_marginTop="@dimen/layout_margin_top"
+            android:layout_marginTop="@dimen/tv_layout_margin_top"
             android:textSize="@dimen/tv_font_size"
             android:id="@+id/contactsListNumber"
             android:padding="@dimen/et_padding"

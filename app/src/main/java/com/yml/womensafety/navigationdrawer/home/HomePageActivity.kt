@@ -14,6 +14,7 @@ import com.google.firebase.database.ValueEventListener
 import com.yml.womensafety.FirebaseApplication
 import com.yml.womensafety.R
 import com.yml.womensafety.authentication.LoginActivity
+import com.yml.womensafety.navigationdrawer.TipsForWomenSafetyFragment
 import com.yml.womensafety.navigationdrawer.TipsToEscapeFragment
 import com.yml.womensafety.navigationdrawer.contacts.ContactsFragment
 import com.yml.womensafety.navigationdrawer.youtube.SelfDefenseVideoFragment
@@ -23,6 +24,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 class HomePageActivity : AppCompatActivity() {
     private lateinit var contactsFragment: ContactsFragment
     private lateinit var tipsToEscapeFragment: TipsToEscapeFragment
+    private lateinit var tipsForWomenSafety: TipsForWomenSafetyFragment
     private lateinit var selfDefenseVideoFragment: SelfDefenseVideoFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,7 +66,13 @@ class HomePageActivity : AppCompatActivity() {
 
         }
         cvTipsForWomenSafety.setOnClickListener {
-
+            tipsForWomenSafety = TipsForWomenSafetyFragment()
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.flHomePage, tipsForWomenSafety)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .addToBackStack(null)
+                .commit()
         }
         cvVideosForSelfDefense.setOnClickListener {
             selfDefenseVideoFragment = SelfDefenseVideoFragment()

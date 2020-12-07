@@ -6,7 +6,7 @@
     android:topLeftRadius="100dp"
     android:topRightRadius="100dp"
     />
-    <stroke android:color="#8897D0"
+    <stroke android:color="@color/rogue_pink"
         android:width="2dp"
         />
     <solid android:color="#fff"/>

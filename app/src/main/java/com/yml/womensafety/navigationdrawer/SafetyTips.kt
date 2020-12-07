@@ -1,3 +1,3 @@
 package com.yml.womensafety.navigationdrawer
 
-data class EscapeThreat (val tipsText: String)
+data class SafetyTips (val tipsText: String)

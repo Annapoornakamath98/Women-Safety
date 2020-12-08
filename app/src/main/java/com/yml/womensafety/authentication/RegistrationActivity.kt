@@ -80,6 +80,10 @@ class RegistrationActivity : AppCompatActivity() {
                     startActivity(Intent(applicationContext, LoginActivity::class.java))
                     finish()
                 }
+                else{
+                    Toast.makeText(applicationContext, "Registration failed", Toast.LENGTH_SHORT)
+                        .show()
+                }
 
             }
 

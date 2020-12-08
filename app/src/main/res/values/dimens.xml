@@ -33,7 +33,7 @@
     <dimen name="card_elevation">5dp</dimen>
     <dimen name="fab_corner_radius">50dp</dimen>
     <dimen name="fab_width_height">56dp</dimen>
-
+    <dimen name="video_height">180dp</dimen>
     <dimen name="escape_threat_margin">8dp</dimen>
     <dimen name="escape_threat_text_size">24sp</dimen>
 </resources>

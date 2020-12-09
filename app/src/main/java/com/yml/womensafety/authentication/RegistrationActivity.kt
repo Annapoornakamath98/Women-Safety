@@ -13,9 +13,6 @@ import com.yml.womensafety.R
 import kotlinx.android.synthetic.main.activity_registration.*
 
 class RegistrationActivity : AppCompatActivity() {
-    private lateinit var firebaseAuth: FirebaseAuth
-    private var firebaseDatabase: FirebaseDatabase? = null
-
     private lateinit var firebaseApplication: FirebaseApplication
     private var databaseReference: DatabaseReference? = null
 
@@ -26,10 +23,6 @@ class RegistrationActivity : AppCompatActivity() {
         firebaseApplication = FirebaseApplication()
         databaseReference = firebaseApplication.db.getReference("name")
 
-
-        firebaseAuth = FirebaseAuth.getInstance()
-        firebaseDatabase = FirebaseDatabase.getInstance()
-        databaseReference = FirebaseDatabase.getInstance().getReference("name")
         btnRegister.setOnClickListener {
             register()
         }
@@ -79,6 +72,10 @@ class RegistrationActivity : AppCompatActivity() {
                         .show()
                     startActivity(Intent(applicationContext, LoginActivity::class.java))
                     finish()
+                }
+                else{
+                    Toast.makeText(applicationContext, "Registration failed", Toast.LENGTH_SHORT)
+                        .show()
                 }
 
             }

@@ -26,6 +26,7 @@ class HomePageActivity : AppCompatActivity() {
     private lateinit var tipsForWomenSafety: SafetyTipsFragment
     private lateinit var selfDefenseVideoFragment: SelfDefenseVideoFragment
     private lateinit var tipsToEscapeFragment: EscapeThreatFragment
+    private lateinit var lawsForWomenFragment: LawsFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
@@ -49,9 +50,8 @@ class HomePageActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(applicationContext,error.message,Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, error.message, Toast.LENGTH_LONG).show()
             }
-
         })
 
         cvEscapeThreat.setOnClickListener {
@@ -83,7 +83,13 @@ class HomePageActivity : AppCompatActivity() {
                 .commit()
         }
         cvLaws.setOnClickListener {
-
+            lawsForWomenFragment = LawsFragment()
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.flHomePage, lawsForWomenFragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .addToBackStack(null)
+                .commit()
         }
         bottomNavigationView.setOnNavigationItemReselectedListener {
             when (it.itemId) {

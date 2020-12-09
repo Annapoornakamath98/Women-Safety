@@ -47,7 +47,7 @@
                 app:srcCompat="@drawable/ic_directions_run" />
 
             <TextView
-                android:id="@+id/labelEscapeThreat"
+                android:id="@+id/labelTipsToEscapeThreat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/hp_margin_start"
@@ -169,7 +169,7 @@
                 app:srcCompat="@drawable/ic_balance" />
 
             <TextView
-                android:id="@+id/labelLaws"
+                android:id="@+id/labelEscapeThreat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/hp_margin_start"

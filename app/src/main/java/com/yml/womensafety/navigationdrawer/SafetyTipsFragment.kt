@@ -16,8 +16,8 @@ class SafetyTipsFragment : Fragment(R.layout.fragment_safety_tips) {
         super.onViewCreated(view, savedInstanceState)
 
         displaySafetyTips()
-        val recyclerView = view.findViewById(R.id.recyclerView) as RecyclerView
-        var adapter = SafetyTipsAdapter(tipsTextList)
+        val recyclerView = view.findViewById(R.id.recyclerViewEscapeThreat) as RecyclerView
+        val adapter = SafetyTipsAdapter(tipsTextList)
         recyclerView.apply {
             layoutManager = LinearLayoutManager(view.context)
             recyclerView.adapter = adapter

@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/default_padding"
         android:text="@string/laws_related_to_women_safety"
+        android:fontFamily="@font/aclonica"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:textSize="@dimen/fragment_label_text_size"
@@ -22,7 +23,7 @@
         app:layout_constraintRight_toRightOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recyclerViewLaws"
         android:layout_width="@dimen/recycler_view_width_height"
         android:layout_height="@dimen/recycler_view_width_height"
         app:layout_constraintEnd_toEndOf="parent"

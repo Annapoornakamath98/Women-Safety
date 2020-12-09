@@ -48,15 +48,15 @@ class HomePageActivity : AppCompatActivity() {
                     startActivity(Intent(this, LoginActivity::class.java))
                     finish()
                 }
-//                R.id.navContacts -> {
-//                    contactsFragment = ContactsFragment()
-//                    supportFragmentManager
-//                        .beginTransaction()
-//                        .replace(R.id.homePageFragment, contactsFragment)
-//                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-//                        .commit()
-//
-//                }
+                R.id.navContacts -> {
+                    contactsFragment = ContactsFragment()
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.myNavHostFragment, contactsFragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit()
+
+                }
             }
             true
         }

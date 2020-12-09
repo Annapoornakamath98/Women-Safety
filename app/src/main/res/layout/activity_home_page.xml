@@ -8,6 +8,7 @@
     tools:context=".navigationdrawer.home.HomePageActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/homePageConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/hp_bottom_margin">

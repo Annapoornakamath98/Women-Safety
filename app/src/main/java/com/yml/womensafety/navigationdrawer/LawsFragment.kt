@@ -19,7 +19,7 @@ class LawsFragment : Fragment(R.layout.fragment_laws) {
         displayLawsRelatedToWomen()
         recyclerView.apply {
             layoutManager = LinearLayoutManager(view.context)
-            recyclerView.adapter = lawAdapter
+            adapter = lawAdapter
         }
     }
 

@@ -33,6 +33,8 @@
     <dimen name="fab_corner_radius">50dp</dimen>
     <dimen name="fab_width_height">56dp</dimen>
 
+    <dimen name="video_height">180dp</dimen>
+
     <dimen name="splash_image_height">181dp</dimen>
     <dimen name="splash_image_width">233dp</dimen>
 

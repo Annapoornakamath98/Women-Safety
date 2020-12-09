@@ -10,7 +10,7 @@
         android:id="@+id/flHomePage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="100dp">
+        android:layout_marginBottom="@dimen/hp_bottom_margin">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -20,14 +20,14 @@
                 android:id="@+id/tvLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/hp_margin_start"
                 android:layout_marginTop="@dimen/tv_layout_margin_top"
+                android:fontFamily="@font/aclonica"
                 android:text="@string/app_name"
-                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="@dimen/hp_font"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"/>
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvEscapeThreat"

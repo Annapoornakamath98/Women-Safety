@@ -10,7 +10,7 @@
     <EditText
         android:id="@+id/contactName"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/et_layout_height"
+        android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:autofillHints="abc"
         android:background="@drawable/shape"
@@ -22,7 +22,7 @@
     <EditText
         android:id="@+id/contactNumber"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/et_layout_height"
+        android:layout_height="wrap_content"
         android:layout_marginTop="180dp"
         android:autofillHints="abc@gmail.com"
         android:background="@drawable/shape"
@@ -55,6 +55,7 @@
         android:id="@+id/contactsListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="@dimen/default_padding"
         android:layout_marginTop="@dimen/list_margin_top"
         android:layout_marginBottom="@dimen/list_margin_bottom"
         android:background="@color/white" />

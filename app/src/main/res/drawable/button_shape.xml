@@ -6,8 +6,9 @@
         android:topLeftRadius="@dimen/top_radius"
         android:topRightRadius="@dimen/top_radius"
         />
-    <stroke android:color="@color/bright_pink"
-        android:width="@dimen/stroke_width"
-        />
-    <solid android:color="@color/white"/>
+    <gradient
+        android:angle="0"
+        android:startColor="@color/white"
+        android:endColor="@color/rogue_pink"
+        android:type="linear" />
 </shape>

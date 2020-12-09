@@ -15,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
     private var firebaseApplication = FirebaseApplication()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash_screen)
+        setContentView(R.layout.activity_splash)
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this,LoginActivity::class.java))
             finish()

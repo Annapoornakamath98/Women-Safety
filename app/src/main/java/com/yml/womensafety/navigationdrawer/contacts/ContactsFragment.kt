@@ -1,5 +1,6 @@
 package com.yml.womensafety.navigationdrawer.contacts
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -54,14 +55,10 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
                     contactsListView.adapter = adapter
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(view?.context, error.message, Toast.LENGTH_LONG).show()
             }
-
         })
-
-
     }
 
     private fun saveContactInfo() {
@@ -100,6 +97,11 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
                     }
 
                     override fun onCancelled(error: DatabaseError) {
+                        val alertDialog: AlertDialog.Builder = AlertDialog.Builder(context)
+                        alertDialog.apply {
+                            setMessage(error.message)
+                            setCancelable(true)
+                        }
 
                     }
 

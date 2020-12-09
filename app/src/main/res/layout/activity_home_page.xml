@@ -25,6 +25,7 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/hp_font"
                 android:textStyle="bold"
+                android:fontFamily="@font/aclonica"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

@@ -17,7 +17,6 @@ import com.yml.womensafety.navigationdrawer.EscapeThreatFragment
 import com.yml.womensafety.navigationdrawer.LawsFragment
 import com.yml.womensafety.navigationdrawer.SafetyTipsFragment
 
-import com.yml.womensafety.navigationdrawer.UserProfile
 import com.yml.womensafety.navigationdrawer.contacts.ContactsFragment
 import com.yml.womensafety.navigationdrawer.youtube.SelfDefenseVideoFragment
 import kotlinx.android.synthetic.main.activity_home_page.*
@@ -27,7 +26,6 @@ class HomePageActivity : AppCompatActivity() {
     private lateinit var tipsForWomenSafety: SafetyTipsFragment
     private lateinit var selfDefenseVideoFragment: SelfDefenseVideoFragment
     private lateinit var tipsToEscapeFragment: EscapeThreatFragment
-    private lateinit var userProfile: UserProfile
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
@@ -105,14 +103,6 @@ class HomePageActivity : AppCompatActivity() {
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .commit()
 
-                }
-                R.id.navProfile -> {
-                    userProfile = UserProfile()
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.flHomePage,userProfile)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit()
                 }
             }
             true

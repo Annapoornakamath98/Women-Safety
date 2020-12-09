@@ -23,10 +23,7 @@ import kotlinx.android.synthetic.main.activity_home_page.*
 
 class HomePageActivity : AppCompatActivity() {
     private lateinit var contactsFragment: ContactsFragment
-    private lateinit var tipsForWomenSafety: SafetyTipsFragment
-    private lateinit var selfDefenseVideoFragment: SelfDefenseVideoFragment
-    private lateinit var tipsToEscapeFragment: EscapeThreatFragment
-    private lateinit var lawsForWomenFragment: LawsFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
@@ -39,58 +36,8 @@ class HomePageActivity : AppCompatActivity() {
         }
 
         val firebaseApplication = FirebaseApplication()
-        val user = firebaseApplication.u.currentUser
-        val databaseReference = firebaseApplication.db.reference.child("name")
-        val userReference = databaseReference.child(user?.uid!!)
-        userReference.addValueEventListener(object : ValueEventListener {
-            @SuppressLint("SetTextI18n")
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val userFullName = snapshot.child("fullName").value.toString()
-                tvLabel.text = "Hi, $userFullName"
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(applicationContext, error.message, Toast.LENGTH_LONG).show()
-            }
-        })
 
-        cvEscapeThreat.setOnClickListener {
-            tipsToEscapeFragment = EscapeThreatFragment()
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.flHomePage, tipsToEscapeFragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .addToBackStack(null)
-                .commit()
-
-        }
-        cvTipsForWomenSafety.setOnClickListener {
-            tipsForWomenSafety = SafetyTipsFragment()
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.flHomePage, tipsForWomenSafety)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .addToBackStack(null)
-                .commit()
-        }
-        cvVideosForSelfDefense.setOnClickListener {
-            selfDefenseVideoFragment = SelfDefenseVideoFragment()
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.flHomePage, selfDefenseVideoFragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .addToBackStack(null)
-                .commit()
-        }
-        cvLaws.setOnClickListener {
-            lawsForWomenFragment = LawsFragment()
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.flHomePage, lawsForWomenFragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .addToBackStack(null)
-                .commit()
-        }
         bottomNavigationView.setOnNavigationItemReselectedListener {
             when (it.itemId) {
                 R.id.navHome -> {
@@ -101,15 +48,15 @@ class HomePageActivity : AppCompatActivity() {
                     startActivity(Intent(this, LoginActivity::class.java))
                     finish()
                 }
-                R.id.navContacts -> {
-                    contactsFragment = ContactsFragment()
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.flHomePage, contactsFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit()
-
-                }
+//                R.id.navContacts -> {
+//                    contactsFragment = ContactsFragment()
+//                    supportFragmentManager
+//                        .beginTransaction()
+//                        .replace(R.id.homePageFragment, contactsFragment)
+//                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+//                        .commit()
+//
+//                }
             }
             true
         }

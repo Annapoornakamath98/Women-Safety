@@ -3,6 +3,7 @@ package com.yml.womensafety.navigationdrawer.home
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -13,6 +14,8 @@ import com.yml.womensafety.FirebaseApplication
 import com.yml.womensafety.R
 import com.yml.womensafety.authentication.LoginActivity
 import com.yml.womensafety.navigationdrawer.TipsForWomenSafetyFragment
+import com.yml.womensafety.navigationdrawer.TipsToEscapeFragment
+import com.yml.womensafety.navigationdrawer.UserProfile
 import com.yml.womensafety.navigationdrawer.contacts.ContactsFragment
 import com.yml.womensafety.navigationdrawer.youtube.SelfDefenseVideoFragment
 import kotlinx.android.synthetic.main.activity_home_page.*
@@ -21,6 +24,8 @@ class HomePageActivity : AppCompatActivity() {
     private lateinit var contactsFragment: ContactsFragment
     private lateinit var tipsForWomenSafety: TipsForWomenSafetyFragment
     private lateinit var selfDefenseVideoFragment: SelfDefenseVideoFragment
+    private lateinit var tipsToEscapeFragment: TipsToEscapeFragment
+    private lateinit var userProfile: UserProfile
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
@@ -29,9 +34,8 @@ class HomePageActivity : AppCompatActivity() {
         bottomNavigationView.apply {
             background = null
             menu.getItem(2).isEnabled = false
-            itemIconTintList = null;
+            itemIconTintList = null
         }
-
 
         val firebaseApplication = FirebaseApplication()
         val user = firebaseApplication.u.currentUser
@@ -45,19 +49,19 @@ class HomePageActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-
+                Toast.makeText(applicationContext,error.message,Toast.LENGTH_LONG).show()
             }
 
         })
 
         cvEscapeThreat.setOnClickListener {
-//            tipsToEscapeFragment = TipsToEscapeFragment()
-//            supportFragmentManager
-//                .beginTransaction()
-//                .replace(R.id.flHomePage, tipsToEscapeFragment)
-//                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-//                .addToBackStack(null)
-//                .commit()
+            tipsToEscapeFragment = TipsToEscapeFragment()
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.flHomePage, tipsToEscapeFragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .addToBackStack(null)
+                .commit()
 
         }
         cvTipsForWomenSafety.setOnClickListener {
@@ -99,6 +103,14 @@ class HomePageActivity : AppCompatActivity() {
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .commit()
 
+                }
+                R.id.navProfile -> {
+                    userProfile = UserProfile()
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.flHomePage,userProfile)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit()
                 }
             }
             true

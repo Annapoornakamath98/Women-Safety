@@ -32,4 +32,7 @@
     <string name="laws">Laws related to \nwomen safety</string>
     <string name="user_profile">User Profile</string>
     <string name="text_escape_threat">According to the International Research Centre for Women, almost 47 percent of girls are married before the age of 18. Currently, India ranks 13 in the world when it comes to child marriages. Since child marriage has been steeped into the Indian culture and tradition since centuries, it has been tough eliminating it. Read more at: https://yourstory.com/2016/06/laws-that-protect-women-rights?utm_pageloadtype=scroll</string>
+    <string name="user_email_id">Email ID</string>
+    <string name="user_phone_number">123456789</string>
+    <string name="success">Successfully saved</string>
 </resources>

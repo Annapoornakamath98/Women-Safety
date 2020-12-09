@@ -36,4 +36,11 @@
     <dimen name="video_height">180dp</dimen>
     <dimen name="escape_threat_margin">8dp</dimen>
     <dimen name="escape_threat_text_size">24sp</dimen>
+    <dimen name="horizontal_margin">16dp</dimen>
+    <dimen name="vertical_margin">16dp</dimen>
+    <dimen name="user_card_elevation">50dp</dimen>
+    <dimen name="edit_text_padding">8dp</dimen>
+    <dimen name="text_view_padding">8dp</dimen>
+    <dimen name="save_button_top_padding">32dp</dimen>
+    <dimen name="user_profile_font_size">20sp</dimen>
 </resources>

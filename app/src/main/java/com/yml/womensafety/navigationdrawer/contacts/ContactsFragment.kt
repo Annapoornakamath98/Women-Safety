@@ -18,10 +18,10 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         firebaseApplication = FirebaseApplication()
-        val user1 = firebaseApplication.u.currentUser
+        val user = firebaseApplication.u.currentUser
 
-        if (user1 != null) {
-            databaseReference = firebaseApplication.db.getReference("contacts").child(user1.uid)
+        if (user != null) {
+            databaseReference = firebaseApplication.db.getReference("contacts").child(user.uid)
         }
 
         contactsList = mutableListOf()
@@ -56,7 +56,7 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
             }
 
             override fun onCancelled(error: DatabaseError) {
-
+                Toast.makeText(view?.context, error.message, Toast.LENGTH_LONG).show()
             }
 
         })
@@ -94,7 +94,7 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
                         }
                         else {
                             databaseReference.child(contactId).setValue(contact).addOnCompleteListener {
-                                Toast.makeText(view?.context, "Success", Toast.LENGTH_LONG).show()
+                                Toast.makeText(view?.context, R.string.success, Toast.LENGTH_LONG).show()
                             }
                         }
                     }

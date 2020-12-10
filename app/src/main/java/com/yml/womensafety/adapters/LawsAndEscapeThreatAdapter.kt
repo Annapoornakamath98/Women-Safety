@@ -1,4 +1,4 @@
-package com.yml.womensafety
+package com.yml.womensafety.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,12 +6,13 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.yml.womensafety.R
 import com.yml.womensafety.navigationdrawer.LawsAndEscapeThreat
 
 class LawsAndEscapeThreatAdapter(private val lawAndThreatList: ArrayList<LawsAndEscapeThreat>) :
-    RecyclerView.Adapter<LawsAndEscapeThreatAdapter.LawsAndEscapeThreatVH>() {
+    RecyclerView.Adapter<LawsAndEscapeThreatAdapter.LawsAndEscapeThreatViewHolder>() {
 
-    class LawsAndEscapeThreatVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class LawsAndEscapeThreatViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var title = itemView.findViewById(R.id.lawTitle) as TextView
         var description = itemView.findViewById(R.id.lawDescription) as TextView
@@ -22,13 +23,13 @@ class LawsAndEscapeThreatAdapter(private val lawAndThreatList: ArrayList<LawsAnd
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): LawsAndEscapeThreatVH {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.law_item, parent, false)
-        return LawsAndEscapeThreatVH(v)
+    ): LawsAndEscapeThreatViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.law_item, parent, false)
+        return LawsAndEscapeThreatViewHolder(view)
     }
 
     override fun onBindViewHolder(
-        holder: LawsAndEscapeThreatVH,
+        holder: LawsAndEscapeThreatViewHolder,
         position: Int
     ) {
         val lawsAndThreat: LawsAndEscapeThreat = lawAndThreatList[position]

@@ -1,98 +1,36 @@
 package com.yml.womensafety.navigationdrawer
 
+import android.app.Application
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.yml.womensafety.LawsAndEscapeThreatAdapter
 import com.yml.womensafety.R
+import com.yml.womensafety.adapters.LawsAndEscapeThreatAdapter
+import com.yml.womensafety.viewModel.LawsViewModel
 
 class LawsFragment : Fragment(R.layout.fragment_laws) {
-    private val lawList = ArrayList<LawsAndEscapeThreat>()
+    private lateinit var lawsRecyclerView: RecyclerView
+    lateinit var lawsViewModel: LawsViewModel
+    private lateinit var lawsAdapter: LawsAndEscapeThreatAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val recyclerView = view.findViewById(R.id.recyclerViewLaws) as RecyclerView
-        val lawAdapter = LawsAndEscapeThreatAdapter(lawList)
-        displayLawsRelatedToWomen()
-        recyclerView.apply {
-            layoutManager = LinearLayoutManager(view.context)
-            adapter = lawAdapter
-        }
+        lawsViewModel = ViewModelProvider(this).get(LawsViewModel(Application())::class.java)
+        lawsViewModel.initializeRepository()
+        lawsViewModel.getLaws().observe(viewLifecycleOwner, {
+            lawsAdapter.notifyDataSetChanged()
+        })
+        initializeRecyclerView()
     }
 
-    private fun displayLawsRelatedToWomen() {
-        lawList.apply {
-            add(
-                LawsAndEscapeThreat(
-                    getString(R.string.prohibition_of_child_marriage_act),
-                    getString(R.string.prohibition_of_child_marriage_act_description)
-                )
-            )
-
-            add(
-                LawsAndEscapeThreat(
-                    getString(R.string.special_marriage_act),
-                    getString(R.string.special_marriage_act_description)
-                )
-            )
-
-            add(
-                LawsAndEscapeThreat(
-                    getString(R.string.dowry_prohibition_act),
-                    getString(R.string.dowry_prohibition_act_description)
-                )
-            )
-
-            add(
-                LawsAndEscapeThreat(
-                    getString(R.string.indian_divorce_act),
-                    getString(R.string.indian_divorce_act_description)
-                )
-            )
-
-            add(
-                LawsAndEscapeThreat(
-                    getString(R.string.maternity_benefit_act),
-                    getString(R.string.maternity_benefit_act_description)
-                )
-            )
-
-            add(
-                LawsAndEscapeThreat(
-                    getString(R.string.medical_termination_of_pregnancy_act),
-                    getString(R.string.medical_termination_of_pregnancy_act_description)
-                )
-            )
-
-            add(
-                LawsAndEscapeThreat(
-                    getString(R.string.sexual_harassment_act),
-                    getString(R.string.sexual_harassment_act_description)
-                )
-            )
-
-            add(
-                LawsAndEscapeThreat(
-                    getString(R.string.indecent_representation_act),
-                    getString(R.string.indecent_representation_act_description)
-                )
-            )
-
-            add(
-                LawsAndEscapeThreat(
-                    getString(R.string.national_commission_act),
-                    getString(R.string.national_commission_act_description)
-                )
-            )
-
-            add(
-                LawsAndEscapeThreat(
-                    getString(R.string.equal_remuneration_act),
-                    getString(R.string.equal_remuneration_act_description)
-                )
-            )
-        }
+    private fun initializeRecyclerView() {
+        lawsAdapter =
+            LawsAndEscapeThreatAdapter(lawsViewModel.getLaws().value!! as ArrayList<LawsAndEscapeThreat>)
+        lawsRecyclerView = view?.findViewById(R.id.recyclerViewLaws)!!
+        lawsRecyclerView.layoutManager = LinearLayoutManager(view?.context)
+        lawsRecyclerView.adapter = lawsAdapter
     }
 }

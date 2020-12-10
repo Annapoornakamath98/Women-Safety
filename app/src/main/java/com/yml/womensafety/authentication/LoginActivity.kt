@@ -25,7 +25,6 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, RegistrationActivity::class.java))
             finish()
         }
-
     }
 
     override fun onStart() {
@@ -51,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
             return
         }
         auth.signInWithEmailAndPassword(loginEmailId.text.toString(), loginPassword.text.toString())
-            .addOnCompleteListener {task ->
+            .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     startActivity(Intent(this, HomePageActivity::class.java))
                     finish()
@@ -59,11 +58,10 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, "Login failed", Toast.LENGTH_LONG).show()
                 }
             }
-
-
     }
+
     private fun updateUI(currentUser: FirebaseUser?) {
-        if(currentUser !=  null){
+        if (currentUser != null) {
             startActivity(Intent(this, HomePageActivity::class.java))
         }
     }

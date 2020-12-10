@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.yml.womensafety.FirebaseApplication
 import com.yml.womensafety.R
 import kotlinx.android.synthetic.main.activity_registration.*
@@ -22,12 +20,11 @@ class RegistrationActivity : AppCompatActivity() {
 
         firebaseApplication = FirebaseApplication()
         databaseReference = firebaseApplication.db.getReference("name")
-
         btnRegister.setOnClickListener {
             register()
         }
         goToLogin.setOnClickListener {
-            startActivity(Intent(this,LoginActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
         }
     }
 
@@ -47,7 +44,7 @@ class RegistrationActivity : AppCompatActivity() {
             registerFullName.requestFocus()
             return
         }
-        if (registerPhone.text.toString().isEmpty()){
+        if (registerPhone.text.toString().isEmpty()) {
             registerPhone.error = "Please enter your phone number"
             registerPhone.requestFocus()
             return
@@ -60,10 +57,12 @@ class RegistrationActivity : AppCompatActivity() {
             return
         }
 
-        firebaseApplication.u.createUserWithEmailAndPassword(registerEmailId.text.toString(),
-            registerPassword.text.toString())
+        firebaseApplication.u.createUserWithEmailAndPassword(
+            registerEmailId.text.toString(),
+            registerPassword.text.toString()
+        )
             .addOnCompleteListener { task ->
-                if(task.isSuccessful){
+                if (task.isSuccessful) {
                     val user = firebaseApplication.u.currentUser
                     val userName = databaseReference?.child(user?.uid!!)
                     userName?.child("fullName")?.setValue(registerFullName.text.toString())
@@ -72,13 +71,10 @@ class RegistrationActivity : AppCompatActivity() {
                         .show()
                     startActivity(Intent(applicationContext, LoginActivity::class.java))
                     finish()
-                }
-                else{
+                } else {
                     Toast.makeText(applicationContext, "Registration failed", Toast.LENGTH_SHORT)
                         .show()
                 }
-
             }
-
     }
 }

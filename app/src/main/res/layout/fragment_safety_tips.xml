@@ -23,7 +23,7 @@
         app:layout_constraintRight_toRightOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewEscapeThreat"
+        android:id="@+id/recyclerViewSafetyTips"
         android:layout_width="@dimen/recycler_view_width_height"
         android:layout_height="@dimen/recycler_view_width_height"
         app:layout_constraintEnd_toEndOf="parent"

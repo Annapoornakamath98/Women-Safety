@@ -8,15 +8,17 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.yml.womensafety.R
-import com.yml.womensafety.navigationdrawer.contacts.Contact
 
-class ContactsListAdapter(private val mContext: Context, private val layoutResId: Int, private val contactsList: List<Contact>)
-    :ArrayAdapter<Contact>(mContext,layoutResId,contactsList){
+class ContactsListAdapter(
+    private val mContext: Context,
+    private val layoutResId: Int,
+    private val contactsList: List<Contact>
+) : ArrayAdapter<Contact>(mContext, layoutResId, contactsList) {
 
     @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layoutInflater: LayoutInflater = LayoutInflater.from(mContext)
-        val view: View = layoutInflater.inflate(layoutResId,null)
+        val view: View = layoutInflater.inflate(layoutResId, null)
         val tvName = view.findViewById<TextView>(R.id.contactsListName)
         val tvNumber = view.findViewById<TextView>(R.id.contactsListNumber)
         val contact = contactsList[position]

@@ -16,7 +16,7 @@
     <string name="example_email">Example@gmail.com</string>
     <string name="enter_your_name">Enter your name</string>
     <string name="enter_password">Enter password</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="save">Save</string>
     <string name="name">Name</string>

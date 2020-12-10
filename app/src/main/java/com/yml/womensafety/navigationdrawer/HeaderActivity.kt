@@ -1,8 +1,7 @@
 package com.yml.womensafety.navigationdrawer
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.yml.womensafety.R
@@ -27,11 +26,9 @@ class HeaderActivity : AppCompatActivity() {
                 val userFullName = snapshot.child("fullName").value.toString()
                 headerName.text = userFullName
             }
-
             override fun onCancelled(error: DatabaseError) {
 
             }
-
         })
     }
 }

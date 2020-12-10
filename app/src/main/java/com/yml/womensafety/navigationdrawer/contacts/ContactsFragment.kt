@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
 import com.yml.womensafety.FirebaseApplication
 import com.yml.womensafety.R
 import kotlinx.android.synthetic.main.fragment_contacts.*
@@ -14,7 +17,6 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
 
     private lateinit var firebaseApplication: FirebaseApplication
     private lateinit var databaseReference: DatabaseReference
-
     private lateinit var contactsList: MutableList<Contact>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -24,7 +26,6 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
         if (user != null) {
             databaseReference = firebaseApplication.db.getReference("contacts").child(user.uid)
         }
-
         contactsList = mutableListOf()
         contactSave.setOnClickListener {
             saveContactInfo()
@@ -32,7 +33,6 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
         btnViewContacts.setOnClickListener {
             viewContacts()
         }
-
     }
 
     private fun viewContacts() {
@@ -55,6 +55,7 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
                     contactsListView.adapter = adapter
                 }
             }
+
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(view?.context, error.message, Toast.LENGTH_LONG).show()
             }
@@ -88,11 +89,15 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
                         if (snapshot.exists()) {
                             contactNumber.error = "Number already exists"
                             contactNumber.requestFocus()
-                        }
-                        else {
-                            databaseReference.child(contactId).setValue(contact).addOnCompleteListener {
-                                Toast.makeText(view?.context, R.string.success, Toast.LENGTH_LONG).show()
-                            }
+                        } else {
+                            databaseReference.child(contactId).setValue(contact)
+                                .addOnCompleteListener {
+                                    Toast.makeText(
+                                        view?.context,
+                                        R.string.success,
+                                        Toast.LENGTH_LONG
+                                    ).show()
+                                }
                         }
                     }
 
@@ -106,9 +111,6 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
                     }
 
                 })
-
         }
-
     }
-
 }

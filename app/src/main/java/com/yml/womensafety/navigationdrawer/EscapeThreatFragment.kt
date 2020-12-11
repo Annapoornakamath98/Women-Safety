@@ -13,7 +13,6 @@ import com.yml.womensafety.viewModel.EscapeThreatViewModel
 
 
 class EscapeThreatFragment : Fragment(R.layout.fragment_escape_threat) {
-
     private lateinit var escapeThreatRecyclerView: RecyclerView
     lateinit var escapeThreatViewModel: EscapeThreatViewModel
     private lateinit var escapeThreatAdapter: LawsAndEscapeThreatAdapter

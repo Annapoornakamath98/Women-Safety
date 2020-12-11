@@ -1,17 +1,15 @@
 package com.yml.womensafety.repository
 
-import androidx.lifecycle.MutableLiveData
 import com.yml.womensafety.navigationdrawer.youtube.YouTubeVideos
-import java.util.*
 
 class YouTubeRepository {
-    private var videosDataSet = Vector<YouTubeVideos>()
+    private var videosDataSet = ArrayList<YouTubeVideos>()
 
-    fun getYouTubeVideos(): MutableLiveData<List<YouTubeVideos>> {
+    fun getYouTubeVideos(): ArrayList<YouTubeVideos> {
         setYouTubeVideos()
-        val videosData: MutableLiveData<List<YouTubeVideos>> = MutableLiveData()
-        videosData.value = videosDataSet
-        return videosData
+//        val videosData: MutableLiveData<List<YouTubeVideos>> = MutableLiveData()
+//        videosData.value = videosDataSet
+        return videosDataSet
     }
 
     private fun setYouTubeVideos() {

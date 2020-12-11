@@ -1,6 +1,5 @@
 package com.yml.womensafety.navigationdrawer.home
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -14,7 +13,7 @@ import com.yml.womensafety.R
 import kotlinx.android.synthetic.main.fragment_home_page.*
 
 class HomePageFragment : Fragment(R.layout.fragment_home_page) {
-        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val firebaseApplication = FirebaseApplication()
@@ -22,10 +21,10 @@ class HomePageFragment : Fragment(R.layout.fragment_home_page) {
         val databaseReference = firebaseApplication.db.reference.child("name")
         val userReference = databaseReference.child(user?.uid!!)
         userReference.addValueEventListener(object : ValueEventListener {
-            @SuppressLint("SetTextI18n")
             override fun onDataChange(snapshot: DataSnapshot) {
                 val userFullName = snapshot.child("fullName").value.toString()
-                tvLabel.text = "Hi, $userFullName"
+                val userName = "Hi, $userFullName"
+                tvLabel.text = userName
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -40,7 +39,8 @@ class HomePageFragment : Fragment(R.layout.fragment_home_page) {
             view.findNavController().navigate(R.id.action_homePageFragment_to_safetyTipsFragment)
         }
         cvVideosForSelfDefense.setOnClickListener {
-            view.findNavController().navigate(R.id.action_homePageFragment_to_selfDefenseVideoFragment)
+            view.findNavController()
+                .navigate(R.id.action_homePageFragment_to_selfDefenseVideoFragment)
         }
         cvLaws.setOnClickListener {
             view.findNavController().navigate(R.id.action_homePageFragment_to_lawsFragment)

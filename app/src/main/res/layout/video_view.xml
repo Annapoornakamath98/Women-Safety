@@ -3,6 +3,4 @@
     android:id="@+id/webView"
     android:layout_width="match_parent"
     android:layout_height="@dimen/video_height"
-    android:layout_marginBottom="@dimen/list_margin_bottom"
-    >
-</WebView>
+    android:layout_marginBottom="@dimen/list_margin_bottom" />

@@ -8,13 +8,16 @@ import com.yml.womensafety.navigationdrawer.SafetyTips
 import com.yml.womensafety.repository.SafetyTipsRepository
 
 class SafetyTipsViewModel(application: Application) : AndroidViewModel(application) {
-    lateinit var safetyTipsList: MutableLiveData<List<SafetyTips>>
+    var safetyTipsDataSet = ArrayList<SafetyTips>()
+    var safetyTipsData = MutableLiveData<List<SafetyTips>>()
+    lateinit var safetyTipsRepository: SafetyTipsRepository
     fun initializeRepository() {
-        val safetyTipsRepository = SafetyTipsRepository(getApplication())
-        safetyTipsList = safetyTipsRepository.getSafetyTips()
+        safetyTipsRepository = SafetyTipsRepository(getApplication())
+        safetyTipsDataSet = safetyTipsRepository.getSafetyTips()
     }
 
     fun getSafetyTips(): LiveData<List<SafetyTips>> {
-        return safetyTipsList
+        safetyTipsData.value = safetyTipsDataSet
+        return safetyTipsData
     }
 }

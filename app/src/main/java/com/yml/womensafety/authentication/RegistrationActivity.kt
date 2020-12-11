@@ -30,29 +30,29 @@ class RegistrationActivity : AppCompatActivity() {
 
     private fun register() {
         if (registerEmailId.text.toString().isEmpty()) {
-            registerEmailId.error = "Please enter email id"
+            registerEmailId.error = getString(R.string.please_enter_email_id)
             registerEmailId.requestFocus()
             return
         }
         if (registerPassword.text.toString().isEmpty()) {
-            registerPassword.error = "Please enter the password"
+            registerPassword.error = getString(R.string.please_enter_the_password)
             registerPassword.requestFocus()
             return
         }
         if (registerFullName.text.toString().isEmpty()) {
-            registerFullName.error = "Please enter the password"
+            registerFullName.error = getString(R.string.please_enter_the_password)
             registerFullName.requestFocus()
             return
         }
         if (registerPhone.text.toString().isEmpty()) {
-            registerPhone.error = "Please enter your phone number"
+            registerPhone.error = getString(R.string.please_enter_your_phone_number)
             registerPhone.requestFocus()
             return
         }
 
 
         if (!Patterns.EMAIL_ADDRESS.matcher(registerEmailId.text.toString()).matches()) {
-            registerEmailId.error = "Please enter a valid email id"
+            registerEmailId.error = getString(R.string.please_enter_a_valid_email_id)
             registerEmailId.requestFocus()
             return
         }
@@ -67,12 +67,20 @@ class RegistrationActivity : AppCompatActivity() {
                     val userName = databaseReference?.child(user?.uid!!)
                     userName?.child("fullName")?.setValue(registerFullName.text.toString())
                     userName?.child("phoneNumber")?.setValue(registerPhone.text.toString())
-                    Toast.makeText(applicationContext, "Registration success", Toast.LENGTH_SHORT)
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.reg_success),
+                        Toast.LENGTH_SHORT
+                    )
                         .show()
                     startActivity(Intent(applicationContext, LoginActivity::class.java))
                     finish()
                 } else {
-                    Toast.makeText(applicationContext, "Registration failed", Toast.LENGTH_SHORT)
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.reg_fail),
+                        Toast.LENGTH_SHORT
+                    )
                         .show()
                 }
             }

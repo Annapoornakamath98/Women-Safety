@@ -53,4 +53,5 @@
     <dimen name="text_view_padding">8dp</dimen>
     <dimen name="save_button_top_padding">32dp</dimen>
     <dimen name="user_profile_font_size">20sp</dimen>
+    <dimen name="bottom_app_bar_cradle_offset">20dp</dimen>
 </resources>

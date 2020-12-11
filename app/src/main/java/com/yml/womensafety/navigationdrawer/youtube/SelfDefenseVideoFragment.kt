@@ -19,17 +19,14 @@ class SelfDefenseVideoFragment : Fragment(R.layout.fragment_self_defense_video) 
         super.onViewCreated(view, savedInstanceState)
 
         youTubeViewModel = ViewModelProvider(this).get(YouTubeViewModel::class.java)
-
         youTubeViewModel.initializeRepository()
-
         youTubeViewModel.getYouTubeVideos().observe(viewLifecycleOwner, {
             videoAdapter.notifyDataSetChanged()
         })
-
         initializeRecyclerView()
     }
 
-    private fun initializeRecyclerView(){
+    private fun initializeRecyclerView() {
         videoAdapter = VideoAdapter(youTubeViewModel.getYouTubeVideos().value!!)
         videoRecyclerView = view?.findViewById(R.id.recyclerViewVideos)!!
         videoRecyclerView.setHasFixedSize(true)

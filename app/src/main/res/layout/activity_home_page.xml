@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_wave__1_"
+    android:background="@drawable/ic_app_background"
     tools:context=".navigationdrawer.home.HomePageActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,7 +30,7 @@
         android:layout_gravity="bottom"
         app:fabCradleMargin="@dimen/hp_padding_margin"
         app:fabCradleRoundedCornerRadius="@dimen/fab_corner_radius"
-        app:fabCradleVerticalOffset="20dp">
+        app:fabCradleVerticalOffset="@dimen/bottom_app_bar_cradle_offset">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavBar"

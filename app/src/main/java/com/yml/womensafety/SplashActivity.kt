@@ -10,7 +10,10 @@ import com.yml.womensafety.authentication.LoginActivity
 import com.yml.womensafety.navigationdrawer.home.HomePageActivity
 
 class SplashActivity : AppCompatActivity() {
-    private val splashTimeOut: Long = 3000
+    companion object {
+        private const val SPLASH_TIME_OUT: Long = 3000
+    }
+
     private var firebaseApplication = FirebaseApplication()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,13 +21,13 @@ class SplashActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
-        }, splashTimeOut)
+        }, SPLASH_TIME_OUT)
     }
 
     override fun onStart() {
         super.onStart()
-        val uu = firebaseApplication.u.currentUser
-        updateUI(uu)
+        val user = firebaseApplication.u.currentUser
+        updateUI(user)
     }
 
     private fun updateUI(currentUser: FirebaseUser?) {

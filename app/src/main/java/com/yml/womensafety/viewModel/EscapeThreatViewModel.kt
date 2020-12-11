@@ -8,14 +8,17 @@ import com.yml.womensafety.navigationdrawer.LawsAndEscapeThreat
 import com.yml.womensafety.repository.EscapeThreatRepository
 
 class EscapeThreatViewModel(application: Application) : AndroidViewModel(application) {
-    lateinit var escapeThreatData: MutableLiveData<List<LawsAndEscapeThreat>>
+    private var escapeThreatData = MutableLiveData<List<LawsAndEscapeThreat>>()
+    private var escapeThreatDataSet = ArrayList<LawsAndEscapeThreat>()
+    lateinit var escapeThreatRepository: EscapeThreatRepository
 
     fun initializeRepository() {
-        val escapeThreatRepository = EscapeThreatRepository(getApplication())
-        escapeThreatData = escapeThreatRepository.getEscapeThreatData()
+        escapeThreatRepository = EscapeThreatRepository(getApplication())
+        escapeThreatDataSet = escapeThreatRepository.getEscapeThreatData()
     }
 
     fun getEscapeThreatData(): LiveData<List<LawsAndEscapeThreat>> {
+        escapeThreatData.value = escapeThreatDataSet
         return escapeThreatData
     }
 }

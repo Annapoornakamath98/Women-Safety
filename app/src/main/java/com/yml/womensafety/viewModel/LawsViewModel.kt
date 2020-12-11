@@ -4,18 +4,20 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.yml.womensafety.navigationdrawer.LawsAndEscapeThreat
 import com.yml.womensafety.repository.LawsRepository
 
 class LawsViewModel(application: Application) : AndroidViewModel(application) {
-    lateinit var lawsData: MutableLiveData<List<LawsAndEscapeThreat>>
+    var lawsDataSet = ArrayList<LawsAndEscapeThreat>()
+    var lawsData = MutableLiveData<List<LawsAndEscapeThreat>>()
+    lateinit var lawsRepository: LawsRepository
     fun initializeRepository() {
-        val lawsRepository = LawsRepository(getApplication())
-        lawsData = lawsRepository.getLaws()
+        lawsRepository = LawsRepository(getApplication())
+        lawsDataSet = lawsRepository.getLaws()
     }
 
     fun getLaws(): LiveData<List<LawsAndEscapeThreat>> {
+        lawsData.value = lawsDataSet
         return lawsData
     }
 }

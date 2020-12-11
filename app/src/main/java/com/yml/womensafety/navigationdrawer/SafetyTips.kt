@@ -1,3 +1,5 @@
 package com.yml.womensafety.navigationdrawer
 
-data class SafetyTips(val tip: String)
+import androidx.annotation.StringRes
+
+data class SafetyTips(@StringRes val tipID: Int)

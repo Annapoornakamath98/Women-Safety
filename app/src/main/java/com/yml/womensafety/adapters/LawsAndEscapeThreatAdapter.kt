@@ -14,18 +14,19 @@ class LawsAndEscapeThreatAdapter(private val lawAndThreatList: ArrayList<LawsAnd
 
     class LawsAndEscapeThreatViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var title = itemView.findViewById(R.id.lawTitle) as TextView
-        var description = itemView.findViewById(R.id.lawDescription) as TextView
-        var btnExpandDescription =
-            itemView.findViewById(R.id.btnExpandLawDescription) as ImageButton
+        var title: TextView = itemView.findViewById(R.id.lawTitle)
+        var description: TextView = itemView.findViewById(R.id.lawDescription)
+        var btnExpandDescription: ImageButton =
+            itemView.findViewById(R.id.btnExpandLawDescription)
     }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): LawsAndEscapeThreatViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.law_item, parent, false)
-        return LawsAndEscapeThreatViewHolder(view)
+        return LawsAndEscapeThreatViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.law_item, parent, false)
+        )
     }
 
     override fun onBindViewHolder(
@@ -35,20 +36,23 @@ class LawsAndEscapeThreatAdapter(private val lawAndThreatList: ArrayList<LawsAnd
         val lawsAndThreat: LawsAndEscapeThreat = lawAndThreatList[position]
         var isBtnExpanded: Boolean = lawAndThreatList[position].expandable
 
-        holder.title.text = lawsAndThreat.title
-        holder.description.text = lawsAndThreat.description
-
-        holder.btnExpandDescription.setOnClickListener {
-            if (isBtnExpanded) {
-                holder.btnExpandDescription.setImageResource(R.drawable.ic_arrow_up)
-                holder.description.visibility = View.VISIBLE
-                isBtnExpanded = !isBtnExpanded
-            } else {
-                holder.btnExpandDescription.setImageResource(R.drawable.ic_arrow_down)
-                holder.description.visibility = View.GONE
-                isBtnExpanded = true
+        holder.apply {
+            title.text = title.context.getString(lawsAndThreat.titleResID)
+            description.text = description.context.getString(lawsAndThreat.descriptionResID)
+            btnExpandDescription.setOnClickListener {
+                if (isBtnExpanded) {
+                    holder.btnExpandDescription.setImageResource(R.drawable.ic_arrow_up)
+                    holder.description.visibility = View.VISIBLE
+                    isBtnExpanded = !isBtnExpanded
+                } else {
+                    holder.btnExpandDescription.setImageResource(R.drawable.ic_arrow_down)
+                    holder.description.visibility = View.GONE
+                    isBtnExpanded = true
+                }
             }
         }
+
+
     }
 
     override fun getItemCount(): Int {

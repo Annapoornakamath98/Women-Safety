@@ -4,21 +4,21 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebChromeClient
 import android.webkit.WebView
 import androidx.recyclerview.widget.RecyclerView
 import com.yml.womensafety.R
 import com.yml.womensafety.navigationdrawer.youtube.YouTubeVideos
 
-class VideoAdapter internal constructor(private val youtubeVideoList: List<YouTubeVideos>) :
+class VideoAdapter(private val youtubeVideoList: List<YouTubeVideos>) :
     RecyclerView.Adapter<VideoAdapter.VideoViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.video_view, parent, false)
-        return VideoViewHolder(view)
+        return VideoViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.video_view, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
-        holder.videoWeb.loadData(youtubeVideoList[position].videoUrl!!, "text/html", "utf-8")
+        holder.videoWeb.loadData(youtubeVideoList[position].videoUrl, "text/html", "utf-8")
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -27,8 +27,6 @@ class VideoAdapter internal constructor(private val youtubeVideoList: List<YouTu
 
         init {
             videoWeb.settings.javaScriptEnabled = true
-            videoWeb.webChromeClient = object : WebChromeClient() {
-            }
         }
     }
 

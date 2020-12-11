@@ -7,11 +7,11 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/card_corner_radius"
         app:cardUseCompatPadding="true"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:cardCornerRadius="@dimen/card_corner_radius">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -22,23 +22,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_layout_margin"
+                android:layout_marginStart="@dimen/default_layout_margin"
                 android:textSize="@dimen/fragment_text_size"
                 android:textStyle="bold"
-                android:layout_marginStart="@dimen/default_layout_margin"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btnExpandLawDescription"
                 android:layout_width="@dimen/image_button_width_height"
                 android:layout_height="@dimen/image_button_width_height"
-                android:layout_marginLeft="@dimen/default_layout_margin"
-                android:layout_marginRight="@dimen/default_layout_margin"
+                android:layout_marginStart="@dimen/default_layout_margin"
+                android:layout_marginEnd="@dimen/default_layout_margin"
+                android:baselineAlignBottom="true"
                 android:src="@drawable/ic_arrow_down"
                 app:layout_constraintBottom_toBottomOf="@+id/lawTitle"
-                app:layout_constraintEnd_toEndOf="@+id/lawTitle"
-                android:baselineAlignBottom="true"/>
+                app:layout_constraintEnd_toEndOf="@+id/lawTitle" />
 
             <TextView
                 android:id="@+id/lawDescription"
@@ -48,8 +48,8 @@
                 android:textSize="@dimen/fragment_expand_text_size"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lawTitle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

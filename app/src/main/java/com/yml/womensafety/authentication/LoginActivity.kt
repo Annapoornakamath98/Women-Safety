@@ -35,17 +35,17 @@ class LoginActivity : AppCompatActivity() {
 
     private fun login() {
         if (loginEmailId.text.toString().isEmpty()) {
-            loginEmailId.error = "This field can't be empty!"
+            loginEmailId.error = getString(R.string.please_enter_email_id)
             loginEmailId.requestFocus()
             return
         }
         if (loginPassword.text.toString().isEmpty()) {
-            loginPassword.error = "Please enter the password"
+            loginPassword.error = getString(R.string.please_enter_the_password)
             loginPassword.requestFocus()
             return
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(loginEmailId.text.toString()).matches()) {
-            loginEmailId.error = "Please enter a valid email id"
+            loginEmailId.error = getString(R.string.please_enter_a_valid_email_id)
             loginEmailId.requestFocus()
             return
         }
@@ -55,7 +55,11 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(Intent(this, HomePageActivity::class.java))
                     finish()
                 } else {
-                    Toast.makeText(applicationContext, "Login failed", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.login_fail),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
     }

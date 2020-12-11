@@ -35,6 +35,13 @@
     <string name="tips_for_women_safety">Tips For Women Safety</string>
     <string name="laws_related_to_women_safety">Laws Related to Women Safety</string>
     <string name="success">Successfully saved</string>
+    <string name="reg_success">Registration success</string>
+    <string name="reg_fail">Registration failed</string>
+    <string name="login_fail">Login failed</string>
+    <string name="please_enter_email_id">Please enter Email ID</string>
+    <string name="please_enter_the_password">Please enter the password</string>
+    <string name="please_enter_a_valid_email_id">Please enter a valid email id</string>
+    <string name="please_enter_your_phone_number">Please enter your phone number</string>
 
     <!--  Escape Threat Tips  -->
     <string name="situation_1">What should a woman do if she finds herself alone in the company of a strange male as she prepares to enter a lift in a high rise apartment late at night?</string>

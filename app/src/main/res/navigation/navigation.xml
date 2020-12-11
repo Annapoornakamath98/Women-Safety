@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_homePageFragment_to_escapeThreatFragment"
             app:destination="@id/escapeThreatFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_self"
+            app:destination="@id/homePageFragment" />
     </fragment>
     <fragment
         android:id="@+id/lawsFragment"

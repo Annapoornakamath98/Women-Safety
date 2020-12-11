@@ -7,13 +7,17 @@ import com.yml.womensafety.navigationdrawer.youtube.YouTubeVideos
 import com.yml.womensafety.repository.YouTubeRepository
 
 class YouTubeViewModel : ViewModel() {
-    lateinit var youTubeVideos: MutableLiveData<List<YouTubeVideos>>
+    lateinit var youTubeRepository: YouTubeRepository
+    private var youTubeVideosDataSet = ArrayList<YouTubeVideos>()
+    var youTubeVideosData = MutableLiveData<ArrayList<YouTubeVideos>>()
+
     fun initializeRepository() {
-        val youTubeRepository = YouTubeRepository()
-        youTubeVideos = youTubeRepository.getYouTubeVideos()
+        youTubeRepository = YouTubeRepository()
+        youTubeVideosDataSet = youTubeRepository.getYouTubeVideos()
     }
 
-    fun getYouTubeVideos(): LiveData<List<YouTubeVideos>> {
-        return youTubeVideos
+    fun getYouTubeVideos(): LiveData<ArrayList<YouTubeVideos>> {
+        youTubeVideosData.value = youTubeVideosDataSet
+        return youTubeVideosData
     }
 }

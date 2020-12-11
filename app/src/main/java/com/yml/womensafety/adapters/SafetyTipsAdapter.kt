@@ -13,24 +13,21 @@ class SafetyTipsAdapter(private val tipsList: ArrayList<SafetyTips>) :
     RecyclerView.Adapter<SafetyTipsAdapter.SafetyTipsViewHolder>() {
 
     class SafetyTipsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        fun bindItems(safetyTip: SafetyTips) {
-            val tips = itemView.findViewById(R.id.tipsText) as TextView
-            tips.text = safetyTip.tip
-        }
+        var tips: TextView = itemView.findViewById(R.id.tipsText)
     }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): SafetyTipsViewHolder {
-        val view =
+        return SafetyTipsViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.safety_tip_item, parent, false)
-        return SafetyTipsViewHolder(view)
+        )
     }
 
     override fun onBindViewHolder(holder: SafetyTipsViewHolder, position: Int) {
-        holder.bindItems(tipsList[position])
+        val safetyTips: SafetyTips = tipsList[position]
+        holder.tips.text = holder.tips.context.getString(safetyTips.tipID)
     }
 
     override fun getItemCount(): Int {

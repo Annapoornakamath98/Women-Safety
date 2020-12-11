@@ -16,7 +16,7 @@
     <string name="example_email">Example@gmail.com</string>
     <string name="enter_your_name">Enter your name</string>
     <string name="enter_password">Enter password</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="save">Save</string>
     <string name="name">Name</string>
@@ -27,8 +27,75 @@
     <string name="app_icon">app icon</string>
     <string name="view_contacts">View Contacts</string>
     <string name="tips">Tips to escape\n from threat</string>
-    <string name="tips2">Tips for women safety</string>
+    <string name="tips2">Tips for women\n safety</string>
     <string name="videos">Videos for self\n defense</string>
-    <string name="laws">Laws related to women safety</string>
+    <string name="laws">Laws related to \nwomen safety</string>
     <string name="user_profile">User Profile</string>
+    <string name="text_escape_threat">According to the International Research Centre for Women, almost 47 percent of girls are married before the age of 18. Currently, India ranks 13 in the world when it comes to child marriages. Since child marriage has been steeped into the Indian culture and tradition since centuries, it has been tough eliminating it. Read more at: https://yourstory.com/2016/06/laws-that-protect-women-rights?utm_pageloadtype=scroll</string>
+    <string name="tips_for_women_safety">Tips For Women Safety</string>
+    <string name="laws_related_to_women_safety">Laws Related to Women Safety</string>
+    <string name="success">Successfully saved</string>
+    <string name="reg_success">Registration success</string>
+    <string name="reg_fail">Registration failed</string>
+    <string name="login_fail">Login failed</string>
+    <string name="please_enter_email_id">Please enter Email ID</string>
+    <string name="please_enter_the_password">Please enter the password</string>
+    <string name="please_enter_a_valid_email_id">Please enter a valid email id</string>
+    <string name="please_enter_your_phone_number">Please enter your phone number</string>
+
+    <!--  Escape Threat Tips  -->
+    <string name="situation_1">What should a woman do if she finds herself alone in the company of a strange male as she prepares to enter a lift in a high rise apartment late at night?</string>
+    <string name="situation_1_solution">Enter the lift, if you need to reach a high floor (say 10th floor), press all the buttons up to your destination
+    No one will dare attack in a lift that stops on every floor.</string>
+    <string name="situation_2">What should you do if a stranger tries to attack you when you are alone in the house?</string>
+    <string name="situation_2_solution">Run to the kitchen, you alone know where the chilly powder and turmeric powder are kept. You also know where the knives and plates are kept. If nothing else,  start throwing plates and utensils all over. Let them break. Scream… Remember that noise is the greatest enemy of the molester. He does not want to get caught.</string>
+    <string name="situation_3">What to do if the driver of auto or taxi turns into a street he is not supposed to and you feel you are entering a danger zone?</string>
+    <string name="situation_3_solution">Use the handle of your purse or stole to wrap around his neck and pull him back. Within seconds he will feel choked or helpless. In case you don\'t have a purse or a stole, just pull him back by his collar. The top button of his shirt will do the same trick.</string>
+    <string name="situation_4">What should you do when taking an auto or a taxi at night?</string>
+    <string name="situation_4_solution">Before getting into an auto at night, note down it\'s registration number and pass on the details to your family member or friends on a call in a language that the driver understands. Even if no one picks up your call, pretend you are in a conversation. The driver now knows someone has his details and he will be in serious trouble if something goes wrong. He is now bound to take you home safe and sound.</string>
+    <string name="situation_5">What should you do if you are stalked at night?</string>
+    <string name="situation_5_solution">Enter a shop or a house and explain your situation. If it is night and shops are not open, go inside an ATM center. ATM centers always have close circuit television. Fearing identification, no one will attack you.</string>
+    <string name="situation_6">What should you do if you are getting mugged?</string>
+    <string name="situation_6_solution">Give in to their demands. Obviously, your life is more important than your wallet and jewellery. Don’t try to argue or reason with your muggers. And no matter what you do, don’t threaten them. This will anger them and they may shoot you and even your near and dear ones. And inform the police when you are sure than you are out of danger.</string>
+
+    <!--  Safety tips  -->
+    <string name="safety_tip_1">If walking by yourself, get off your cell phone.Chatting can distract you, it\'s better to be aware of your surroundings.</string>
+    <string name="safety_tip_2">If walking by yourself, hold your cell phone and be ready to make an emergency call.</string>
+    <string name="safety_tip_3">Look underneath your car before approaching it in a parking garage or lot at night.</string>
+    <string name="safety_tip_4">If you return to your car and see that a van is parked right next to the driver\'s side, enter through the passenger side. Predators often use vans and will disguise it as a family car.</string>
+    <string name="safety_tip_5"> You return to your car and it has a flat tire. Back away. Return to wherever you came from (restaurant, store, etc) and call for help. Once assistance arrives, approach your car.
+    If someone comes up to you (even if they are a woman) and wants to offer help, politely say, "No thank you." If a man, he could be a predator. If a woman, she could be the lurer.</string>
+    <string name="safety_tip_6">When the pharmacist asks you to confirm your home address, whisper it to them. Broadcasting your home address among strangers on the line could compromise your safety.</string>
+    <string name="safety_tip_7">If you\'re checking in to a hotel room, if the person at the front desk says your room number out loud, ask them to give you a new room and write the number on a piece of paper. Or when you check-in, ask upfront that they not say your room number out loud.</string>
+    <string name="safety_tip_8">When traveling, do not walk with your map in your hand. It is a dead giveaway that you are a tourist. Therefore, you are an easy target.</string>
+    <string name="safety_tip_9">If you call for room service, and you get a knock on your door, do not immediately open. Ask: "Who is it?" Make the person on the other side of the door tell you who they are before you open it.</string>
+    <string name="safety_tip_10">When asking for directions and someone offers to show you the way by having you follow them, do not go. Just ask for them to point you in the right direction. Often, predators just want to get you to a place less crowded where your screams can\'t be heard.</string>
+    <string name="safety_tip_11">If someone tries to grab you, twist your arm up and down and yell, "Stop!" Do anything you can to draw attention to yourself.</string>
+    <string name="safety_tip_12">Always pour your own drink at a party and bring it with you everywhere… even to the bathroom. This will make it a lot harder for someone to drug you via you drink.</string>
+    <string name="safety_tip_13">If someone is chasing after you, run away in a zig zag pattern. This will exhaust your attacker.</string>
+    <string name="safety_tip_14">Don\'t check-in on Facebook when you arrive somewhere. Instead, check in as you leave. This way no one will be able to digitally stalk you and know your every move or when you\'re not home. Along the same lines, avoid tweeting or Facebooking from vacation, especially if your account is public, as it\'s a way of letting the world know that your home is unoccupied.</string>
+
+    <!--  Laws Related to women  -->
+    <string name="prohibition_of_child_marriage_act">The Prohibition of Child Marriage Act, 2006</string>
+    <string name="prohibition_of_child_marriage_act_description">According to the International Research Centre for Women, almost 47 percent of girls are married before the age of 18. Currently, India ranks 13 in the world when it comes to child marriages. Since child marriage has been steeped into the Indian culture and tradition since centuries, it has been tough eliminating it. The Prohibition of Child Marriage Act was made effective in 2007. This act defines child marriage as a marriage where the groom or the bride are underage, that is, the bride is under 18 years of age or the boy is younger than 21 years. Parents trying to marry underage girls are subject to action under this law. Since the law makes these marriages illegal, it acts as a major deterrent.</string>
+    <string name="special_marriage_act">Special Marriage Act, 1954</string>
+    <string name="special_marriage_act_description">The objectives of this act is to provide – a special form of marriage in certain cases, provide for registration of certain marriages and, to provide for divorce. In a country like India and with the diverse religions and cast, when people from different faiths and caste chose to get married they do it under the Special Marriage Act. It is not applicable to the state of Jammu and Kashmir and also extends to intending spouses who are Indian nationals and living abroad.</string>
+    <string name="dowry_prohibition_act">Dowry Prohibition Act, 1961</string>
+    <string name="dowry_prohibition_act_description">According to this act, taking or giving of dowry at the time of the marriage to the bride or the bridegroom and their family is to be penalised. Dowry system, giving and taking of dowry, is a norm in India. Dowry is often asked of the bride and her family by the groom and his family. The system has taken strong roots because women after marriage move in with their spouse and in-laws. Also, over the centuries, the lack for economic independence of women and the taboo towards divorce has resulted in bride burning. When demands for dowry even after marriage are not met by the girl’s families, many women are tortured, beaten and even burnt. It is one of the major challenges that our society is grappling with. Women openly complaining about it has helped to spread the word and encourage other women to take a stand.</string>
+    <string name="indian_divorce_act">Indian Divorce Act, 1969</string>
+    <string name="indian_divorce_act_description">The Indian Divorce Act allows the dissolution of marriage, mutual consent, nullity of marriage, judicial separation and restitution of conjugal rights. Family Courts are established to file, hear, and dispose of such cases.</string>
+    <string name="maternity_benefit_act">Maternity Benefit Act,1861</string>
+    <string name="maternity_benefit_act_description">This act regulates the employment of women and maternity benefits mandated by law. It states that a woman employee who has worked in an organisation for a period of at least 80 days during the 12 months preceding the date of her expected delivery is entitled to receive maternity benefits, which includes maternity leave, nursing breaks, medical allowance, etc.</string>
+    <string name="medical_termination_of_pregnancy_act">Medical Termination of Pregnancy Act,1971</string>
+    <string name="medical_termination_of_pregnancy_act_description">The Act came into effect into 1972, was amended in 1975 and 2002. The aim of the Act is to reduce the occurrence of illegal abortion and consequent maternal mortality and morbidity. It clearly states the conditions under which a pregnancy can be ended or aborted and specifies the persons qualified to conduct the same.</string>
+    <string name="sexual_harassment_act">Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013</string>
+    <string name="sexual_harassment_act_description">To ensure women\’s safety at workplace, this Act seeks to protect them from sexual harassment at their place of work. Thirty-six percent of Indian companies and 25 percent among MNC’s are not complaint with the Sexual Harassment Act according to a FICCI-EY November 2015 report. Sexual harassment at workplace also includes – the use of language with sexual overtones, invasion of private space with a male colleague hovering too close for comfort and subtle touches.</string>
+    <string name="indecent_representation_act">Indecent Representation of Women(Prevention) Act,1986</string>
+    <string name="indecent_representation_act_description">This Act prohibits indecent representation of women through advertisement or in publications, writings, paintings, figures or in any other manner.</string>
+    <string name="national_commission_act">National Commission for Women Act, 1990</string>
+    <string name="national_commission_act_description">The National Commission for Women (NCW) is a statutory body of the Government of India, established in January 1992. Lalitha Kumaramangalam was appointed its Chairperson in 2014. The NCW represents the rights of women in India and provides a voice for their issues and concerns. The National Commission for Women Act aims to improve the status of women and worked for their economic empowerment.</string>
+    <string name="equal_remuneration_act">Equal Remuneration Act, 1976 </string>
+    <string name="equal_remuneration_act_description">This Act prevents discrimination in terms of remuneration. It provides for payment of equal recompense to men and women workers.</string>
+    <string name="hi">Hi</string>
+    <string name="tips_to_escape_threat">Tips To Escape Threat</string>
 </resources>

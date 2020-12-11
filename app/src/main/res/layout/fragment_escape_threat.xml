@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_app_background"
+    android:padding="@dimen/parent_padding"
+    tools:context=".navigationdrawer.EscapeThreatFragment">
+
+    <TextView
+        android:id="@+id/labelEscapeThreat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/aclonica"
+        android:padding="@dimen/default_padding"
+        android:text="@string/tips_to_escape_threat"
+        android:textColor="@color/white"
+        android:textSize="@dimen/fragment_label_text_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewEscapeThreat"
+        android:layout_width="@dimen/recycler_view_width_height"
+        android:layout_height="@dimen/recycler_view_width_height"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelEscapeThreat" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

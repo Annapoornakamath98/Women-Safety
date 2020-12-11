@@ -1,41 +1,49 @@
 package com.yml.womensafety.navigationdrawer.home
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
-import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.yml.womensafety.FirebaseApplication
 import com.yml.womensafety.R
+import kotlinx.android.synthetic.main.fragment_home_page.*
 
 class HomePageFragment : Fragment(R.layout.fragment_home_page) {
-    private lateinit var auth: FirebaseAuth
-    private var databaseReference: DatabaseReference? = null
-    private var firebaseDatabase: FirebaseDatabase? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        auth = FirebaseAuth.getInstance()
-        firebaseDatabase = FirebaseDatabase.getInstance()
-        databaseReference = firebaseDatabase!!.reference.child("name")
-        val user = auth.currentUser
-        val userEmail = user?.email.toString()
-        val userReference = databaseReference?.child(user?.uid!!)
-        userReference?.addValueEventListener(object : ValueEventListener {
-            @SuppressLint("SetTextI18n")
+
+        val firebaseApplication = FirebaseApplication()
+        val user = firebaseApplication.u.currentUser
+        val databaseReference = firebaseApplication.db.reference.child("name")
+        val userReference = databaseReference.child(user?.uid!!)
+        userReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val userFullName = snapshot.child("fullName").value.toString()
-                //Toast.makeText(view.context,"Welcome $userFullName",Toast.LENGTH_LONG).show()
-                Snackbar.make(view,"Welcome $userFullName",Snackbar.LENGTH_LONG).show()
+                val userName = "Hi, $userFullName"
+                tvLabel.text = userName
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Toast.makeText(context, error.message, Toast.LENGTH_LONG).show()
             }
-
         })
 
+        cvEscapeThreat.setOnClickListener {
+            view.findNavController().navigate(R.id.action_homePageFragment_to_escapeThreatFragment)
+        }
+        cvTipsForWomenSafety.setOnClickListener {
+            view.findNavController().navigate(R.id.action_homePageFragment_to_safetyTipsFragment)
+        }
+        cvVideosForSelfDefense.setOnClickListener {
+            view.findNavController()
+                .navigate(R.id.action_homePageFragment_to_selfDefenseVideoFragment)
+        }
+        cvLaws.setOnClickListener {
+            view.findNavController().navigate(R.id.action_homePageFragment_to_lawsFragment)
+        }
     }
-
-
 }

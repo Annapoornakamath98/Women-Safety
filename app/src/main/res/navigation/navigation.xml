@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homePageFragment">
+
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.yml.womensafety.navigationdrawer.home.HomePageFragment"
+        android:label="HomePageFragment"
+        tools:layout="@layout/fragment_home_page">
+        <action
+            android:id="@+id/action_homePageFragment_to_safetyTipsFragment"
+            app:destination="@id/safetyTipsFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_lawsFragment"
+            app:destination="@id/lawsFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_selfDefenseVideoFragment"
+            app:destination="@id/selfDefenseVideoFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_escapeThreatFragment"
+            app:destination="@id/escapeThreatFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_self"
+            app:destination="@id/homePageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lawsFragment"
+        android:name="com.yml.womensafety.navigationdrawer.LawsFragment"
+        android:label="fragment_laws"
+        tools:layout="@layout/fragment_laws" />
+    <fragment
+        android:id="@+id/escapeThreatFragment"
+        android:name="com.yml.womensafety.navigationdrawer.EscapeThreatFragment"
+        android:label="fragment_safety_tips"
+        tools:layout="@layout/fragment_safety_tips" />
+    <fragment
+        android:id="@+id/safetyTipsFragment"
+        android:name="com.yml.womensafety.navigationdrawer.SafetyTipsFragment"
+        android:label="fragment_escape_threat"
+        tools:layout="@layout/fragment_escape_threat" />
+    <fragment
+        android:id="@+id/selfDefenseVideoFragment"
+        android:name="com.yml.womensafety.navigationdrawer.youtube.SelfDefenseVideoFragment"
+        android:label="fragment_self_defense_video"
+        tools:layout="@layout/fragment_self_defense_video" />
+</navigation>

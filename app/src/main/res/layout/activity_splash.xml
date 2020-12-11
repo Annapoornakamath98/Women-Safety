@@ -8,21 +8,21 @@
 
     <ImageView
         android:id="@+id/ivSplashScreen"
-        android:layout_width="181dp"
-        android:layout_height="233dp"
+        android:layout_width="@dimen/splash_image_height"
+        android:layout_height="@dimen/splash_image_width"
         android:src="@drawable/ic_health_and_safety"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/ivSplashScreen"
-        android:text="@string/app_name"
         android:gravity="center"
-        android:textSize="@dimen/hp_font"
+        android:text="@string/app_name"
         android:textColor="@color/black"
-        />
+        android:textSize="@dimen/hp_font"
+        app:layout_constraintTop_toBottomOf="@+id/ivSplashScreen" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

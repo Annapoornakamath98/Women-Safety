@@ -1,23 +1,38 @@
 package com.yml.womensafety.navigationdrawer.youtube
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yml.womensafety.R
-import java.util.*
+import com.yml.womensafety.adapters.VideoAdapter
+import com.yml.womensafety.viewModel.YouTubeViewModel
 
 class SelfDefenseVideoFragment : Fragment(R.layout.fragment_self_defense_video) {
-    private lateinit var recyclerView: RecyclerView
+    private lateinit var videoRecyclerView: RecyclerView
+    lateinit var youTubeViewModel: YouTubeViewModel
+    private lateinit var videoAdapter: VideoAdapter
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recyclerView = view.findViewById(R.id.recyclerViewVideos)
-        recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(view.context)
 
+        youTubeViewModel = ViewModelProvider(this).get(YouTubeViewModel::class.java)
+        youTubeViewModel.initializeRepository()
+        youTubeViewModel.getYouTubeVideos().observe(viewLifecycleOwner, {
+            videoAdapter.notifyDataSetChanged()
+        })
+        initializeRecyclerView()
     }
+
+    private fun initializeRecyclerView() {
+        videoAdapter = VideoAdapter(youTubeViewModel.getYouTubeVideos().value!!)
+        videoRecyclerView = view?.findViewById(R.id.recyclerViewVideos)!!
+        videoRecyclerView.setHasFixedSize(true)
+        videoRecyclerView.layoutManager = LinearLayoutManager(view?.context)
+        videoRecyclerView.adapter = videoAdapter
+    }
+
 
 }

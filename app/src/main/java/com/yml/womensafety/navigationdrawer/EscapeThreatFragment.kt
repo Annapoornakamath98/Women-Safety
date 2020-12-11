@@ -21,7 +21,7 @@ class EscapeThreatFragment : Fragment(R.layout.fragment_escape_threat) {
         super.onViewCreated(view, savedInstanceState)
 
         escapeThreatViewModel =
-            ViewModelProvider(this).get(EscapeThreatViewModel(Application())::class.java)
+            ViewModelProvider(this).get(EscapeThreatViewModel()::class.java)
         escapeThreatViewModel.initializeRepository()
         escapeThreatViewModel.getEscapeThreatData().observe(viewLifecycleOwner, {
             escapeThreatAdapter.notifyDataSetChanged()

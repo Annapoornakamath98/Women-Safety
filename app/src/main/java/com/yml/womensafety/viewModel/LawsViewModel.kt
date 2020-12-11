@@ -1,18 +1,17 @@
 package com.yml.womensafety.viewModel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.yml.womensafety.navigationdrawer.LawsAndEscapeThreat
 import com.yml.womensafety.repository.LawsRepository
 
-class LawsViewModel(application: Application) : AndroidViewModel(application) {
+class LawsViewModel() : ViewModel() {
     var lawsDataSet = ArrayList<LawsAndEscapeThreat>()
     var lawsData = MutableLiveData<List<LawsAndEscapeThreat>>()
     lateinit var lawsRepository: LawsRepository
     fun initializeRepository() {
-        lawsRepository = LawsRepository(getApplication())
+        lawsRepository = LawsRepository()
         lawsDataSet = lawsRepository.getLaws()
     }
 

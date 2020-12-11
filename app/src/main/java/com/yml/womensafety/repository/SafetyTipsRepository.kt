@@ -4,7 +4,7 @@ import android.content.Context
 import com.yml.womensafety.R
 import com.yml.womensafety.navigationdrawer.SafetyTips
 
-class SafetyTipsRepository(val context: Context) {
+class SafetyTipsRepository() {
     private val tipsDataSet = ArrayList<SafetyTips>()
 
     fun getSafetyTips(): ArrayList<SafetyTips> {

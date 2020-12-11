@@ -4,7 +4,7 @@ import android.content.Context
 import com.yml.womensafety.R
 import com.yml.womensafety.navigationdrawer.LawsAndEscapeThreat
 
-class EscapeThreatRepository(val context: Context) {
+class EscapeThreatRepository() {
     private var escapeThreatDataSet = ArrayList<LawsAndEscapeThreat>()
 
     fun getEscapeThreatData(): ArrayList<LawsAndEscapeThreat> {

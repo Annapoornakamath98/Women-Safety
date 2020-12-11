@@ -1,18 +1,17 @@
 package com.yml.womensafety.viewModel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.yml.womensafety.navigationdrawer.SafetyTips
 import com.yml.womensafety.repository.SafetyTipsRepository
 
-class SafetyTipsViewModel(application: Application) : AndroidViewModel(application) {
+class SafetyTipsViewModel() : ViewModel() {
     var safetyTipsDataSet = ArrayList<SafetyTips>()
     var safetyTipsData = MutableLiveData<List<SafetyTips>>()
     lateinit var safetyTipsRepository: SafetyTipsRepository
     fun initializeRepository() {
-        safetyTipsRepository = SafetyTipsRepository(getApplication())
+        safetyTipsRepository = SafetyTipsRepository()
         safetyTipsDataSet = safetyTipsRepository.getSafetyTips()
     }
 

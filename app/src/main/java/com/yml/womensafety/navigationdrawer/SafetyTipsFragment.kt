@@ -21,7 +21,7 @@ class SafetyTipsFragment : Fragment(R.layout.fragment_safety_tips) {
         super.onViewCreated(view, savedInstanceState)
 
         safetyTipsViewModel =
-            ViewModelProvider(this).get(SafetyTipsViewModel(Application())::class.java)
+            ViewModelProvider(this).get(SafetyTipsViewModel()::class.java)
         safetyTipsViewModel.initializeRepository()
         safetyTipsViewModel.getSafetyTips().observe(viewLifecycleOwner, {
             tipsAdapter.notifyDataSetChanged()

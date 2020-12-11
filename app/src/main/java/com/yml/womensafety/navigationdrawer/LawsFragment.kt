@@ -18,7 +18,7 @@ class LawsFragment : Fragment(R.layout.fragment_laws) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        lawsViewModel = ViewModelProvider(this).get(LawsViewModel(Application())::class.java)
+        lawsViewModel = ViewModelProvider(this).get(LawsViewModel()::class.java)
         lawsViewModel.initializeRepository()
         lawsViewModel.getLaws().observe(viewLifecycleOwner, {
             lawsAdapter.notifyDataSetChanged()

@@ -4,7 +4,7 @@ import android.content.Context
 import com.yml.womensafety.R
 import com.yml.womensafety.navigationdrawer.LawsAndEscapeThreat
 
-class LawsRepository(val context: Context) {
+class LawsRepository() {
     var lawsDataSet = ArrayList<LawsAndEscapeThreat>()
     fun getLaws(): ArrayList<LawsAndEscapeThreat> {
         displayLawsRelatedToWomen()

@@ -43,6 +43,7 @@
     <string name="please_enter_a_valid_email_id">Please enter a valid email id</string>
     <string name="please_enter_your_phone_number">Please enter your phone number</string>
     <string name="user_email_id">Email ID</string>
+    <string name="helpline_numbers">Helpline numbers</string>
 
     <!--  Escape Threat Tips  -->
     <string name="situation_1">What should a woman do if she finds herself alone in the company of a strange male as she prepares to enter a lift in a high rise apartment late at night?</string>
@@ -99,4 +100,34 @@
     <string name="equal_remuneration_act_description">This Act prevents discrimination in terms of remuneration. It provides for payment of equal recompense to men and women workers.</string>
     <string name="hi">Hi</string>
     <string name="tips_to_escape_threat">Tips To Escape Threat</string>
+
+    <!--    helpline numbers-->
+    <string name="helpline_number_1">Police\n 100</string>
+    <string name="helpline_number_2">Women Helpline Domestic Abuse\n 181</string>
+    <string name="helpline_number_3">Women Helpline(All India)-Women In Distress\n 1091</string>
+    <string name="helpline_number_4">National Commission For Women (NCW)\n 011–26942369\n 26944754</string>
+    <string name="helpline_number_5">Student/Child Helpline\n 1098</string>
+    <string name="helpline_number_6">National Human Right Commission\n 011–23385368\n9810298900</string>
+    <string name="helpline_number_7">DELHI\n Delhi Commission for women\n 011–23379181, 23370597\n Delhi Women Protection Cell\n 011–24673366</string>
+    <string name="helpline_number_8">ANDHRA PRADESH\n Andhra Pradesh Women Protection cell\n 040–23320539\n Andhra Pradesh Women Commission\n 0863–2329090\n Hyderabad Women Police Station\n040–27852400/4852</string>
+    <string name="helpline_number_9">ARUNACHAL PRADESH\n Arunachal Pradesh Women Commission\n 0360–2214567\n 0360–2290544</string>
+    <string name="helpline_number_10">ASSAM\n Assam Women Helpline\n 181\n 9345215029\n 0361–2521242</string>
+    <string name="helpline_number_11">BIHAR\n Bihar Women Helpline\n 18003456247\n 0612–2320047\n 2214318</string>
+    <string name="helpline_number_12">CHANDIGARH\n Chandigarh Women Police\n 0172–2741900</string>
+    <string name="helpline_number_13">CHATTISHGARH\n Chattishgarh Women Commission(Gayatri Bhawan,Raipur)\n 0771–2429977</string>
+    <string name="helpline_number_14">GOA\n Goa Women Helpline\n 1091\n 0832–2421208</string>
+    <string name="helpline_number_15">GUJRAT\n State Women Commission Gujrat\n 18002331111\n 079–23251613</string>
+    <string name="helpline_number_16">HARYANA\n Haryana Women and Child Helpline\n 0124–2335100\n Helpline for women in Distress\n 9911599100</string>
+    <string name="helpline_number_17">HIMACHAL PRADESH\n Himachal Pradesh Women Commission\n 9816077100\n 0177–2622929\n 0177–2783607\n 01892–228072</string>
+    <string name="helpline_number_18">MAHARASHTRA\n Mumbai Police Women Helpline\n 022–22633333\n 22620111 Maharashtra Women Commission\n 07477722424\n Maharashtra Women Helpline\n 022–26111103</string>
+    <string name="helpline_number_19">PUNJAB\n Women Helpline Punjab\n 1091\n 112</string>
+    <string name="helpline_number_20">TAMILNADU\n Tamil Nadu Women Helpline\n 044–28592750</string>
+    <string name="helpline_number_21">TRIPURA\n Tripura Commission for Women\n 0381–2323355\n 2322912</string>
+    <string name="helpline_number_22">RAJASTHAN\n Rajasthan Women Helpline\n 0141–2744000</string>
+    <string name="helpline_number_23">KARNATAKA\n Bangalore Women Police\n 080–22943225\n Karnataka Women Police\n 0821–2418400\n Vanitha Sahayavani\n 080–22943225\n 080–22943224</string>
+    <string name="helpline_number_24">MADHYA PRADESH\n Madhya Pradesh Women Commission\n 0755–2661813\n 2661802,</string>
+    <string name="helpline_number_25">KERALA\n Kerala Women Police Helpline(Trivandrum)\n 9995399953\n Kerala Women’s Commission\n 0471–2322590\n 2320509\n 2337589\n 2339878\n 2339882</string>
+    <string name="helpline_number_26">WEST BENGAL\n West Bengal women commission\n 033–23595609\n 033–23210154</string>
+    <string name="helpline_number_27">UTTAR PRADESH\n Uttar Pradesh Women commission\n 0522–2306403\n 18001805220\n Uttar Pradesh Women Helpline\n 1090\n 112 </string>
+    <string name="helpline_number_28">NARI RAKSHA SAMITI\n 011–23973949</string>
 </resources>

@@ -15,7 +15,6 @@ import kotlinx.android.synthetic.main.fragment_home_page.*
 class HomePageFragment : Fragment(R.layout.fragment_home_page) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val firebaseApplication = FirebaseApplication()
         val user = firebaseApplication.u.currentUser
         val databaseReference = firebaseApplication.db.reference.child("name")
@@ -44,6 +43,10 @@ class HomePageFragment : Fragment(R.layout.fragment_home_page) {
         }
         cvLaws.setOnClickListener {
             view.findNavController().navigate(R.id.action_homePageFragment_to_lawsFragment)
+        }
+        cvHelplineNumbers.setOnClickListener {
+            view.findNavController()
+                .navigate(R.id.action_homePageFragment_to_helplineNumbersFragment)
         }
     }
 }

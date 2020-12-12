@@ -11,12 +11,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WomenSafety">
-        <service
-            android:name=".navigationdrawer.home.AccelerometerService"
-            android:enabled="true"
-            android:exported="true" />
-
+        android:theme="@style/Theme.WomenSafety"
+        android:allowBackup="true">
         <activity android:name=".authentication.LoginActivity" />
         <activity android:name=".navigationdrawer.home.HomePageActivity" />
         <activity android:name=".authentication.RegistrationActivity" />

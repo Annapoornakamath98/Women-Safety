@@ -8,18 +8,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.yml.womensafety.FirebaseApplication
 import com.yml.womensafety.R
 import com.yml.womensafety.authentication.LoginActivity
+import com.yml.womensafety.navigationdrawer.UserProfile
 import com.yml.womensafety.navigationdrawer.contacts.ContactsFragment
-import kotlinx.android.synthetic.main.activity_home_page.*
 
 class HomePageActivity : AppCompatActivity() {
     private lateinit var contactsFragment: ContactsFragment
-
+    private lateinit var userProfile: UserProfile
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
-
-        val intentService = Intent(this@HomePageActivity, AccelerometerService::class.java)
-        startService(intentService)
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavBar)
         bottomNavigationView.apply {
             background = null
@@ -42,6 +39,14 @@ class HomePageActivity : AppCompatActivity() {
                     supportFragmentManager
                         .beginTransaction()
                         .replace(R.id.myNavHostFragment, contactsFragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit()
+                }
+                R.id.navProfile -> {
+                    userProfile = UserProfile()
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.myNavHostFragment, userProfile)
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .commit()
                 }

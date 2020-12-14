@@ -20,9 +20,9 @@ import kotlin.math.abs
 
 class AccelerometerService : Service(), SensorEventListener {
     private val CHANNEL_ID: String = "ForegroundService"
-    private lateinit var sensorManager: SensorManager
-    private lateinit var accelerometerSensor: Sensor
-    private lateinit var vibrator: Vibrator
+    private var sensorManager: SensorManager? = null
+    private var accelerometerSensor: Sensor? = null
+    private var vibrator: Vibrator? = null
     private var isAccelerometerSensorAvailable: Boolean = false
     private var itIsNotFirstTime = false
     private var currentX = 0f
@@ -38,29 +38,6 @@ class AccelerometerService : Service(), SensorEventListener {
 
         vibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator
         sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
-
-        if (sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) != null) {
-            accelerometerSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
-            isAccelerometerSensorAvailable = true
-        } else {
-            Toast.makeText(
-                applicationContext,
-                "Accelerometer sensor not available",
-                Toast.LENGTH_SHORT
-            ).show()
-            isAccelerometerSensorAvailable = false
-        }
-
-        if (isAccelerometerSensorAvailable) {
-            sensorManager.registerListener(
-                this,
-                accelerometerSensor,
-                SensorManager.SENSOR_DELAY_NORMAL
-            )
-        }
-    }
-
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         createNotificationChannel()
         val notificationIntent = Intent(this, HomePageActivity::class.java)
         val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 1, notificationIntent, 0)
@@ -71,13 +48,37 @@ class AccelerometerService : Service(), SensorEventListener {
             .setContentIntent(pendingIntent)
             .build()
         startForeground(1, notification)
-        return START_NOT_STICKY
+
+        if (sensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) != null) {
+            accelerometerSensor = sensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+            isAccelerometerSensorAvailable = true
+        } else
+            isAccelerometerSensorAvailable = false
+
+        if (isAccelerometerSensorAvailable) {
+            sensorManager?.registerListener(
+                this,
+                accelerometerSensor,
+                SensorManager.SENSOR_DELAY_NORMAL
+            )
+        } else {
+            Toast.makeText(
+                applicationContext,
+                "Accelerometer sensor not available",
+                Toast.LENGTH_SHORT
+            ).show()
+            isAccelerometerSensorAvailable = false
+        }
+
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
-        currentX = event!!.values[0]
-        currentY = event.values[1]
-        currentZ = event.values[2]
+        if (event != null) {
+            currentX = event.values[0]
+            currentY = event.values[1]
+            currentZ = event.values[2]
+        }
+
 
         if (itIsNotFirstTime) {
             val xDifference = abs(lastX - currentX)
@@ -90,7 +91,7 @@ class AccelerometerService : Service(), SensorEventListener {
             ) {
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    vibrator.vibrate(
+                    vibrator?.vibrate(
                         VibrationEffect.createOneShot(
                             500,
                             VibrationEffect.DEFAULT_AMPLITUDE
@@ -111,9 +112,8 @@ class AccelerometerService : Service(), SensorEventListener {
         //Not implementing any functionality based on accuracy.
     }
 
-    override fun onDestroy() {
-        stopSelf()
-        super.onDestroy()
+    override fun onBind(intent: Intent): IBinder? {
+        return null
     }
 
     private fun createNotificationChannel() {
@@ -126,9 +126,5 @@ class AccelerometerService : Service(), SensorEventListener {
             val manager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
             manager.createNotificationChannel(serviceChannel)
         }
-    }
-
-    override fun onBind(intent: Intent): IBinder? {
-        return null
     }
 }

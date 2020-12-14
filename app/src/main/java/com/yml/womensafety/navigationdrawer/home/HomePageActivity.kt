@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.yml.womensafety.FirebaseApplication
+import com.yml.womensafety.AccelerometerService
 import com.yml.womensafety.R
 import com.yml.womensafety.authentication.LoginActivity
 import com.yml.womensafety.navigationdrawer.contacts.ContactsFragment

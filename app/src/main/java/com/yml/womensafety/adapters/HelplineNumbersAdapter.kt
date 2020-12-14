@@ -26,7 +26,9 @@ class HelplineNumbersAdapter(private val helplineNumbersList: ArrayList<Helpline
 
     override fun onBindViewHolder(holder: HelplineNumbersViewHolder, position: Int) {
         val helplineNumbers: HelplineNumbers = helplineNumbersList[position]
-        holder.numbers.text = holder.numbers.context.getString(helplineNumbers.helplineNumberID)
+        holder.apply {
+            numbers.text = numbers.context.getString(helplineNumbers.helplineNumberID)
+        }
     }
 
     override fun getItemCount(): Int {

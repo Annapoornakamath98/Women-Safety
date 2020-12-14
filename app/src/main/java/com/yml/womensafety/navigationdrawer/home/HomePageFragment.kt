@@ -18,12 +18,14 @@ class HomePageFragment : Fragment(R.layout.fragment_home_page) {
 
         val firebaseApplication = FirebaseApplication()
         val user = firebaseApplication.u.currentUser
-        val databaseReference = firebaseApplication.db.reference.child("name")
+        val databaseReference =
+            firebaseApplication.db.reference.child(getString(R.string.name_column))
         val userReference = databaseReference.child(user?.uid!!)
         userReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val userFullName = snapshot.child("fullName").value.toString()
-                val userName = "Hi, $userFullName"
+                val userFullName =
+                    snapshot.child(getString(R.string.full_name_column)).value.toString()
+                val userName = getString(R.string.hi_user) + userFullName
                 tvLabel.text = userName
             }
 

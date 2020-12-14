@@ -43,6 +43,11 @@
     <string name="please_enter_a_valid_email_id">Please enter a valid email id</string>
     <string name="please_enter_your_phone_number">Please enter your phone number</string>
     <string name="user_email_id">Email ID</string>
+    <string name="contacts_db">contacts</string>
+    <string name="name_column">name</string>
+    <string name="full_name_column">fullName</string>
+    <string name="hi_user">Hi, </string>
+    <string name="user_phone_number">phoneNumber</string>
 
     <!--  Escape Threat Tips  -->
     <string name="situation_1">What should a woman do if she finds herself alone in the company of a strange male as she prepares to enter a lift in a high rise apartment late at night?</string>

@@ -24,7 +24,8 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
         val user = firebaseApplication.u.currentUser
 
         if (user != null) {
-            databaseReference = firebaseApplication.db.getReference("contacts").child(user.uid)
+            databaseReference =
+                firebaseApplication.db.getReference(getString(R.string.contacts_db)).child(user.uid)
         }
         contactsList = mutableListOf()
         contactSave.setOnClickListener {

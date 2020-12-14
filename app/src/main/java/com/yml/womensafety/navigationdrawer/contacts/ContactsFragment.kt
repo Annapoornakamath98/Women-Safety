@@ -9,24 +9,23 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
-import com.yml.womensafety.FirebaseApplication
+import com.yml.womensafety.FirebaseUtil
 import com.yml.womensafety.R
 import kotlinx.android.synthetic.main.fragment_contacts.*
 
 class ContactsFragment : Fragment(R.layout.fragment_contacts) {
-
-    private lateinit var firebaseApplication: FirebaseApplication
-    private lateinit var databaseReference: DatabaseReference
+    private var databaseReference: DatabaseReference? = null
     private lateinit var contactsList: MutableList<Contact>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        firebaseApplication = FirebaseApplication()
-        val user = firebaseApplication.u.currentUser
+        val appUser = FirebaseUtil.user?.currentUser
 
-        if (user != null) {
-            databaseReference =
-                firebaseApplication.db.getReference(getString(R.string.contacts_db)).child(user.uid)
+        databaseReference = appUser?.uid?.let {
+            FirebaseUtil.firebaseDatabase?.getReference(getString(R.string.contacts_db))?.child(
+                it
+            )
         }
+
         contactsList = mutableListOf()
         contactSave.setOnClickListener {
             saveContactInfo()
@@ -37,7 +36,7 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
     }
 
     private fun viewContacts() {
-        databaseReference.addValueEventListener(object : ValueEventListener {
+        databaseReference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 contactsList.clear()
                 if (snapshot.exists()) {
@@ -65,17 +64,17 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
 
     private fun saveContactInfo() {
         if (contactName.text.toString().isEmpty()) {
-            contactName.error = "This field can't be empty"
+            contactName.error = getString(R.string.no_empty)
             contactName.requestFocus()
             return
         }
         if (contactNumber.text.toString().isEmpty()) {
-            contactNumber.error = "This field can't be empty"
+            contactNumber.error = getString(R.string.no_empty)
             contactNumber.requestFocus()
             return
         }
 
-        val contactId = databaseReference.push().key
+        val contactId = databaseReference?.push()?.key
         val contact = contactId?.let {
             Contact(
                 it,
@@ -84,15 +83,16 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
             )
         }
         if (contactId != null) {
-            databaseReference.orderByChild("contactNumber").equalTo(contactNumber.text.toString())
-                .addListenerForSingleValueEvent(object : ValueEventListener {
+            databaseReference?.orderByChild(getString(R.string.contact_number))
+                ?.equalTo(contactNumber.text.toString())
+                ?.addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if (snapshot.exists()) {
-                            contactNumber.error = "Number already exists"
+                            contactNumber.error = getString(R.string.number_exists)
                             contactNumber.requestFocus()
                         } else {
-                            databaseReference.child(contactId).setValue(contact)
-                                .addOnCompleteListener {
+                            databaseReference?.child(contactId)?.setValue(contact)
+                                ?.addOnCompleteListener {
                                     Toast.makeText(
                                         view?.context,
                                         R.string.success,

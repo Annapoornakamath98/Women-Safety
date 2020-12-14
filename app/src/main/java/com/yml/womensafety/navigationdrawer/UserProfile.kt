@@ -8,28 +8,29 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
-import com.yml.womensafety.FirebaseApplication
+import com.yml.womensafety.FirebaseUtil
 import com.yml.womensafety.R
 import kotlinx.android.synthetic.main.fragment_user_profile.*
 
 class UserProfile : Fragment(R.layout.fragment_user_profile) {
-    private lateinit var firebaseApplication: FirebaseApplication
     private var databaseReference: DatabaseReference? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        firebaseApplication = FirebaseApplication()
-        databaseReference = firebaseApplication.db.getReference(getString(R.string.name_column))
-        val user = firebaseApplication.u.currentUser
-        val userReference = databaseReference!!.child(user?.uid!!)
-        userReference.addValueEventListener(object : ValueEventListener {
+        databaseReference =
+            FirebaseUtil.firebaseDatabase?.getReference(getString(R.string.name_column))
+        val appUser = FirebaseUtil.user?.currentUser
+        val userReference = appUser?.uid?.let { databaseReference?.child(it) }
+        userReference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val userFullName = snapshot.child(getString(R.string.full_name_column)).value.toString()
+                val userFullName =
+                    snapshot.child(getString(R.string.full_name_column)).value.toString()
                 val userName = getString(R.string.hi_user) + userFullName
                 tvUserProfile.text = userName
                 tvUserProfileName.text = userFullName
-                val userContactNumber = snapshot.child(getString(R.string.user_phone_number)).value.toString()
+                val userContactNumber =
+                    snapshot.child(getString(R.string.user_phone_number)).value.toString()
                 tvUserProfileMobileNumber.text = userContactNumber
-                val userEmail = user.email.toString()
+                val userEmail = appUser.email.toString()
                 tvUserProfileMail.text = userEmail
             }
 

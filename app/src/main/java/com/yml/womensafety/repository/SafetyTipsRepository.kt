@@ -1,6 +1,5 @@
 package com.yml.womensafety.repository
 
-import android.content.Context
 import com.yml.womensafety.R
 import com.yml.womensafety.navigationdrawer.SafetyTips
 

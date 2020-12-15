@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.yml.womensafety.ActivityUtil
 import com.yml.womensafety.FirebaseApplication
+import com.yml.womensafety.FirebaseUtil
+import com.yml.womensafety.FragmentUtil
 import com.yml.womensafety.R
 import com.yml.womensafety.authentication.LoginActivity
 import com.yml.womensafety.navigationdrawer.UserProfile
@@ -31,13 +33,13 @@ class HomePageActivity : AppCompatActivity() {
                     startActivity(Intent(this, HomePageActivity::class.java))
                 }
                 R.id.navLogout -> {
-                    firebaseApplication.u.signOut()
+                    FirebaseUtil.user?.signOut()
                     startActivity(Intent(this, LoginActivity::class.java))
                     finish()
                 }
                 R.id.navContacts -> {
                     contactsFragment = ContactsFragment()
-                    activityUtil.addFragmentToActivity(
+                    FragmentUtil.addFragmentToActivity(
                         supportFragmentManager,
                         contactsFragment,
                         R.id.myNavHostFragment
@@ -46,6 +48,11 @@ class HomePageActivity : AppCompatActivity() {
                 R.id.navProfile -> {
                     userProfile = UserProfile()
                     activityUtil.addFragmentToActivity(
+                        supportFragmentManager,
+                        userProfile,
+                        R.id.myNavHostFragment
+                    )
+                    FragmentUtil.addFragmentToActivity(
                         supportFragmentManager,
                         userProfile,
                         R.id.myNavHostFragment

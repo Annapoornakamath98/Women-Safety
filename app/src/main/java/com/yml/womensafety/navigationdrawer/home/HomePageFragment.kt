@@ -14,15 +14,6 @@ class HomePageFragment : Fragment(R.layout.fragment_home_page) {
     lateinit var firebaseViewModel: FirebaseViewModel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val firebaseApplication = FirebaseApplication()
-        val user = firebaseApplication.u.currentUser
-        val databaseReference = firebaseApplication.db.reference.child("name")
-        val userReference = databaseReference.child(user?.uid!!)
-        userReference.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val userFullName = snapshot.child("fullName").value.toString()
-                val userName = "Hi, $userFullName"
-                tvLabel.text = userName
         firebaseViewModel = ViewModelProvider(this).get(FirebaseViewModel()::class.java)
         firebaseViewModel.initializeRepository()
         firebaseViewModel.getUserName(object : Response {

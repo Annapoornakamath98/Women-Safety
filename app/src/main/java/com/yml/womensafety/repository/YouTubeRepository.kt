@@ -7,8 +7,6 @@ class YouTubeRepository {
 
     fun getYouTubeVideos(): ArrayList<YouTubeVideos> {
         setYouTubeVideos()
-//        val videosData: MutableLiveData<List<YouTubeVideos>> = MutableLiveData()
-//        videosData.value = videosDataSet
         return videosDataSet
     }
 

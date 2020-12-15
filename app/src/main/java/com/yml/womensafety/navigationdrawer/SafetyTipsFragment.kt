@@ -1,6 +1,5 @@
 package com.yml.womensafety.navigationdrawer
 
-import android.app.Application
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment

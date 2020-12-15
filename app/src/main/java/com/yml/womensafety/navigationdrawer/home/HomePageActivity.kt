@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.yml.womensafety.ActivityUtil
-import com.yml.womensafety.FirebaseApplication
 import com.yml.womensafety.FirebaseUtil
 import com.yml.womensafety.FragmentUtil
 import com.yml.womensafety.R
@@ -25,8 +23,7 @@ class HomePageActivity : AppCompatActivity() {
             menu.getItem(2).isEnabled = false
             itemIconTintList = null
         }
-        val firebaseApplication = FirebaseApplication()
-        val activityUtil = ActivityUtil()
+
         bottomNavigationView.setOnNavigationItemReselectedListener {
             when (it.itemId) {
                 R.id.navHome -> {
@@ -47,11 +44,6 @@ class HomePageActivity : AppCompatActivity() {
                 }
                 R.id.navProfile -> {
                     userProfile = UserProfile()
-                    activityUtil.addFragmentToActivity(
-                        supportFragmentManager,
-                        userProfile,
-                        R.id.myNavHostFragment
-                    )
                     FragmentUtil.addFragmentToActivity(
                         supportFragmentManager,
                         userProfile,

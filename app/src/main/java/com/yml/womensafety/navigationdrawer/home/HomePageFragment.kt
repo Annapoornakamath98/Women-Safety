@@ -19,15 +19,6 @@ class HomePageFragment : Fragment(R.layout.fragment_home_page) {
         firebaseViewModel.getUserName(object : Response {
             override fun onUserDetailReceiveSuccess(userDetails: String) {
                 tvLabel.text = getString(R.string.hi_user) + userDetails
-        val firebaseApplication = FirebaseApplication()
-        val user = firebaseApplication.u.currentUser
-        val databaseReference = firebaseApplication.db.reference.child("name")
-        val userReference = databaseReference.child(user?.uid!!)
-        userReference.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val userFullName = snapshot.child("fullName").value.toString()
-                val userName = "Hi, $userFullName"
-                tvLabel.text = userName
             }
 
         })
@@ -48,5 +39,6 @@ class HomePageFragment : Fragment(R.layout.fragment_home_page) {
             view.findNavController()
                 .navigate(R.id.action_homePageFragment_to_helplineNumbersFragment)
         }
+
     }
 }

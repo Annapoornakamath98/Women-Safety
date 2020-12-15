@@ -2,36 +2,26 @@ package com.yml.womensafety.navigationdrawer.home
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import com.yml.womensafety.FirebaseApplication
 import com.yml.womensafety.R
+import com.yml.womensafety.Response
+import com.yml.womensafety.viewModel.FirebaseViewModel
 import kotlinx.android.synthetic.main.fragment_home_page.*
 
 class HomePageFragment : Fragment(R.layout.fragment_home_page) {
+    lateinit var firebaseViewModel: FirebaseViewModel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val firebaseApplication = FirebaseApplication()
-        val user = firebaseApplication.u.currentUser
-        val databaseReference = firebaseApplication.db.reference.child("name")
-        val userReference = databaseReference.child(user?.uid!!)
-        userReference.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val userFullName = snapshot.child("fullName").value.toString()
-                val userName = "Hi, $userFullName"
-                tvLabel.text = userName
+        firebaseViewModel = ViewModelProvider(this).get(FirebaseViewModel()::class.java)
+        firebaseViewModel.initializeRepository()
+        firebaseViewModel.getUserName(object : Response {
+            override fun onUserDetailReceiveSuccess(userDetails: String) {
+                tvLabel.text = getString(R.string.hi_user) + userDetails
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(context, error.message, Toast.LENGTH_LONG).show()
-            }
         })
-
         cvEscapeThreat.setOnClickListener {
             view.findNavController().navigate(R.id.action_homePageFragment_to_escapeThreatFragment)
         }

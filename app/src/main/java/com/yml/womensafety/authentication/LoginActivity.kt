@@ -5,22 +5,21 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.yml.womensafety.FirebaseUtil
 import com.yml.womensafety.R
 import com.yml.womensafety.navigationdrawer.home.HomePageActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
-    private lateinit var auth: FirebaseAuth
+    private var appUser: FirebaseUser? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        auth = FirebaseAuth.getInstance()
+        appUser = FirebaseUtil.user?.currentUser
         btnLogin.setOnClickListener {
             login()
         }
-
         registerHere.setOnClickListener {
             startActivity(Intent(this, RegistrationActivity::class.java))
             finish()
@@ -29,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        val currentUser = auth.currentUser
+        val currentUser = appUser
         updateUI(currentUser)
     }
 
@@ -49,8 +48,11 @@ class LoginActivity : AppCompatActivity() {
             loginEmailId.requestFocus()
             return
         }
-        auth.signInWithEmailAndPassword(loginEmailId.text.toString(), loginPassword.text.toString())
-            .addOnCompleteListener { task ->
+        FirebaseUtil.user?.signInWithEmailAndPassword(
+            loginEmailId.text.toString(),
+            loginPassword.text.toString()
+        )
+            ?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     startActivity(Intent(this, HomePageActivity::class.java))
                     finish()

@@ -6,20 +6,17 @@ import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
-import com.yml.womensafety.FirebaseApplication
+import com.yml.womensafety.FirebaseUtil
 import com.yml.womensafety.R
 import kotlinx.android.synthetic.main.activity_registration.*
 
 class RegistrationActivity : AppCompatActivity() {
-    private lateinit var firebaseApplication: FirebaseApplication
     private var databaseReference: DatabaseReference? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
-
-        firebaseApplication = FirebaseApplication()
-        databaseReference = firebaseApplication.db.getReference("name")
+        databaseReference =
+            FirebaseUtil.firebaseDatabase?.getReference(getString(R.string.name_column))
         btnRegister.setOnClickListener {
             register()
         }
@@ -57,16 +54,18 @@ class RegistrationActivity : AppCompatActivity() {
             return
         }
 
-        firebaseApplication.u.createUserWithEmailAndPassword(
+        FirebaseUtil.user?.createUserWithEmailAndPassword(
             registerEmailId.text.toString(),
             registerPassword.text.toString()
         )
-            .addOnCompleteListener { task ->
+            ?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val user = firebaseApplication.u.currentUser
-                    val userName = databaseReference?.child(user?.uid!!)
-                    userName?.child("fullName")?.setValue(registerFullName.text.toString())
-                    userName?.child("phoneNumber")?.setValue(registerPhone.text.toString())
+                    val appUser = FirebaseUtil.user?.currentUser
+                    val userName = appUser?.uid?.let { databaseReference?.child(it) }
+                    userName?.child(getString(R.string.full_name_column))
+                        ?.setValue(registerFullName.text.toString())
+                    userName?.child(getString(R.string.user_phone_number))
+                        ?.setValue(registerPhone.text.toString())
                     Toast.makeText(
                         applicationContext,
                         getString(R.string.reg_success),

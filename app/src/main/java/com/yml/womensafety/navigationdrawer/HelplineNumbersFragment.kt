@@ -20,7 +20,9 @@ class HelplineNumbersFragment : Fragment(R.layout.fragment_helpline_numbers) {
             ViewModelProvider(this).get(HelplineNumbersViewModel()::class.java)
         helplineNumbersViewModel.initializeRepository()
         numbersRecyclerView = view.findViewById(R.id.recyclerViewHelplineNumbers)
-        numbersRecyclerView.layoutManager = LinearLayoutManager(view.context)
+        numbersRecyclerView.apply {
+            layoutManager = LinearLayoutManager(view.context)
+        }
         helplineNumbersAdapter = HelplineNumbersAdapter()
         numbersRecyclerView.adapter = helplineNumbersAdapter
         helplineNumbersViewModel.getNumbers().observe(viewLifecycleOwner, {

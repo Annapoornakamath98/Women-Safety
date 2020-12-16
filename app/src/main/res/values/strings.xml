@@ -43,6 +43,7 @@
     <string name="please_enter_a_valid_email_id">Please enter a valid email id</string>
     <string name="please_enter_your_phone_number">Please enter your phone number</string>
     <string name="user_email_id">Email ID</string>
+    <string name="helpline_numbers">Helpline numbers</string>
     <string name="contacts_db">contacts</string>
     <string name="name_column">name</string>
     <string name="full_name_column">fullName</string>

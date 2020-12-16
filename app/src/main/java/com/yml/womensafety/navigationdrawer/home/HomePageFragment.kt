@@ -39,5 +39,6 @@ class HomePageFragment : Fragment(R.layout.fragment_home_page) {
             view.findNavController()
                 .navigate(R.id.action_homePageFragment_to_helplineNumbersFragment)
         }
+
     }
 }

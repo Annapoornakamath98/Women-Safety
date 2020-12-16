@@ -19,18 +19,14 @@ class HelplineNumbersFragment : Fragment(R.layout.fragment_helpline_numbers) {
         helplineNumbersViewModel =
             ViewModelProvider(this).get(HelplineNumbersViewModel()::class.java)
         helplineNumbersViewModel.initializeRepository()
-        helplineNumbersViewModel.getNumbers().observe(viewLifecycleOwner, {
-            helplineNumbersAdapter.notifyDataSetChanged()
-        })
-        initializeRecyclerView()
-    }
-
-    private fun initializeRecyclerView() {
-        helplineNumbersAdapter =
-            HelplineNumbersAdapter(helplineNumbersViewModel.getNumbers().value!! as ArrayList<HelplineNumbers>)
-        numbersRecyclerView = view?.findViewById(R.id.recyclerViewHelplineNumbers)!!
-        numbersRecyclerView.layoutManager = LinearLayoutManager(view?.context)
+        numbersRecyclerView = view.findViewById(R.id.recyclerViewHelplineNumbers)
+        numbersRecyclerView.apply {
+            layoutManager = LinearLayoutManager(view.context)
+        }
+        helplineNumbersAdapter = HelplineNumbersAdapter()
         numbersRecyclerView.adapter = helplineNumbersAdapter
+        helplineNumbersViewModel.getNumbers().observe(viewLifecycleOwner, {
+            helplineNumbersAdapter.setList(it)
+        })
     }
-
 }

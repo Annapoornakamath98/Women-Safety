@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yml.womensafety.R
 import com.yml.womensafety.navigationdrawer.HelplineNumbers
 
-class HelplineNumbersAdapter(private val helplineNumbersList: ArrayList<HelplineNumbers>) :
+class HelplineNumbersAdapter() :
     RecyclerView.Adapter<HelplineNumbersAdapter.HelplineNumbersViewHolder>() {
+    private val helplineNumbersList = mutableListOf<HelplineNumbers>()
 
     class HelplineNumbersViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var numbers: TextView = itemView.findViewById(R.id.tvHelplineNumbers)
@@ -33,5 +34,11 @@ class HelplineNumbersAdapter(private val helplineNumbersList: ArrayList<Helpline
 
     override fun getItemCount(): Int {
         return helplineNumbersList.size
+    }
+
+    fun setList(helplineNumbersList: List<HelplineNumbers>) {
+        this.helplineNumbersList.clear()
+        this.helplineNumbersList.addAll(helplineNumbersList)
+        notifyDataSetChanged()
     }
 }

@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_homePageFragment_self"
             app:destination="@id/homePageFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_helplineNumbersFragment"
+            app:destination="@+id/helplineNumbersFragment" />
     </fragment>
     <fragment
         android:id="@+id/lawsFragment"
@@ -46,4 +49,9 @@
         android:name="com.yml.womensafety.navigationdrawer.youtube.SelfDefenseVideoFragment"
         android:label="fragment_self_defense_video"
         tools:layout="@layout/fragment_self_defense_video" />
+    <fragment
+        android:id="@+id/helplineNumbersFragment"
+        android:name="com.yml.womensafety.navigationdrawer.HelplineNumbersFragment"
+        android:label="fragment_helpline_numbers"
+        tools:layout="@layout/fragment_helpline_numbers" />
 </navigation>

@@ -23,6 +23,7 @@ class HomePageActivity : AppCompatActivity() {
             menu.getItem(2).isEnabled = false
             itemIconTintList = null
         }
+
         bottomNavigationView.setOnNavigationItemReselectedListener {
             when (it.itemId) {
                 R.id.navHome -> {

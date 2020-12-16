@@ -35,5 +35,10 @@ class HomePageFragment : Fragment(R.layout.fragment_home_page) {
         cvLaws.setOnClickListener {
             view.findNavController().navigate(R.id.action_homePageFragment_to_lawsFragment)
         }
+        cvHelplineNumbers.setOnClickListener {
+            view.findNavController()
+                .navigate(R.id.action_homePageFragment_to_helplineNumbersFragment)
+        }
+
     }
 }

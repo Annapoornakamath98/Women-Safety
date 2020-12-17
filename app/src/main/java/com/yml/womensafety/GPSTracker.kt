@@ -32,7 +32,7 @@ class GPSTracker(var context: Context) : LocationListener {
             }
 
         } else {
-            Toast.makeText(context, "Please enable GPS", Toast.LENGTH_LONG).show()
+            Toast.makeText(context,R.string.enable_gps, Toast.LENGTH_LONG).show()
         }
         return locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
     }

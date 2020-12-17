@@ -43,7 +43,7 @@ class HomePageActivity : AppCompatActivity() {
             ) == PackageManager.PERMISSION_GRANTED
         ) {
             Toast.makeText(
-                this, "You have already granted this permission!",
+                this, getString(R.string.permission_already_granted),
                 Toast.LENGTH_SHORT
             ).show();
         } else {
@@ -189,8 +189,8 @@ class HomePageActivity : AppCompatActivity() {
         ) {
             val alertDialog = AlertDialog.Builder(this)
             alertDialog.apply {
-                setTitle("Permission needed")
-                setMessage("This permission is needed")
+                setTitle(getString(R.string.permission_needed))
+                setMessage(getString(R.string.permission_needed))
                 setPositiveButton("ok") { dialog, which ->
                     ActivityCompat.requestPermissions(
                         this@HomePageActivity, arrayOf(
@@ -220,9 +220,9 @@ class HomePageActivity : AppCompatActivity() {
     ) {
         if (requestCode == LOCATION_PERMISSION_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "Permission GRANTED", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.permission_granted), Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Permission DENIED", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.permission_denied), Toast.LENGTH_SHORT).show()
             }
         }
     }

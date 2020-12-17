@@ -53,6 +53,8 @@
     <string name="number_exists">Number already exists!</string>
     <string name="no_empty">This field cannot be empty</string>
     <string name="Shake_device_to_send_location">Shake device to send location</string>
+    <string name="message_sent">Message sent</string>
+    <string name="message_failed">Please try again later</string>
 
     <!--  Escape Threat Tips  -->
     <string name="situation_1">What should a woman do if she finds herself alone in the company of a strange male as she prepares to enter a lift in a high rise apartment late at night?</string>

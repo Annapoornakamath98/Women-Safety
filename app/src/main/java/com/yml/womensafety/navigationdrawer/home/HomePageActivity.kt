@@ -46,6 +46,10 @@ class HomePageActivity : AppCompatActivity() {
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED &&
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.SEND_SMS
             ) == PackageManager.PERMISSION_GRANTED
         ) {
             Toast.makeText(
@@ -53,7 +57,7 @@ class HomePageActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
         } else {
-            requestLocationPermission()
+            requestPermission()
         }
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavBar)
         bottomNavigationView.apply {
@@ -94,45 +98,8 @@ class HomePageActivity : AppCompatActivity() {
                 }
             }
         }
-        checkSmsPermission()
         btn_fab.setOnClickListener {
             sendSms()
-        }
-    }
-
-    //The below method is used check if sms permission is enabled
-    private fun checkSmsPermission() {
-        val checkPermission: String = Manifest.permission.SEND_SMS
-        try {
-            if (ActivityCompat.checkSelfPermission(
-                    this,
-                    checkPermission
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(checkPermission),
-                    Request_Code_permission
-                )
-            }
-        } catch (exception: Exception) {
-            Log.e(LOG_MESSAGE, exception.toString())
-        }
-        val checkInternetPermission: String = Manifest.permission.INTERNET
-        try {
-            if (ActivityCompat.checkSelfPermission(
-                    this,
-                    checkInternetPermission
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(checkPermission),
-                    Request_Code_permission
-                )
-            }
-        } catch (exception: Exception) {
-            Log.e(LOG_MESSAGE, exception.toString())
         }
     }
 
@@ -194,11 +161,15 @@ class HomePageActivity : AppCompatActivity() {
         })
     }
 
-    //Below method requests to enable location permission
-    private fun requestLocationPermission() {
+    //Below method requests to enable location and SMS permissions
+    private fun requestPermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
+            )
+            && ActivityCompat.shouldShowRequestPermissionRationale(
+                this,
+                Manifest.permission.SEND_SMS
             )
         ) {
             showAlert(
@@ -209,7 +180,7 @@ class HomePageActivity : AppCompatActivity() {
         } else {
             ActivityCompat.requestPermissions(
                 this,
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.SEND_SMS),
                 LOCATION_PERMISSION_CODE
             )
         }

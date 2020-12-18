@@ -10,7 +10,7 @@ import androidx.core.app.ActivityCompat
 object AlertDialogUtil {
     private const val positiveMessage = "OK"
     private const val LOCATION_PERMISSION_CODE = 1
-    fun showAlert(context: Context, title: CharSequence, message: CharSequence) {
+    fun Activity.showAlert(context: Context, title: CharSequence, message: CharSequence) {
         val builder = AlertDialog.Builder(context)
             .setTitle(title)
             .setMessage(message)

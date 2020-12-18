@@ -15,7 +15,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.yml.womensafety.*
+import com.yml.womensafety.AlertDialogUtil.showAlert
 import com.yml.womensafety.authentication.LoginActivity
 import com.yml.womensafety.navigationdrawer.UserProfile
 import com.yml.womensafety.navigationdrawer.contacts.ContactsFragment
@@ -29,6 +31,9 @@ class HomePageActivity : AppCompatActivity() {
         private const val Request_Code_permission: Int = 2
         private const val LOCATION_PERMISSION_CODE = 1
         private const val LOG_MESSAGE = "Error"
+        private const val index = 2
+        private const val maxResults = 1
+        private const val returnedIndex = 0
     }
 
     private lateinit var contactsList: MutableList<String>
@@ -53,7 +58,7 @@ class HomePageActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavBar)
         bottomNavigationView.apply {
             background = null
-            menu.getItem(2).isEnabled = false
+            menu.getItem(index).isEnabled = false
             itemIconTintList = null
         }
         contactsList = mutableListOf()
@@ -141,32 +146,37 @@ class HomePageActivity : AppCompatActivity() {
                     if (location != null) {
                         val locationLatitude: Double = location.latitude
                         val locationLongitude: Double = location.longitude
-                        var strAdd = ""
+                        var address = ""
                         val geoCoder = Geocoder(this@HomePageActivity, Locale.getDefault())
                         try {
                             val addresses =
-                                geoCoder.getFromLocation(locationLatitude, locationLongitude, 1)
+                                geoCoder.getFromLocation(
+                                    locationLatitude,
+                                    locationLongitude,
+                                    maxResults
+                                )
                             if (addresses != null) {
-                                val returnedAddress = addresses[0]
+                                val returnedAddress = addresses[returnedIndex]
                                 val strReturnedAddress = StringBuilder("")
                                 for (i in 0..returnedAddress.maxAddressLineIndex) {
                                     strReturnedAddress.append(returnedAddress.getAddressLine(i))
                                         .append("\n")
                                 }
-                                strAdd = strReturnedAddress.toString()
+                                address = strReturnedAddress.toString()
                             }
-                        } catch (e: Exception) {
-                            e.printStackTrace()
+                        } catch (exception: Exception) {
+                            Log.e(LOG_MESSAGE, exception.toString())
                         }
                         val message =
-                            getString(R.string.location) + "$locationLatitude,$locationLongitude\n$strAdd"
+                            getString(R.string.location) + "$locationLatitude,$locationLongitude\n$address"
                         val smsManager = SmsManager.getDefault()
                         userContacts.forEach {
                             smsManager.sendTextMessage(it, null, message, null, null)
                         }
-                        Toast.makeText(
-                            applicationContext, getString(R.string.message_sent),
-                            Toast.LENGTH_LONG
+                        Snackbar.make(
+                            window.decorView.rootView,
+                            R.string.message_sent,
+                            Snackbar.LENGTH_LONG
                         ).show()
                     }
 
@@ -191,7 +201,7 @@ class HomePageActivity : AppCompatActivity() {
                 Manifest.permission.ACCESS_FINE_LOCATION
             )
         ) {
-            AlertDialogUtil.showAlert(
+            showAlert(
                 this,
                 getString(R.string.permission_needed), getString(R.string.permission_needed)
             )
@@ -201,11 +211,6 @@ class HomePageActivity : AppCompatActivity() {
                 this,
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                 LOCATION_PERMISSION_CODE
-            )
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.SEND_SMS),
-                Request_Code_permission
             )
         }
     }

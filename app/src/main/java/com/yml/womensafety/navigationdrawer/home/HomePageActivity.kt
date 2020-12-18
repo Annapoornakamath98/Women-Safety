@@ -1,8 +1,8 @@
 package com.yml.womensafety.navigationdrawer.home
 
 import android.Manifest
-import android.content.ActivityNotFoundException
-import android.content.Intent
+import android.app.AlertDialog
+import android.content.*
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.telephony.SmsManager
@@ -54,6 +54,32 @@ class HomePageActivity : AppCompatActivity() {
         } else {
             requestPermission()
         }
+
+        val intentService = Intent(this@HomePageActivity, AccelerometerService::class.java)
+        startService(intentService)
+
+        val myReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent?) {
+                if ("com.yml.womensafety.ACTION" == intent?.action) {
+                    val receivedText = intent.getStringExtra("com.yml.womensafety.EXTRA_TEXT")
+
+                    sendSms()
+                    val dialogBuilder = AlertDialog.Builder(context)
+                    dialogBuilder.setMessage(receivedText)
+                        .setCancelable(false)
+                        .setNeutralButton("OK") { dialog, _ ->
+                            dialog.cancel()
+                        }
+                    val alert = dialogBuilder.create()
+                    alert.setTitle("Alert!")
+                    alert.show()
+                }
+            }
+
+        }
+        val filter = IntentFilter("com.yml.womensafety.ACTION")
+        registerReceiver(myReceiver, filter)
+
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavBar)
         bottomNavigationView.apply {
             background = null

@@ -98,6 +98,9 @@ class AccelerometerService : Service(), SensorEventListener {
                         )
                     )
                 }
+                val intent = Intent("com.yml.womensafety.ACTION")
+                intent.putExtra("com.yml.womensafety.EXTRA_TEXT", "Sms sent")
+                sendBroadcast(intent)
             }
         }
 

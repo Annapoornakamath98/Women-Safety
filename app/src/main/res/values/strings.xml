@@ -60,6 +60,9 @@
     <string name="permission_denied">Permission denied</string>
     <string name="permission_already_granted">You have already granted this permission!</string>
     <string name="enable_gps">Please enable GPS</string>
+    <string name="location">https://www.google.com/maps/search/?api=1&amp;query=</string>
+    <string name="alert_ok">OK</string>
+    <string name="alert_cancel">Cancel</string>
 
     <!--  Escape Threat Tips  -->
     <string name="situation_1">What should a woman do if she finds herself alone in the company of a strange male as she prepares to enter a lift in a high rise apartment late at night?</string>

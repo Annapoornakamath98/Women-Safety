@@ -1,7 +1,6 @@
 package com.yml.womensafety.navigationdrawer.home
 
 import android.Manifest
-import android.app.AlertDialog
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -9,6 +8,7 @@ import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.telephony.SmsManager
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -28,6 +28,7 @@ class HomePageActivity : AppCompatActivity() {
     companion object {
         private const val Request_Code_permission: Int = 2
         private const val LOCATION_PERMISSION_CODE = 1
+        private const val LOG_MESSAGE = "Error"
     }
 
     private lateinit var contactsList: MutableList<String>
@@ -39,15 +40,15 @@ class HomePageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home_page)
         if (ContextCompat.checkSelfPermission(
                 this,
-                Manifest.permission.READ_EXTERNAL_STORAGE
+                Manifest.permission.ACCESS_FINE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED
         ) {
             Toast.makeText(
                 this, getString(R.string.permission_already_granted),
                 Toast.LENGTH_SHORT
-            ).show();
+            ).show()
         } else {
-            requestLocationPermission();
+            requestLocationPermission()
         }
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavBar)
         bottomNavigationView.apply {
@@ -96,37 +97,37 @@ class HomePageActivity : AppCompatActivity() {
 
     //The below method is used check if sms permission is enabled
     private fun checkSmsPermission() {
-        val cPermission: String = Manifest.permission.SEND_SMS
+        val checkPermission: String = Manifest.permission.SEND_SMS
         try {
             if (ActivityCompat.checkSelfPermission(
                     this,
-                    cPermission
+                    checkPermission
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
                 ActivityCompat.requestPermissions(
                     this,
-                    arrayOf(cPermission),
+                    arrayOf(checkPermission),
                     Request_Code_permission
                 )
             }
-        } catch (e: Exception) {
-            e.printStackTrace()
+        } catch (exception: Exception) {
+            Log.e(LOG_MESSAGE, exception.toString())
         }
-        val sPermission: String = Manifest.permission.INTERNET
+        val checkInternetPermission: String = Manifest.permission.INTERNET
         try {
             if (ActivityCompat.checkSelfPermission(
                     this,
-                    sPermission
+                    checkInternetPermission
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
                 ActivityCompat.requestPermissions(
                     this,
-                    arrayOf(cPermission),
+                    arrayOf(checkPermission),
                     Request_Code_permission
                 )
             }
-        } catch (e: Exception) {
-            e.printStackTrace()
+        } catch (exception: Exception) {
+            Log.e(LOG_MESSAGE, exception.toString())
         }
     }
 
@@ -158,7 +159,7 @@ class HomePageActivity : AppCompatActivity() {
                             e.printStackTrace()
                         }
                         val message =
-                            "https://www.google.com/maps/search/?api=1&query=$locationLatitude,$locationLongitude\n$strAdd"
+                            getString(R.string.location) + "$locationLatitude,$locationLongitude\n$strAdd"
                         val smsManager = SmsManager.getDefault()
                         userContacts.forEach {
                             smsManager.sendTextMessage(it, null, message, null, null)
@@ -178,7 +179,7 @@ class HomePageActivity : AppCompatActivity() {
             }
 
             override fun onContactsReceiveFailed(throwable: Throwable) {
-
+                Log.e(LOG_MESSAGE, throwable.toString())
             }
         })
     }
@@ -190,30 +191,23 @@ class HomePageActivity : AppCompatActivity() {
                 Manifest.permission.ACCESS_FINE_LOCATION
             )
         ) {
-            val alertDialog = AlertDialog.Builder(this)
-            alertDialog.apply {
-                setTitle(getString(R.string.permission_needed))
-                setMessage(getString(R.string.permission_needed))
-                setPositiveButton("ok") { dialog, which ->
-                    ActivityCompat.requestPermissions(
-                        this@HomePageActivity, arrayOf(
-                            Manifest.permission.ACCESS_FINE_LOCATION
-                        ), LOCATION_PERMISSION_CODE
-                    )
-                }
-                setNegativeButton("cancel") { dialog, which ->
-                    dialog.dismiss()
-                }
-                create()
-                show()
-            }
+            AlertDialogUtil.showAlert(
+                this,
+                getString(R.string.permission_needed), getString(R.string.permission_needed)
+            )
+
         } else {
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                 LOCATION_PERMISSION_CODE
             )
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.SEND_SMS),
+                Request_Code_permission
+            )
         }
     }
-    
+
 }

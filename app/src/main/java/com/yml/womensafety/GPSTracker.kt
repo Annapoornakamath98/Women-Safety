@@ -1,6 +1,8 @@
 package com.yml.womensafety
 
 import android.Manifest
+import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
@@ -9,8 +11,13 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import com.yml.womensafety.navigationdrawer.home.HomePageActivity
 
 class GPSTracker(var context: Context) : LocationListener {
+    companion object {
+        private const val minimumTime: Long = 6000
+        private const val minimumDistance:Float = 10f
+    }
     //This function returns the location of the user
     fun getLocation(): Location? {
         val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -26,24 +33,30 @@ class GPSTracker(var context: Context) : LocationListener {
             ) {
                 locationManager.requestLocationUpdates(
                     LocationManager.GPS_PROVIDER,
-                    6000,
-                    10f,
+                    minimumTime,
+                    minimumDistance,
                     this
                 )
             }
 
-        } else {
-            Toast.makeText(context, R.string.enable_gps, Toast.LENGTH_LONG).show()
         }
         return locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
     }
 
     override fun onLocationChanged(location: Location) {
-
+        //Nothing to be implemented here
     }
 
-    override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
-    override fun onProviderEnabled(provider: String) {}
-    override fun onProviderDisabled(provider: String) {}
+    override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {
+        //Nothing to be implemented here
+    }
+
+    override fun onProviderEnabled(provider: String) {
+        //Nothing to be implemented here
+    }
+
+    override fun onProviderDisabled(provider: String) {
+        //Nothing to be implemented here
+    }
 
 }

@@ -54,28 +54,8 @@ class HomePageActivity : AppCompatActivity() {
             requestPermission()
         }
 
-        val accelerometerService = Intent(this@HomePageActivity, AccelerometerService::class.java)
-        startService(accelerometerService)
-
-        val broadcastReceiver: BroadcastReceiver = object : BroadcastReceiver() {
-            override fun onReceive(context: Context, intent: Intent?) {
-                if (getString(R.string.broadcast_action) == intent?.action) {
-                    val receivedText = intent.getStringExtra(getString(R.string.broadcast_name))
-
-                    sendSms()
-                    if (receivedText != null) {
-                        showAlert(
-                            this@HomePageActivity,
-                            getString(R.string.alert_dialog_title),
-                            receivedText
-                        )
-                    }
-                }
-            }
-
-        }
-        val filter = IntentFilter(getString(R.string.broadcast_action))
-        registerReceiver(broadcastReceiver, filter)
+        startAccelerometerService()
+        receiveBroadcast()
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavBar)
         bottomNavigationView.apply {
@@ -121,7 +101,41 @@ class HomePageActivity : AppCompatActivity() {
         }
     }
 
-    //This method will send the SMS along with location
+    /**
+     * This method receives the broadcast
+     */
+    private fun receiveBroadcast() {
+        val broadcastReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent?) {
+                if (getString(R.string.broadcast_action) == intent?.action) {
+                    val receivedText = intent.getStringExtra(getString(R.string.broadcast_name))
+
+                    sendSms()
+                    if (receivedText != null) {
+                        showAlert(
+                            this@HomePageActivity,
+                            getString(R.string.alert_dialog_title),
+                            receivedText
+                        )
+                    }
+                }
+            }
+        }
+        val filter = IntentFilter(getString(R.string.broadcast_action))
+        registerReceiver(broadcastReceiver, filter)
+    }
+
+    /**
+     * This method calls the Accelerometer Service
+     */
+    private fun startAccelerometerService() {
+        val accelerometerService = Intent(this@HomePageActivity, AccelerometerService::class.java)
+        startService(accelerometerService)
+    }
+
+    /**
+     * This method will send the SMS along with location
+     */
     private fun sendSms() {
         contactsViewModel.getContactsList(object : ContactsResponse {
             override fun onContactsReceiveSuccess(userContacts: List<String>) {
@@ -151,7 +165,9 @@ class HomePageActivity : AppCompatActivity() {
         })
     }
 
-    //Below method requests to enable location and SMS permissions
+    /**
+     *  Below method requests to enable location and SMS permissions
+     */
     private fun requestPermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(
                 this,

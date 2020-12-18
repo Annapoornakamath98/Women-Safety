@@ -19,22 +19,26 @@ import com.yml.womensafety.navigationdrawer.home.HomePageActivity
 import kotlin.math.abs
 
 class AccelerometerService : Service(), SensorEventListener {
-    private val CHANNEL_ID: String = "ForegroundService"
+    companion object {
+        private const val CHANNEL_ID: String = "ForegroundService"
+        private const val BROADCAST_ACTION = "com.yml.womensafety.ACTION"
+        private const val BROADCAST_NAME = "com.yml.womensafety.EXTRA_TEXT"
+        private const val BROADCAST_VALUE = "SMS sent"
+        private var CURRENT_X = 0f
+        private var CURRENT_Y = 0f
+        private var CURRENT_Z = 0f
+        private var LAST_X = 0f
+        private var LAST_Y = 0f
+        private var LAST_Z = 0f
+        private const val SHAKE_THRESHOLD = 15f
+        private const val ID = 1
+    }
+
     private var sensorManager: SensorManager? = null
     private var accelerometerSensor: Sensor? = null
     private var vibrator: Vibrator? = null
     private var isAccelerometerSensorAvailable: Boolean = false
     private var itIsNotFirstTime = false
-    private var currentX = 0f
-    private var currentY = 0f
-    private var currentZ = 0f
-    private var lastX = 0f
-    private var lastY = 0f
-    private var lastZ = 0f
-    private val shakeThreshold = 15f
-    private var broadcastAction = "com.yml.womensafety.ACTION"
-    private var broadcastName = "com.yml.womensafety.EXTRA_TEXT"
-    private var broadcastValue = "SMS sent"
 
     override fun onCreate() {
         super.onCreate()
@@ -50,7 +54,7 @@ class AccelerometerService : Service(), SensorEventListener {
             .setSmallIcon(R.drawable.ic_health_and_safety)
             .setContentIntent(pendingIntent)
             .build()
-        startForeground(1, notification)
+        startForeground(ID, notification)
 
         if (sensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) != null) {
             accelerometerSensor = sensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
@@ -77,20 +81,20 @@ class AccelerometerService : Service(), SensorEventListener {
 
     override fun onSensorChanged(event: SensorEvent?) {
         if (event != null) {
-            currentX = event.values[0]
-            currentY = event.values[1]
-            currentZ = event.values[2]
+            CURRENT_X = event.values[0]
+            CURRENT_Y = event.values[1]
+            CURRENT_Z = event.values[2]
         }
 
 
         if (itIsNotFirstTime) {
-            val xDifference = abs(lastX - currentX)
-            val yDifference = abs(lastY - currentY)
-            val zDifference = abs(lastZ - currentZ)
+            val xDifference = abs(LAST_X - CURRENT_X)
+            val yDifference = abs(LAST_Y - CURRENT_Y)
+            val zDifference = abs(LAST_Z - CURRENT_Z)
 
-            if ((xDifference > shakeThreshold && yDifference > shakeThreshold) ||
-                (xDifference > shakeThreshold && zDifference > shakeThreshold) ||
-                (yDifference > shakeThreshold && zDifference > shakeThreshold)
+            if ((xDifference > SHAKE_THRESHOLD && yDifference > SHAKE_THRESHOLD) ||
+                (xDifference > SHAKE_THRESHOLD && zDifference > SHAKE_THRESHOLD) ||
+                (yDifference > SHAKE_THRESHOLD && zDifference > SHAKE_THRESHOLD)
             ) {
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -101,15 +105,15 @@ class AccelerometerService : Service(), SensorEventListener {
                         )
                     )
                 }
-                val broadcastIntent = Intent(broadcastAction)
-                broadcastIntent.putExtra(broadcastName, broadcastValue)
+                val broadcastIntent = Intent(BROADCAST_ACTION)
+                broadcastIntent.putExtra(BROADCAST_NAME, BROADCAST_VALUE)
                 sendBroadcast(broadcastIntent)
             }
         }
 
-        lastX = currentX
-        lastY = currentY
-        lastZ = currentZ
+        LAST_X = CURRENT_X
+        LAST_Y = CURRENT_Y
+        LAST_Z = CURRENT_Z
 
         itIsNotFirstTime = true
     }

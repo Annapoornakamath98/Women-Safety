@@ -63,6 +63,9 @@
     <string name="location">https://www.google.com/maps/search/?api=1&amp;query=</string>
     <string name="alert_ok">OK</string>
     <string name="alert_cancel">Cancel</string>
+    <string name="broadcast_action">com.yml.womensafety.ACTION</string>
+    <string name="broadcast_name">com.yml.womensafety.EXTRA_TEXT</string>
+    <string name="alert_dialog_title">Alert!</string>
 
     <!--  Escape Threat Tips  -->
     <string name="situation_1">What should a woman do if she finds herself alone in the company of a strange male as she prepares to enter a lift in a high rise apartment late at night?</string>

@@ -4,8 +4,6 @@ import android.Manifest
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.Geocoder
-import android.location.Location
 import android.os.Bundle
 import android.telephony.SmsManager
 import android.util.Log
@@ -28,12 +26,9 @@ import java.util.*
 
 class HomePageActivity : AppCompatActivity() {
     companion object {
-        private const val Request_Code_permission: Int = 2
-        private const val LOCATION_PERMISSION_CODE = 1
+        private const val PERMISSION_CODE = 1
         private const val LOG_MESSAGE = "Error"
-        private const val index = 2
-        private const val maxResults = 1
-        private const val returnedIndex = 0
+        private const val INDEX = 2
     }
 
     private lateinit var contactsList: MutableList<String>
@@ -62,7 +57,7 @@ class HomePageActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavBar)
         bottomNavigationView.apply {
             background = null
-            menu.getItem(index).isEnabled = false
+            menu.getItem(INDEX).isEnabled = false
             itemIconTintList = null
         }
         contactsList = mutableListOf()
@@ -108,45 +103,17 @@ class HomePageActivity : AppCompatActivity() {
         contactsViewModel.getContactsList(object : ContactsResponse {
             override fun onContactsReceiveSuccess(userContacts: List<String>) {
                 try {
-                    val gpsTracker = GPSTracker(applicationContext)
-                    val location: Location? = gpsTracker.getLocation()
-                    if (location != null) {
-                        val locationLatitude: Double = location.latitude
-                        val locationLongitude: Double = location.longitude
-                        var address = ""
-                        val geoCoder = Geocoder(this@HomePageActivity, Locale.getDefault())
-                        try {
-                            val addresses =
-                                geoCoder.getFromLocation(
-                                    locationLatitude,
-                                    locationLongitude,
-                                    maxResults
-                                )
-                            if (addresses != null) {
-                                val returnedAddress = addresses[returnedIndex]
-                                val strReturnedAddress = StringBuilder("")
-                                for (i in 0..returnedAddress.maxAddressLineIndex) {
-                                    strReturnedAddress.append(returnedAddress.getAddressLine(i))
-                                        .append("\n")
-                                }
-                                address = strReturnedAddress.toString()
-                            }
-                        } catch (exception: Exception) {
-                            Log.e(LOG_MESSAGE, exception.toString())
-                        }
-                        val message =
-                            getString(R.string.location) + "$locationLatitude,$locationLongitude\n$address"
-                        val smsManager = SmsManager.getDefault()
-                        userContacts.forEach {
-                            smsManager.sendTextMessage(it, null, message, null, null)
-                        }
-                        Snackbar.make(
-                            window.decorView.rootView,
-                            R.string.message_sent,
-                            Snackbar.LENGTH_LONG
-                        ).show()
+                    val location = GetLocation(this@HomePageActivity)
+                    val message = location.getLocation()
+                    val smsManager = SmsManager.getDefault()
+                    userContacts.forEach {
+                        smsManager.sendTextMessage(it, null, message, null, null)
                     }
-
+                    Snackbar.make(
+                        window.decorView.rootView,
+                        R.string.message_sent,
+                        Snackbar.LENGTH_LONG
+                    ).show()
                 } catch (ex: ActivityNotFoundException) {
                     Toast.makeText(
                         this@HomePageActivity,
@@ -181,7 +148,7 @@ class HomePageActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.SEND_SMS),
-                LOCATION_PERMISSION_CODE
+                PERMISSION_CODE
             )
         }
     }

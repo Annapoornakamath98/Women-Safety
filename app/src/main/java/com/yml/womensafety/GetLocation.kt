@@ -7,7 +7,7 @@ import android.util.Log
 import java.util.*
 
 class GetLocation(val context: Context) {
-    private var message = String()
+    private var message = ""
 
     companion object {
         const val LOG_MESSAGE = "Error"
@@ -48,6 +48,5 @@ class GetLocation(val context: Context) {
 
         return message
     }
-
 
 }

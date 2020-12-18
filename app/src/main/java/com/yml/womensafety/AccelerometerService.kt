@@ -32,6 +32,9 @@ class AccelerometerService : Service(), SensorEventListener {
     private var lastY = 0f
     private var lastZ = 0f
     private val shakeThreshold = 15f
+    private var broadcastAction = "com.yml.womensafety.ACTION"
+    private var broadcastName = "com.yml.womensafety.EXTRA_TEXT"
+    private var broadcastValue = "SMS sent"
 
     override fun onCreate() {
         super.onCreate()
@@ -98,9 +101,9 @@ class AccelerometerService : Service(), SensorEventListener {
                         )
                     )
                 }
-                val intent = Intent("com.yml.womensafety.ACTION")
-                intent.putExtra("com.yml.womensafety.EXTRA_TEXT", "Sms sent")
-                sendBroadcast(intent)
+                val broadcastIntent = Intent(broadcastAction)
+                broadcastIntent.putExtra(broadcastName, broadcastValue)
+                sendBroadcast(broadcastIntent)
             }
         }
 

@@ -1,7 +1,6 @@
 package com.yml.womensafety.navigationdrawer.home
 
 import android.Manifest
-import android.app.AlertDialog
 import android.content.*
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -55,30 +54,28 @@ class HomePageActivity : AppCompatActivity() {
             requestPermission()
         }
 
-        val intentService = Intent(this@HomePageActivity, AccelerometerService::class.java)
-        startService(intentService)
+        val accelerometerService = Intent(this@HomePageActivity, AccelerometerService::class.java)
+        startService(accelerometerService)
 
-        val myReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+        val broadcastReceiver: BroadcastReceiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context, intent: Intent?) {
-                if ("com.yml.womensafety.ACTION" == intent?.action) {
-                    val receivedText = intent.getStringExtra("com.yml.womensafety.EXTRA_TEXT")
+                if (getString(R.string.broadcast_action) == intent?.action) {
+                    val receivedText = intent.getStringExtra(getString(R.string.broadcast_name))
 
                     sendSms()
-                    val dialogBuilder = AlertDialog.Builder(context)
-                    dialogBuilder.setMessage(receivedText)
-                        .setCancelable(false)
-                        .setNeutralButton("OK") { dialog, _ ->
-                            dialog.cancel()
-                        }
-                    val alert = dialogBuilder.create()
-                    alert.setTitle("Alert!")
-                    alert.show()
+                    if (receivedText != null) {
+                        showAlert(
+                            this@HomePageActivity,
+                            getString(R.string.alert_dialog_title),
+                            receivedText
+                        )
+                    }
                 }
             }
 
         }
-        val filter = IntentFilter("com.yml.womensafety.ACTION")
-        registerReceiver(myReceiver, filter)
+        val filter = IntentFilter(getString(R.string.broadcast_action))
+        registerReceiver(broadcastReceiver, filter)
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavBar)
         bottomNavigationView.apply {

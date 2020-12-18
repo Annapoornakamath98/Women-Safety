@@ -14,7 +14,7 @@ class ContactsRepository {
     private val databaseName = "contacts"
     private var databaseReference: DatabaseReference? =
         appUser?.uid?.let { FirebaseUtil.firebaseDatabase?.getReference(databaseName)?.child(it) }
-
+    //This function gets the list of emergency contacts from FirebaseDatabase
     fun getContactsList(response: ContactsResponse) {
         databaseReference?.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

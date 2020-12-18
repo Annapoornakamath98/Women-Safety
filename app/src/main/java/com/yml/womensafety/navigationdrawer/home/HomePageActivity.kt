@@ -47,7 +47,7 @@ class HomePageActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show();
         } else {
-            requestStoragePermission();
+            requestLocationPermission();
         }
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavBar)
         bottomNavigationView.apply {
@@ -94,6 +94,7 @@ class HomePageActivity : AppCompatActivity() {
         }
     }
 
+    //The below method is used check if sms permission is enabled
     private fun checkSmsPermission() {
         val cPermission: String = Manifest.permission.SEND_SMS
         try {
@@ -129,15 +130,16 @@ class HomePageActivity : AppCompatActivity() {
         }
     }
 
+    //This method will send the SMS along with location
     private fun sendSms() {
         contactsViewModel.getContactsList(object : ContactsResponse {
             override fun onContactsReceiveSuccess(userContacts: List<String>) {
                 try {
-                    val g = GPSTracker(applicationContext)
-                    val l: Location? = g.getLocation()
-                    if (l != null) {
-                        val locationLatitude: Double = l.latitude
-                        val locationLongitude: Double = l.longitude
+                    val gpsTracker = GPSTracker(applicationContext)
+                    val location: Location? = gpsTracker.getLocation()
+                    if (location != null) {
+                        val locationLatitude: Double = location.latitude
+                        val locationLongitude: Double = location.longitude
                         var strAdd = ""
                         val geoCoder = Geocoder(this@HomePageActivity, Locale.getDefault())
                         try {
@@ -181,7 +183,8 @@ class HomePageActivity : AppCompatActivity() {
         })
     }
 
-    private fun requestStoragePermission() {
+    //Below method requests to enable location permission
+    private fun requestLocationPermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -212,18 +215,5 @@ class HomePageActivity : AppCompatActivity() {
             )
         }
     }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String?>,
-        grantResults: IntArray
-    ) {
-        if (requestCode == LOCATION_PERMISSION_CODE) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, getString(R.string.permission_granted), Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, getString(R.string.permission_denied), Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
+    
 }

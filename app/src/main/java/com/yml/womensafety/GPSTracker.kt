@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 
 class GPSTracker(var context: Context) : LocationListener {
+    //This function returns the location of the user
     fun getLocation(): Location? {
         val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         val isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
@@ -32,7 +33,7 @@ class GPSTracker(var context: Context) : LocationListener {
             }
 
         } else {
-            Toast.makeText(context,R.string.enable_gps, Toast.LENGTH_LONG).show()
+            Toast.makeText(context, R.string.enable_gps, Toast.LENGTH_LONG).show()
         }
         return locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
     }

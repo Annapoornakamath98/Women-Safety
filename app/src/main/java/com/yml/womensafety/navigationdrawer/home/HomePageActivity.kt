@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.google.android.material.snackbar.Snackbar
 import com.yml.womensafety.*
 import com.yml.womensafety.AlertDialogUtil.showAlert
@@ -25,13 +25,17 @@ import java.util.*
 
 class HomePageActivity : AppCompatActivity() {
     companion object {
-        private const val PERMISSION_CODE = 1
+        private const val PERMISSION_CODE = 10
         private const val LOG_MESSAGE = "Error"
-        private const val INDEX = 2
+        private const val ID_HOME = 0
+        private const val ID_CONTACTS = 1
+        private const val ID_PROFILE = 2
+        private const val ID_LOGOUT = 3
     }
 
     private lateinit var contactsList: MutableList<String>
     lateinit var contactsViewModel: ContactsViewModel
+    private lateinit var homepageFragment: HomePageFragment
     private lateinit var contactsFragment: ContactsFragment
     private lateinit var userProfile: UserProfile
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,47 +61,53 @@ class HomePageActivity : AppCompatActivity() {
         startAccelerometerService()
         receiveBroadcast()
 
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavBar)
-        bottomNavigationView.apply {
-            background = null
-            menu.getItem(INDEX).isEnabled = false
-            itemIconTintList = null
+        bottomNavigation.apply {
+            show(ID_HOME)
+            add(MeowBottomNavigation.Model(ID_HOME, R.drawable.ic_outline_home))
+            add(MeowBottomNavigation.Model(ID_CONTACTS, R.drawable.ic_add_contacts))
+            add(MeowBottomNavigation.Model(ID_PROFILE, R.drawable.ic_outline_account))
+            add(MeowBottomNavigation.Model(ID_LOGOUT, R.drawable.ic_exit_to_app))
         }
         contactsList = mutableListOf()
 
         contactsViewModel = ViewModelProvider(this).get(ContactsViewModel()::class.java)
         contactsViewModel.initializeRepository()
 
-        bottomNavigationView.setOnNavigationItemReselectedListener {
-            when (it.itemId) {
-                R.id.navHome -> {
-                    startActivity(Intent(this, HomePageActivity::class.java))
+
+        bottomNavigation.setOnClickMenuListener {
+            when (it.id) {
+                0 -> {
+                    homepageFragment = HomePageFragment()
+                    FragmentUtil.replaceFragment(
+                        supportFragmentManager,
+                        homepageFragment,
+                        R.id.myNavHostFragment
+                    )
                 }
-                R.id.navLogout -> {
-                    FirebaseUtil.user?.signOut()
-                    startActivity(Intent(this, LoginActivity::class.java))
-                    finish()
-                }
-                R.id.navContacts -> {
+                1 -> {
                     contactsFragment = ContactsFragment()
-                    FragmentUtil.addFragmentToActivity(
+                    FragmentUtil.replaceFragment(
                         supportFragmentManager,
                         contactsFragment,
                         R.id.myNavHostFragment
                     )
                 }
-                R.id.navProfile -> {
+
+                2 -> {
                     userProfile = UserProfile()
-                    FragmentUtil.addFragmentToActivity(
+                    FragmentUtil.replaceFragment(
                         supportFragmentManager,
                         userProfile,
                         R.id.myNavHostFragment
                     )
                 }
+
+                3 -> {
+                    FirebaseUtil.user?.signOut()
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    finish()
+                }
             }
-        }
-        btn_fab.setOnClickListener {
-            sendSms()
         }
     }
 

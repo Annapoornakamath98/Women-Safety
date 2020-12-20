@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -23,32 +23,17 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottomAppBar"
+    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+        android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:fabCradleMargin="@dimen/hp_padding_margin"
-        app:fabCradleRoundedCornerRadius="@dimen/fab_corner_radius"
-        app:fabCradleVerticalOffset="@dimen/bottom_app_bar_cradle_offset">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            app:menu="@menu/bottom_nav_menu" />
-    </com.google.android.material.bottomappbar.BottomAppBar>
+        app:mbn_countTextColor="#000"
+        app:mbn_defaultIconColor="#909090"
+        app:mbn_rippleColor="@color/rogue_pink"
+        app:mbn_selectedIconColor="@color/rogue_pink"
+        app:mbn_shadowColor="#5000" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_fab"
-        android:layout_width="@dimen/fab_width_height"
-        android:layout_height="@dimen/fab_width_height"
-        android:backgroundTint="@color/rogue_pink"
-        android:elevation="10dp"
-        android:scaleType="center"
-        android:src="@drawable/ic_sos"
-        app:layout_anchor="@id/bottomAppBar"
-        app:tint="@color/white" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</FrameLayout>

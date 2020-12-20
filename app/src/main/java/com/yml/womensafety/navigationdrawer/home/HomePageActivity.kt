@@ -76,7 +76,7 @@ class HomePageActivity : AppCompatActivity() {
 
         bottomNavigation.setOnClickMenuListener {
             when (it.id) {
-                0 -> {
+                ID_HOME -> {
                     homepageFragment = HomePageFragment()
                     FragmentUtil.replaceFragment(
                         supportFragmentManager,
@@ -84,7 +84,7 @@ class HomePageActivity : AppCompatActivity() {
                         R.id.myNavHostFragment
                     )
                 }
-                1 -> {
+                ID_CONTACTS -> {
                     contactsFragment = ContactsFragment()
                     FragmentUtil.replaceFragment(
                         supportFragmentManager,
@@ -93,7 +93,7 @@ class HomePageActivity : AppCompatActivity() {
                     )
                 }
 
-                2 -> {
+                ID_PROFILE -> {
                     userProfile = UserProfile()
                     FragmentUtil.replaceFragment(
                         supportFragmentManager,
@@ -102,7 +102,7 @@ class HomePageActivity : AppCompatActivity() {
                     )
                 }
 
-                3 -> {
+                ID_LOGOUT -> {
                     FirebaseUtil.user?.signOut()
                     startActivity(Intent(this, LoginActivity::class.java))
                     finish()

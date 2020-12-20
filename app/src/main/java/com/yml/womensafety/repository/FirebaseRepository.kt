@@ -8,11 +8,13 @@ import com.yml.womensafety.FirebaseUtil
 import com.yml.womensafety.Response
 
 class FirebaseRepository {
+    private val databaseName = "name"
     private var databaseReference: DatabaseReference? =
-        FirebaseUtil.firebaseDatabase?.reference?.child("name")
+        FirebaseUtil.firebaseDatabase?.reference?.child(databaseName)
     private val appUser = FirebaseUtil.user?.currentUser
     private val userReference = databaseReference?.child(appUser?.uid!!)
     fun getUserName(response: Response) {
+        databaseReference?.keepSynced(true)
         userReference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val userName =
@@ -21,7 +23,7 @@ class FirebaseRepository {
             }
 
             override fun onCancelled(error: DatabaseError) {
-
+                //Nothing to be implemented here
             }
         })
     }
@@ -32,6 +34,7 @@ class FirebaseRepository {
     }
 
     fun getUserContact(response: Response) {
+        databaseReference?.keepSynced(true)
         userReference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val userContactNumber =

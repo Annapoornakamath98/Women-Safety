@@ -15,8 +15,11 @@ class ContactsRepository {
     private var databaseReference: DatabaseReference? =
         appUser?.uid?.let { FirebaseUtil.firebaseDatabase?.getReference(databaseName)?.child(it) }
 
-    //This function gets the list of emergency contacts from FirebaseDatabase
+    /**
+     * This function gets the list of emergency contacts
+     */
     fun getContactsList(response: ContactsResponse) {
+        databaseReference?.keepSynced(true)
         databaseReference?.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 contactsList = mutableListOf()

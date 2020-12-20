@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Women Safety</string>
-    <string name="enter_email_id">Enter email address</string>
+    <string name="enter_email_id">Enter your email address</string>
     <string name="set_password">Set a password</string>
     <string name="login">Login</string>
     <string name="register_here">Not a user? Click here to register</string>
@@ -66,6 +66,8 @@
     <string name="broadcast_action">com.yml.womensafety.ACTION</string>
     <string name="broadcast_name">com.yml.womensafety.EXTRA_TEXT</string>
     <string name="alert_dialog_title">Alert!</string>
+    <string name="alert_check_mail">Please check your email</string>
+    <string name="alert_send">Send</string>
 
     <!--  Escape Threat Tips  -->
     <string name="situation_1">What should a woman do if she finds herself alone in the company of a strange male as she prepares to enter a lift in a high rise apartment late at night?</string>
@@ -152,4 +154,5 @@
     <string name="helpline_number_26">WEST BENGAL\n West Bengal women commission\n 033–23595609\n 033–23210154</string>
     <string name="helpline_number_27">UTTAR PRADESH\n Uttar Pradesh Women commission\n 0522–2306403\n 18001805220\n Uttar Pradesh Women Helpline\n 1090\n 112 </string>
     <string name="helpline_number_28">NARI RAKSHA SAMITI\n 011–23973949</string>
+    <string name="forgot_password">Forgot password?</string>
 </resources>

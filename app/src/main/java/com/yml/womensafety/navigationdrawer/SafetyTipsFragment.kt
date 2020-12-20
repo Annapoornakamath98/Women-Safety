@@ -18,21 +18,17 @@ class SafetyTipsFragment : Fragment(R.layout.fragment_safety_tips) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         safetyTipsViewModel =
             ViewModelProvider(this).get(SafetyTipsViewModel()::class.java)
         safetyTipsViewModel.initializeRepository()
+        tipsRecyclerView = view.findViewById(R.id.recyclerViewSafetyTips)
+        tipsAdapter = SafetyTipsAdapter()
+        tipsRecyclerView.apply {
+            layoutManager = LinearLayoutManager(view.context)
+            adapter = tipsAdapter
+        }
         safetyTipsViewModel.getSafetyTips().observe(viewLifecycleOwner, {
-            tipsAdapter.notifyDataSetChanged()
+            tipsAdapter.setList(it)
         })
-        initializeRecyclerView()
-    }
-
-    private fun initializeRecyclerView() {
-        tipsAdapter =
-            SafetyTipsAdapter(safetyTipsViewModel.getSafetyTips().value!! as ArrayList<SafetyTips>)
-        tipsRecyclerView = view?.findViewById(R.id.recyclerViewSafetyTips)!!
-        tipsRecyclerView.layoutManager = LinearLayoutManager(view?.context)
-        tipsRecyclerView.adapter = tipsAdapter
     }
 }

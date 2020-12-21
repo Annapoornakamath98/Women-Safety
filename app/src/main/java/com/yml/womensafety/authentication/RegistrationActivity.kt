@@ -8,6 +8,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.yml.womensafety.FirebaseUtil
 import com.yml.womensafety.R
+import kotlinx.android.synthetic.main.activity_registration.btnRegister
+import kotlinx.android.synthetic.main.activity_registration.goToLogin
+import kotlinx.android.synthetic.main.activity_registration.registerEmailId
+import kotlinx.android.synthetic.main.activity_registration.registerFullName
+import kotlinx.android.synthetic.main.activity_registration.registerPassword
+import kotlinx.android.synthetic.main.activity_registration.registerPhone
 import kotlinx.android.synthetic.main.activity_registration.*
 
 class RegistrationActivity : AppCompatActivity() {
@@ -15,6 +21,7 @@ class RegistrationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
+        regTabLayout.addTab(regTabLayout.newTab().setText(getString(R.string.register)))
         databaseReference =
             FirebaseUtil.firebaseDatabase?.getReference(getString(R.string.name_column))
         btnRegister.setOnClickListener {

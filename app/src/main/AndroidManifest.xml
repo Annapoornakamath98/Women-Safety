@@ -23,7 +23,7 @@
             android:enabled="true"
             android:exported="false" />
 
-        <activity android:name=".authentication.LoginActivity" />
+        <activity android:name=".authentication.LoginActivity"/>
         <activity android:name=".navigationdrawer.home.HomePageActivity" />
         <activity android:name=".authentication.RegistrationActivity" />
         <activity android:name=".SplashActivity">

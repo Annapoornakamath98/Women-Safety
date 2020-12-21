@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Women Safety</string>
     <string name="enter_email_id">Enter email address</string>
+    <string name="enter_password">Enter password</string>
+    <string name="welcome_message">Welcome to Women Safety</string>
+
     <string name="set_password">Set a password</string>
-    <string name="login">Login</string>
-    <string name="register_here">Not a user? Click here to register</string>
-    <string name="register">Register</string>
     <string name="logout">Logout</string>
     <string name="home">Home</string>
     <string name="add_contacts">Add Contacts</string>
@@ -14,14 +14,10 @@
     <string name="close">Close</string>
     <string name="example">Example</string>
     <string name="example_email">Example@gmail.com</string>
-    <string name="enter_your_name">Enter your name</string>
-    <string name="enter_password">Enter password</string>
     <string name="save">Save</string>
     <string name="name">Name</string>
     <string name="phone_number">Phone number</string>
-    <string name="go_to_login">Already a user? Click here login.</string>
     <string name="view">View</string>
-    <string name="enter_your_phone_number">Enter your phone number</string>
     <string name="app_icon">app icon</string>
     <string name="view_contacts">View Contacts</string>
     <string name="tips">Tips to escape\n from threat</string>
@@ -77,6 +73,17 @@
     <string name="ss_tips">Tips</string>
     <string name="ss_description_3">Some tips regarding women safety and helpline numbers in case of emergency.</string>
     <string name="ss_get_started_text">Get Started</string>
+
+    <!--  Login Activity  -->
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="register_here">Not a user? Click here to register</string>
+
+    <!--  Registration Activity  -->
+    <string name="enter_your_name">Enter your name</string>
+    <string name="enter_your_phone_number">Enter your phone number</string>
+    <string name="register">Register</string>
+    <string name="go_to_login">Already a user? Click here login.</string>
 
     <!--  Escape Threat Tips  -->
     <string name="situation_1">What should a woman do if she finds herself alone in the company of a strange male as she prepares to enter a lift in a high rise apartment late at night?</string>

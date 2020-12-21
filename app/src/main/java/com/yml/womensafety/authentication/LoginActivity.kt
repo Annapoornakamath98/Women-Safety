@@ -9,6 +9,10 @@ import com.google.firebase.auth.FirebaseUser
 import com.yml.womensafety.FirebaseUtil
 import com.yml.womensafety.R
 import com.yml.womensafety.navigationdrawer.home.HomePageActivity
+import kotlinx.android.synthetic.main.activity_login.btnLogin
+import kotlinx.android.synthetic.main.activity_login.loginEmailId
+import kotlinx.android.synthetic.main.activity_login.loginPassword
+import kotlinx.android.synthetic.main.activity_login.registerHere
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -16,6 +20,8 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.login)))
+
         appUser = FirebaseUtil.user?.currentUser
         btnLogin.setOnClickListener {
             login()

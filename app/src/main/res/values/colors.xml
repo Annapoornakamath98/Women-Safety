@@ -12,8 +12,9 @@
     <color name="background_pink">#e75480</color>
     <color name="light_pink">#F7BDCC</color>
     <color name="bright_pink">#ff007f</color>
-    <color name="rogue_pink">#F469A9</color>
+    <color name="rogue_pink">#f26b8a</color>
     <color name="purple">#CCADF3</color>
-    <color name="pink">#f26b8a</color>
+    <color name="pink">#F469A9</color>
     <color name="blue">#88BEF5</color>
+    <color name="light_gray">#D3D3D3</color>
 </resources>

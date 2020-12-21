@@ -54,4 +54,31 @@
     <dimen name="save_button_top_padding">32dp</dimen>
     <dimen name="user_profile_font_size">20sp</dimen>
     <dimen name="bottom_app_bar_cradle_offset">20dp</dimen>
+
+    <!--Home page fragment-->
+    <dimen name="home_page_width">0dp</dimen>
+    <dimen name="home_page_animation_height">260dp</dimen>
+    <dimen name="home_page_view">1dp</dimen>
+    <dimen name="home_page_margin_bottom">2dp</dimen>
+    <dimen name="home_page_margin_start">15dp</dimen>
+    <dimen name="home_page_margin_end">15dp</dimen>
+    <dimen name="home_page_card_radius">8dp</dimen>
+    <dimen name="home_page_padding">15dp</dimen>
+    <dimen name="home_page_card_elevation">35dp</dimen>
+    <dimen name="home_page_margin_top">5dp</dimen>
+    <dimen name="home_page_iv_width_height">120dp</dimen>
+    <dimen name="home_page_tv_font">16sp</dimen>
+    <dimen name="home_page_end_margin">20dp</dimen>
+    <dimen name="home_page_margin_top_bottom">25dp</dimen>
+    <dimen name="home_page_start_margin">20dp</dimen>
+
+    <!--Contacts fragment-->
+    <dimen name="contacts_layout_width_height">0dp</dimen>
+    <dimen name="contact_name_margin_top">30dp</dimen>
+    <dimen name="contact_number_margin_top">30dp</dimen>
+    <dimen name="contact_margin_start_end">5dp</dimen>
+    <dimen name="contact_button_margin_top">25dp</dimen>
+    <dimen name="contact_view_margin_start">10dp</dimen>
+    <dimen name="contact_frame_margin_top">8dp</dimen>
+    <dimen name="contact_font">25sp</dimen>
 </resources>

@@ -6,12 +6,12 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.yml.womensafety.R
 import com.yml.womensafety.authentication.LoginActivity
-import kotlinx.android.synthetic.main.fragment_on_boarding1.*
+import kotlinx.android.synthetic.main.fragment_introduction_location.*
 
-class OnBoardingFragment1 : Fragment(R.layout.fragment_on_boarding1) {
+class IntroductionFragmentLocation : Fragment(R.layout.fragment_introduction_location) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btnSkip1.setOnClickListener {
+        btnSkipTwo.setOnClickListener {
             startActivity(Intent(view.context, LoginActivity::class.java))
         }
     }

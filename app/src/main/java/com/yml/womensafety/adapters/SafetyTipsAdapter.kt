@@ -35,16 +35,16 @@ class SafetyTipsAdapter() :
         position: Int
     ) {
         val safetyTips: SafetyTips = tipsList[position]
-        var isBtnExpanded: Boolean = tipsList[position].expandable
 
         holder.apply {
+            var isBtnExpanded: Boolean = tipsList[position].expandable
             title.text = title.context.getString(safetyTips.tipID)
             description.text = description.context.getString(safetyTips.tipDescriptionResID)
             btnExpandDescription.setOnClickListener {
                 if (isBtnExpanded) {
                     holder.btnExpandDescription.setImageResource(R.drawable.ic_arrow_up)
                     holder.description.visibility = View.VISIBLE
-                    isBtnExpanded = !isBtnExpanded
+                    isBtnExpanded = false
                 } else {
                     holder.btnExpandDescription.setImageResource(R.drawable.ic_arrow_down)
                     holder.description.visibility = View.GONE

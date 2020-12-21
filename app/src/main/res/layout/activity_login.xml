@@ -4,55 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_app_background"
-    android:padding="@dimen/parent_padding"
     tools:context=".authentication.LoginActivity">
 
-    <TextView
-        android:id="@+id/tvAppName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/tv_layout_margin_top"
-        android:fontFamily="sans-serif-condensed"
-        android:gravity="center"
-        android:paddingTop="@dimen/et_padding"
-        android:text="@string/app_name"
-        android:textColor="@color/black"
-        android:textSize="@dimen/app_name_font"
-        app:layout_constraintBaseline_toBaselineOf="parent" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/login_adjustable_height_width"
+        android:scaleType="centerCrop"
+        android:src="@drawable/login_ui_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".27"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/card_height"
-        android:layout_marginTop="@dimen/layout_margin_top"
-        android:elevation="@dimen/card_elevation"
-        app:cardCornerRadius="@dimen/card_corner_radius"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintBottom_toTopOf="@id/btnLogin"
-        app:layout_constraintTop_toBottomOf="@id/tvAppName">
+        android:layout_height="@dimen/login_adjustable_height_width"
+        android:background="@drawable/constraint_view_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".78"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1">
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintView"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/card_height"
-            android:background="@drawable/card_shape"
-            android:orientation="vertical"
-            android:padding="@dimen/parent_padding"
-            android:paddingTop="@dimen/parent_padding"
-            android:paddingBottom="@dimen/parent_padding"
-            app:layout_constraintBottom_toTopOf="@id/btnLogin"
-            app:layout_constraintTop_toBottomOf="@id/tvAppName">
+            android:layout_height="@dimen/login_adjustable_height_width"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tabLayout"
+            app:layout_constraintVertical_bias="0">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout1"
-                android:layout_width="match_parent"
+                android:id="@+id/loginTextField1"
+                android:layout_width="@dimen/login_adjustable_height_width"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/hp_margin_top"
-                android:background="@drawable/borders"
+                android:background="@drawable/edit_text_bg"
+                android:paddingStart="@dimen/login_padding_start_end"
+                android:paddingTop="@dimen/login_padding_top_bottom"
+                android:paddingEnd="@dimen/login_padding_start_end"
+                android:paddingBottom="@dimen/login_padding_top_bottom"
                 app:endIconMode="clear_text"
-                app:layout_constraintBottom_toTopOf="@+id/textField"
-                app:layout_constraintTop_toBottomOf="@+id/tvAppName">
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias=".5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias=".2"
+                app:layout_constraintWidth_percent=".8">
 
                 <EditText
                     android:id="@+id/loginEmailId"
@@ -61,18 +66,28 @@
                     android:autofillHints="abc@gmail.com"
                     android:background="@color/white"
                     android:hint="@string/enter_email_id"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    app:endIconMode="clear_text" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textField"
-                android:layout_width="match_parent"
+                android:id="@+id/loginTextField2"
+                android:layout_width="@dimen/login_adjustable_height_width"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/tv_layout_margin_top"
-                android:background="@drawable/borders"
+                android:layout_marginTop="@dimen/login_margin_top_end"
+                android:background="@drawable/edit_text_bg"
+                android:paddingStart="@dimen/login_padding_start_end"
+                android:paddingTop="@dimen/login_padding_top_bottom"
+                android:paddingEnd="@dimen/login_padding_start_end"
+                android:paddingBottom="@dimen/login_padding_top_bottom"
                 app:endIconMode="password_toggle"
-                app:layout_constraintBottom_toTopOf="@+id/btnLogin"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout1">
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias=".5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loginTextField1"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintWidth_percent=".8">
 
                 <EditText
                     android:id="@+id/loginPassword"
@@ -81,34 +96,98 @@
                     android:autofillHints="abc@gmail.com"
                     android:background="@color/white"
                     android:hint="@string/enter_password"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias=".5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout1"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintWidth_percent=".8" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
+            <Button
+                android:id="@+id/btnLogin"
+                style="@style/Animation.Design.BottomSheetDialog"
+                android:layout_width="@dimen/login_adjustable_height_width"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_bg"
+                android:text="@string/login"
+                android:textColor="@color/white"
+                android:textSize="@dimen/login_text_size"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias=".8"
+                app:layout_constraintWidth_percent=".8" />
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/btnForgotPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/login_margin_top_end"
+                android:layout_marginEnd="@dimen/login_margin_top_end"
+                android:text="@string/forgot_password"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/loginTextField2"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loginTextField2"
+                app:layout_constraintVertical_bias="0" />
 
-    </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/registerHere"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/register_here"
+                android:textSize="@dimen/login_text_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+                app:layout_constraintVertical_bias=".9" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="@dimen/btn_width"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/layout_margin_top"
-        android:background="@drawable/button_shape"
-        android:text="@string/login"
-        app:layout_constraintBottom_toTopOf="@+id/registerHere"
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/constraint_view_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="@dimen/logo_height_width"
+        android:layout_height="@dimen/logo_height_width"
+        android:src="@drawable/ic_woman"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".3" />
 
     <TextView
-        android:id="@+id/registerHere"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/layout_margin_top"
-        android:gravity="center"
-        android:text="@string/register_here"
-        android:textSize="@dimen/tv_font_size"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+        android:text="@string/welcome_message"
+        android:textColor="@color/white"
+        android:textSize="@dimen/login_text_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintVertical_bias=".2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -54,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
         FirebaseUtil.user?.sendPasswordResetEmail(userMailText.text.toString())
             ?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this, "Email sent.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, getString(R.string.email_sent), Toast.LENGTH_LONG).show()
                 }
             }
 

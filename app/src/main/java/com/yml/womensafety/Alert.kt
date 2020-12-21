@@ -15,7 +15,6 @@ object Alert {
             .setTitle(title)
             .setMessage(message)
             .setPositiveButton(positiveMessage) { dialog, which ->
-
             }
 
         val dialog: AlertDialog = builder.create()

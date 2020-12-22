@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="app_name_font">40sp</dimen>
+    <dimen name="btn_bg_radius">20dp</dimen>
+    <dimen name="btn_shape_radius">100dp</dimen>
+    <dimen name="constraint_view_bg_radius">40dp</dimen>
+    <dimen name="edit_text_bg_radius">20dp</dimen>
+    <dimen name="edit_text_bg_stroke_width">2dp</dimen>
+
     <dimen name="parent_padding">10dp</dimen>
     <dimen name="tv_layout_margin_top">30dp</dimen>
     <dimen name="et_layout_height">55dp</dimen>
@@ -15,8 +21,8 @@
     <dimen name="card_shape_width">305dp</dimen>
     <dimen name="card_shape_height">205dp</dimen>
     <dimen name="stroke_width">1dp</dimen>
-    <dimen name="bottom_radius">100dp</dimen>
-    <dimen name="top_radius">100dp</dimen>
+
+
     <dimen name="layout_margin">32dp</dimen>
     <dimen name="btn_margin_top1">270dp</dimen>
     <dimen name="btn_margin_top2">330dp</dimen>

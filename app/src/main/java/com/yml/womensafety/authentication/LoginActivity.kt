@@ -44,6 +44,7 @@ class LoginActivity : AppCompatActivity() {
                     forgotPassword(userMail)
                 }
                 setNegativeButton(getString(R.string.alert_cancel)) { dialog, which ->
+                    //Nothing to be done here
                 }
                 show()
             }

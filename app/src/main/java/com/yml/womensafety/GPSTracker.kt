@@ -1,27 +1,26 @@
 package com.yml.womensafety
 
 import android.Manifest
-import android.app.Activity
-import android.app.AlertDialog
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import com.yml.womensafety.navigationdrawer.home.HomePageActivity
 
 class GPSTracker(var context: Context) : LocationListener {
     companion object {
         private const val minimumTime: Long = 6000
-        private const val minimumDistance:Float = 10f
+        private const val minimumDistance: Float = 10f
     }
-    //This function returns the location of the user
+
+    /**
+     * This function returns the current location of the user
+     */
     fun getLocation(): Location? {
         val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        val isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+        val isGPSEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
         if (isGPSEnabled) {
             if (ActivityCompat.checkSelfPermission(
                     context,
@@ -40,7 +39,7 @@ class GPSTracker(var context: Context) : LocationListener {
             }
 
         }
-        return locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+        return locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
     }
 
     override fun onLocationChanged(location: Location) {

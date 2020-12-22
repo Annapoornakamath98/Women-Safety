@@ -1,59 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:padding="@dimen/parent_padding"
-    tools:context=".navigationdrawer.contacts.ContactsFragment">
+    tools:context=".authentication.LoginActivity">
 
-    <EditText
-        android:id="@+id/contactName"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/contacts_layout_width_height"
+        android:scaleType="centerCrop"
+        android:src="@drawable/login_ui_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".27"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:autofillHints="abc"
-        android:background="@drawable/edit_text_shape"
-        android:hint="@string/name"
-        android:inputType="text"
-        android:padding="@dimen/et_padding" />
+        android:layout_height="@dimen/contacts_layout_width_height"
+        android:background="@drawable/constraint_view_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".78"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1">
 
-    <EditText
-        android:id="@+id/contactNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
-        android:autofillHints="abc@gmail.com"
-        android:background="@drawable/edit_text_shape"
-        android:hint="@string/phone_number"
-        android:inputType="number"
-        android:maxLength="10"
-        android:padding="@dimen/et_padding" />
 
-    <Button
-        android:id="@+id/contactSave"
-        android:layout_width="@dimen/btn_width"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/layout_margin_start"
-        android:layout_marginTop="@dimen/btn_margin_top1"
-        android:background="@drawable/button_shape"
-        android:text="@string/save" />
+        <EditText
+            android:id="@+id/contactName"
+            android:layout_width="@dimen/contacts_layout_width_height"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/contact_name_margin_top"
+            android:background="@drawable/edit_text_shape"
+            android:hint="@string/name"
+            android:inputType="text"
+            android:padding="@dimen/et_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintWidth_percent=".8" />
 
-    <Button
-        android:id="@+id/btnViewContacts"
-        android:layout_width="@dimen/btn_width"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/layout_margin_start"
-        android:layout_marginTop="@dimen/btn_margin_top2"
-        android:background="@drawable/button_shape"
-        android:text="@string/view" />
+        <EditText
+            android:id="@+id/contactNumber"
+            android:layout_width="@dimen/contacts_layout_width_height"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/contact_number_margin_top"
+            android:background="@drawable/edit_text_shape"
+            android:hint="@string/phone_number"
+            android:inputType="number"
+            android:maxLength="10"
+            android:padding="@dimen/et_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/contactName"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintWidth_percent=".8" />
 
-    <ListView
-        android:id="@+id/contactsListView"
-        android:layout_width="match_parent"
+        <Button
+            android:id="@+id/contactSave"
+            android:layout_width="@dimen/contacts_layout_width_height"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/contact_margin_start_end"
+            android:layout_marginTop="@dimen/contact_button_margin_top"
+            android:layout_marginEnd="@dimen/contact_margin_start_end"
+            android:background="@drawable/button_shape"
+            android:text="@string/save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/contactNumber"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent=".8" />
+
+        <Button
+            android:id="@+id/btnViewContacts"
+            android:layout_width="@dimen/contacts_layout_width_height"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/contact_view_margin_start"
+            android:layout_marginTop="@dimen/contact_button_margin_top"
+            android:layout_marginEnd="@dimen/contact_margin_start_end"
+            android:background="@drawable/button_shape"
+            android:text="@string/view"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/contactSave"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent=".8" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/contacts_layout_width_height"
+            android:layout_marginTop="@dimen/contact_frame_margin_top"
+            android:background="@color/white"
+            android:padding="@dimen/default_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".45"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnViewContacts"
+            app:layout_constraintVertical_bias="1.0">
+
+            <ListView
+                android:id="@+id/contactsListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/list_margin_top"
-        android:layout_marginBottom="@dimen/list_margin_bottom"
-        android:background="@color/white"
-        android:padding="@dimen/default_padding" />
-</FrameLayout>
+        android:fontFamily="@font/aclonica"
+        android:text="@string/add_your_contacts_here"
+        android:textColor="@color/white"
+        android:textSize="@dimen/contact_font"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

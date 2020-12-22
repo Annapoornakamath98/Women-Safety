@@ -37,6 +37,7 @@
                 android:layout_marginEnd="@dimen/default_layout_margin"
                 android:baselineAlignBottom="true"
                 android:src="@drawable/ic_arrow_down"
+                android:background="@color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/lawTitle"
                 app:layout_constraintEnd_toEndOf="@+id/lawTitle" />
 

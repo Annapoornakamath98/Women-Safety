@@ -74,27 +74,24 @@ class HomePageActivity : AppCompatActivity() {
         bottomNavigation.setOnClickMenuListener {
             when (it.id) {
                 ID_HOME -> {
-                    val homepageFragment = HomePageFragment()
                     FragmentUtil.replaceFragment(
                         supportFragmentManager,
-                        homepageFragment,
+                        HomePageFragment(),
                         R.id.myNavHostFragment
                     )
                 }
                 ID_CONTACTS -> {
-                    val contactsFragment = ContactsFragment()
                     FragmentUtil.replaceFragment(
                         supportFragmentManager,
-                        contactsFragment,
+                        ContactsFragment(),
                         R.id.myNavHostFragment
                     )
                 }
 
                 ID_PROFILE -> {
-                    val userProfile = UserProfile()
                     FragmentUtil.replaceFragment(
                         supportFragmentManager,
-                        userProfile,
+                        UserProfile(),
                         R.id.myNavHostFragment
                     )
                 }

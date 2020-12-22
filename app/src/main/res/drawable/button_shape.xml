@@ -6,9 +6,5 @@
         android:bottomRightRadius="@dimen/bottom_radius"
         android:topLeftRadius="@dimen/top_radius"
         android:topRightRadius="@dimen/top_radius" />
-    <gradient
-        android:angle="0"
-        android:endColor="@color/rogue_pink"
-        android:startColor="@color/white"
-        android:type="linear" />
+    <solid android:color="@color/pink" />
 </shape>

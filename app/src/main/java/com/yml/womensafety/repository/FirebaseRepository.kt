@@ -19,7 +19,7 @@ class FirebaseRepository {
     private val appUser = FirebaseUtil.user?.currentUser
     private val userReference = databaseReference?.child(appUser?.uid!!)
     fun getUserName(response: Response) {
-        FirebaseUtil.firebaseDatabase?.setPersistenceEnabled(true)
+        //FirebaseUtil.firebaseDatabase?.setPersistenceEnabled(true)
         databaseReference?.keepSynced(true)
         userReference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

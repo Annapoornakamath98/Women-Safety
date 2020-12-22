@@ -80,7 +80,7 @@ class HomePageActivity : AppCompatActivity() {
                 }
                 R.id.navContacts -> {
                     contactsFragment = ContactsFragment()
-                    FragmentUtil.addFragmentToActivity(
+                    FragmentUtil.replaceFragmentToActivity(
                         supportFragmentManager,
                         contactsFragment,
                         R.id.myNavHostFragment
@@ -88,7 +88,7 @@ class HomePageActivity : AppCompatActivity() {
                 }
                 R.id.navProfile -> {
                     userProfile = UserProfile()
-                    FragmentUtil.addFragmentToActivity(
+                    FragmentUtil.replaceFragmentToActivity(
                         supportFragmentManager,
                         userProfile,
                         R.id.myNavHostFragment

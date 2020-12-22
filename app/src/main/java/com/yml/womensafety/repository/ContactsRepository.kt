@@ -9,14 +9,20 @@ import com.yml.womensafety.FirebaseUtil
 import com.yml.womensafety.navigationdrawer.contacts.Contact
 
 class ContactsRepository {
+    companion object{
+        private const val DATABASE_NAME = "contacts"
+    }
     private lateinit var contactsList: MutableList<String>
     private val appUser = FirebaseUtil.user?.currentUser
-    private val databaseName = "contacts"
     private var databaseReference: DatabaseReference? =
-        appUser?.uid?.let { FirebaseUtil.firebaseDatabase?.getReference(databaseName)?.child(it) }
+        appUser?.uid?.let { FirebaseUtil.firebaseDatabase?.getReference(DATABASE_NAME)?.child(it) }
 
-    //This function gets the list of emergency contacts from FirebaseDatabase
+    /**
+     * This function gets the list of emergency contacts
+     */
     fun getContactsList(response: ContactsResponse) {
+        FirebaseUtil.firebaseDatabase?.setPersistenceEnabled(true)
+        databaseReference?.keepSynced(true)
         databaseReference?.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 contactsList = mutableListOf()

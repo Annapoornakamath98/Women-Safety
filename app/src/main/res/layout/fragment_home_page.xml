@@ -4,225 +4,328 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".navigationdrawer.home.HomePageActivity">
+
+    <ImageView
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/home_page_width"
+        android:scaleType="centerCrop"
+        android:src="@drawable/login_ui_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".27"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
 
     <TextView
         android:id="@+id/tvLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/tv_layout_margin_top"
+        android:layout_marginStart="@dimen/hp_margin_start"
+        android:layout_marginBottom="@dimen/home_page_margin_bottom"
         android:fontFamily="@font/aclonica"
         android:text="@string/hi"
         android:textColor="@color/white"
         android:textSize="@dimen/hp_font"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/homePageFragmentScrollView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvEscapeThreat"
+
+    <ScrollView
+        android:id="@+id/homePageFragmentScrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/hp_margin_top"
-        android:elevation="@dimen/card_elevation"
-        android:padding="@dimen/hp_padding_margin"
-        app:cardCornerRadius="@dimen/hp_corner_radius"
-        app:cardUseCompatPadding="true"
+        android:layout_height="@dimen/home_page_width"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLabel">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:background="@drawable/constraint_view_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view"
+            app:layout_constraintVertical_bias="0">
 
-            <ImageView
-                android:id="@+id/ivEscapeThreat"
-                android:layout_width="@dimen/hp_iv_width_height"
-                android:layout_height="@dimen/hp_iv_width_height"
-                android:layout_margin="@dimen/hp_padding_margin"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_jogging" />
 
-            <TextView
-                android:id="@+id/labelTipsToEscapeThreat"
-                android:layout_width="match_parent"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvEscapeThreat"
+                android:layout_width="@dimen/home_page_width"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/hp_margin_start"
-                android:padding="@dimen/hp_padding_margin"
-                android:text="@string/tips"
-                android:textAlignment="center"
-                android:textSize="@dimen/hp_tv_font"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ivEscapeThreat"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginStart="@dimen/home_page_margin_start"
+                android:layout_marginEnd="@dimen/home_page_margin_end"
+                android:elevation="@dimen/home_page_card_elevation"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/home_page_card_radius"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toStartOf="@+id/cvTipsForWomenSafety"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/home_page_padding">
+
+                    <ImageView
+                        android:id="@+id/ivEscapeThreat"
+                        android:layout_width="@dimen/home_page_iv_width_height"
+                        android:layout_height="@dimen/home_page_iv_width_height"
+                        android:layout_margin="@dimen/hp_padding_margin"
+                        app:layout_constraintBottom_toTopOf="@id/tvEscapeThreat"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_jogging" />
+
+                    <TextView
+                        android:id="@+id/tvEscapeThreat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/tips_to_escape_threat"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/home_page_tv_font"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/ivEscapeThreat"
+                        app:layout_constraintStart_toStartOf="@id/ivEscapeThreat"
+                        app:layout_constraintTop_toBottomOf="@id/ivEscapeThreat" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvTipsForWomenSafety"
+                android:layout_width="@dimen/home_page_width"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/home_page_margin_start"
+                android:layout_marginEnd="@dimen/home_page_margin_end"
+                android:elevation="@dimen/home_page_card_elevation"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/home_page_card_radius"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cvEscapeThreat"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/home_page_padding">
+
+                    <ImageView
+                        android:id="@+id/ivTipsForWomenSafety"
+                        android:layout_width="@dimen/home_page_iv_width_height"
+                        android:layout_height="@dimen/home_page_iv_width_height"
+                        android:layout_margin="@dimen/hp_padding_margin"
+                        app:layout_constraintBottom_toTopOf="@id/tvTipsForWomenSafety"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_feminism" />
+
+                    <TextView
+                        android:id="@+id/tvTipsForWomenSafety"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/tips2"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/home_page_tv_font"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/ivTipsForWomenSafety"
+                        app:layout_constraintStart_toStartOf="@id/ivTipsForWomenSafety"
+                        app:layout_constraintTop_toBottomOf="@id/ivTipsForWomenSafety" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvVideosForSelfDefense"
+                android:layout_width="@dimen/home_page_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/home_page_margin_top"
+                android:elevation="@dimen/home_page_card_elevation"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/home_page_card_radius"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="@id/cvEscapeThreat"
+                app:layout_constraintStart_toStartOf="@id/cvEscapeThreat"
+                app:layout_constraintTop_toBottomOf="@+id/cvEscapeThreat"
+                app:layout_constraintVertical_bias="0">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/home_page_padding">
+
+                    <ImageView
+                        android:id="@+id/ivVideosForSelfDefense"
+                        android:layout_width="@dimen/home_page_iv_width_height"
+                        android:layout_height="@dimen/home_page_iv_width_height"
+                        android:layout_margin="@dimen/hp_padding_margin"
+                        app:layout_constraintBottom_toTopOf="@id/tvVideosForSelfDefense"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_karate" />
+
+                    <TextView
+                        android:id="@+id/tvVideosForSelfDefense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/videos"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/home_page_tv_font"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/ivVideosForSelfDefense"
+                        app:layout_constraintStart_toStartOf="@id/ivVideosForSelfDefense"
+                        app:layout_constraintTop_toBottomOf="@id/ivVideosForSelfDefense" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvLaws"
+                android:layout_width="@dimen/home_page_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/home_page_margin_top"
+                android:elevation="@dimen/card_elevation"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/home_page_card_radius"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="@id/cvTipsForWomenSafety"
+                app:layout_constraintStart_toStartOf="@id/cvTipsForWomenSafety"
+                app:layout_constraintTop_toBottomOf="@id/cvTipsForWomenSafety"
+                app:layout_constraintVertical_bias="0">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/home_page_padding">
+
+                    <ImageView
+                        android:id="@+id/ivLaws"
+                        android:layout_width="@dimen/home_page_iv_width_height"
+                        android:layout_height="@dimen/home_page_iv_width_height"
+                        android:layout_margin="@dimen/hp_padding_margin"
+                        app:layout_constraintBottom_toTopOf="@id/tvLaws"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_judge" />
+
+                    <TextView
+                        android:id="@+id/tvLaws"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/laws"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/home_page_tv_font"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/ivLaws"
+                        app:layout_constraintStart_toStartOf="@id/ivLaws"
+                        app:layout_constraintTop_toBottomOf="@id/ivLaws" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvHelplineNumbers"
+                android:layout_width="@dimen/home_page_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/home_page_margin_top"
+                android:elevation="@dimen/home_page_card_elevation"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="@id/cvVideosForSelfDefense"
+                app:layout_constraintStart_toStartOf="@id/cvVideosForSelfDefense"
+                app:layout_constraintTop_toBottomOf="@+id/cvVideosForSelfDefense"
+                app:layout_constraintVertical_bias="0">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/home_page_padding">
+
+                    <ImageView
+                        android:id="@+id/ivHomePageHelpline"
+                        android:layout_width="@dimen/home_page_iv_width_height"
+                        android:layout_height="@dimen/home_page_iv_width_height"
+                        android:layout_margin="@dimen/hp_padding_margin"
+                        app:layout_constraintBottom_toTopOf="@id/tvHomePageHelpline"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_helpline" />
+
+                    <TextView
+                        android:id="@+id/tvHomePageHelpline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/helpline_numbers"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/home_page_tv_font"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/ivHomePageHelpline"
+                        app:layout_constraintStart_toStartOf="@id/ivHomePageHelpline"
+                        app:layout_constraintTop_toBottomOf="@id/ivHomePageHelpline"
+
+                        />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvTipsForWomenSafety"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/hp_margin_top"
-        android:elevation="@dimen/card_elevation"
-        app:cardCornerRadius="@dimen/hp_corner_radius"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cvEscapeThreat">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/ivTipsForWomenSafety"
-                android:layout_width="@dimen/hp_iv_width_height"
-                android:layout_height="@dimen/hp_iv_width_height"
-                android:layout_margin="@dimen/hp_padding_margin"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_feminism" />
-
-            <TextView
-                android:id="@+id/labelTipsForWomenSafety"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/hp_margin_start"
-                android:padding="@dimen/hp_padding_margin"
-                android:text="@string/tips2"
-                android:textAlignment="center"
-                android:textSize="@dimen/hp_tv_font"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ivTipsForWomenSafety"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvVideosForSelfDefense"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/hp_margin_top"
-        android:elevation="@dimen/card_elevation"
-        app:cardCornerRadius="@dimen/hp_corner_radius"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cvTipsForWomenSafety">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/ivVideosForSelfDefense"
-                android:layout_width="@dimen/hp_iv_width_height"
-                android:layout_height="@dimen/hp_iv_width_height"
-                android:layout_margin="@dimen/hp_padding_margin"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_karate" />
-
-            <TextView
-                android:id="@+id/labelVideosSelfDefense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/hp_margin_start"
-                android:padding="@dimen/hp_padding_margin"
-                android:text="@string/videos"
-                android:textAlignment="center"
-                android:textSize="@dimen/hp_tv_font"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ivVideosForSelfDefense"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvLaws"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/hp_margin_top"
-        android:elevation="@dimen/card_elevation"
-        app:cardCornerRadius="@dimen/hp_corner_radius"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cvVideosForSelfDefense">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/ivLaws"
-                android:layout_width="@dimen/hp_iv_width_height"
-                android:layout_height="@dimen/hp_iv_width_height"
-                android:layout_margin="@dimen/hp_padding_margin"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_judge" />
-
-            <TextView
-                android:id="@+id/labelEscapeThreat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/hp_margin_start"
-                android:padding="@dimen/hp_padding_margin"
-                android:text="@string/laws"
-                android:textAlignment="center"
-                android:textSize="@dimen/hp_tv_font"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ivLaws"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvHelplineNumbers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/hp_margin_top"
-        android:elevation="@dimen/card_elevation"
-        app:cardCornerRadius="@dimen/hp_corner_radius"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cvLaws">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/ivHelpline"
-                android:layout_width="@dimen/hp_iv_width_height"
-                android:layout_height="@dimen/hp_iv_width_height"
-                android:layout_margin="@dimen/hp_padding_margin"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_helpline" />
-
-            <TextView
-                android:id="@+id/labelHelpLineNumbers"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/hp_margin_start"
-                android:padding="@dimen/hp_padding_margin"
-                android:text="@string/helpline_numbers"
-                android:textAlignment="center"
-                android:textSize="@dimen/hp_tv_font"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ivHelpline"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,7 @@ class GetLocation(val context: Context) {
         const val LOG_MESSAGE = "Error"
         const val MAX_RESULTS = 1
         const val RETURNED_INDEX = 0
-        const val LOCATION: String = "https://www.google.com/maps/search/?api=1&amp;query="
+        const val LOCATION: String = "https://www.google.com/maps/search/?api=1&query="
     }
 
     fun getLocation(): String {

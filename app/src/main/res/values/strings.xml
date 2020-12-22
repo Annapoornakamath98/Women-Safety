@@ -94,6 +94,20 @@
     <string name="situation_6_solution">Give in to their demands. Obviously, your life is more important than your wallet and jewellery. Don’t try to argue or reason with your muggers. And no matter what you do, don’t threaten them. This will anger them and they may shoot you and even your near and dear ones. And inform the police when you are sure than you are out of danger.</string>
 
     <!--  Safety tips  -->
+    <string name="safety_tip_title_1">Be aware of your surroundings</string>
+    <string name="safety_tip_title_2">Hold your cell phone</string>
+    <string name="safety_tip_title_3">Be alert!</string>
+    <string name="safety_tip_title_4">Be careful while responding</string>
+    <string name="safety_tip_title_5">Look out for predators!</string>
+    <string name="safety_tip_title_6">Be careful while giving your home address</string>
+    <string name="safety_tip_title_7">When checking into a hotel..</string>
+    <string name="safety_tip_title_8">Don\'t become an easy target</string>
+    <string name="safety_tip_title_9">Don\'t respond immediately</string>
+    <string name="safety_tip_title_10">Ask to point out the directions</string>
+    <string name="safety_tip_title_11">What to do when someone grabs you?</string>
+    <string name="safety_tip_title_12">Be aware of what you drink!</string>
+    <string name="safety_tip_title_13">Avoid social media while walking</string>
+    <string name="safety_tip_title_14">Be aware of your surroundings</string>
     <string name="safety_tip_1">If walking by yourself, get off your cell phone.Chatting can distract you, it\'s better to be aware of your surroundings.</string>
     <string name="safety_tip_2">If walking by yourself, hold your cell phone and be ready to make an emergency call.</string>
     <string name="safety_tip_3">Look underneath your car before approaching it in a parking garage or lot at night.</string>
@@ -163,4 +177,5 @@
     <string name="helpline_number_26">WEST BENGAL\n West Bengal women commission\n 033–23595609\n 033–23210154</string>
     <string name="helpline_number_27">UTTAR PRADESH\n Uttar Pradesh Women commission\n 0522–2306403\n 18001805220\n Uttar Pradesh Women Helpline\n 1090\n 112 </string>
     <string name="helpline_number_28">NARI RAKSHA SAMITI\n 011–23973949</string>
+    <string name="add_your_contacts_here">Add your contacts here</string>
 </resources>

@@ -8,20 +8,28 @@ import com.yml.womensafety.FirebaseUtil
 import com.yml.womensafety.Response
 
 class FirebaseRepository {
+    companion object{
+        private const val DATABASE_NAME = "name"
+        private const val FULL_NAME = "fullName"
+        private const val PHONE_NUMBER = "phoneNumber"
+    }
+
     private var databaseReference: DatabaseReference? =
-        FirebaseUtil.firebaseDatabase?.reference?.child("name")
+        FirebaseUtil.firebaseDatabase?.reference?.child(DATABASE_NAME)
     private val appUser = FirebaseUtil.user?.currentUser
     private val userReference = databaseReference?.child(appUser?.uid!!)
     fun getUserName(response: Response) {
+        FirebaseUtil.firebaseDatabase?.setPersistenceEnabled(true)
+        databaseReference?.keepSynced(true)
         userReference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val userName =
-                    snapshot.child("fullName").value as String
+                    snapshot.child(FULL_NAME).value as String
                 response.onUserDetailReceiveSuccess(userName).toString()
             }
 
             override fun onCancelled(error: DatabaseError) {
-
+                //Nothing to be implemented here
             }
         })
     }
@@ -32,10 +40,12 @@ class FirebaseRepository {
     }
 
     fun getUserContact(response: Response) {
+        FirebaseUtil.firebaseDatabase?.setPersistenceEnabled(true)
+        databaseReference?.keepSynced(true)
         userReference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val userContactNumber =
-                    snapshot.child("phoneNumber").value as String
+                    snapshot.child(PHONE_NUMBER).value as String
                 response.onUserDetailReceiveSuccess(userContactNumber).toString()
             }
 

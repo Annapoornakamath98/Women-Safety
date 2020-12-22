@@ -16,6 +16,7 @@
     <color name="purple">#FFBB86FC</color>
     <color name="pink">#F469A9</color>
     <color name="blue">#88BEF5</color>
+    <color name="shadow_black">#5000</color>
 </resources>
 
 

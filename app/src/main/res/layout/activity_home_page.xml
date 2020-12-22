@@ -28,12 +28,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-
-        app:mbn_countTextColor="#000"
-        app:mbn_defaultIconColor="#909090"
-        app:mbn_rippleColor="@color/rogue_pink"
-        app:mbn_selectedIconColor="@color/rogue_pink"
-        app:mbn_shadowColor="#5000" />
+        app:mbn_countTextColor="@color/black"
+        app:mbn_defaultIconColor="@color/pink"
+        app:mbn_rippleColor="@color/pink"
+        app:mbn_selectedIconColor="@color/pink"
+        app:mbn_shadowColor="@color/shadow_black" />
 
 
 </FrameLayout>

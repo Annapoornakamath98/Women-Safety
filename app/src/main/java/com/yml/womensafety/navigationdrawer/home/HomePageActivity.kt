@@ -35,9 +35,6 @@ class HomePageActivity : AppCompatActivity() {
 
     private lateinit var contactsList: MutableList<String>
     lateinit var contactsViewModel: ContactsViewModel
-    private lateinit var homepageFragment: HomePageFragment
-    private lateinit var contactsFragment: ContactsFragment
-    private lateinit var userProfile: UserProfile
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
@@ -77,7 +74,7 @@ class HomePageActivity : AppCompatActivity() {
         bottomNavigation.setOnClickMenuListener {
             when (it.id) {
                 ID_HOME -> {
-                    homepageFragment = HomePageFragment()
+                    val homepageFragment = HomePageFragment()
                     FragmentUtil.replaceFragment(
                         supportFragmentManager,
                         homepageFragment,
@@ -85,7 +82,7 @@ class HomePageActivity : AppCompatActivity() {
                     )
                 }
                 ID_CONTACTS -> {
-                    contactsFragment = ContactsFragment()
+                    val contactsFragment = ContactsFragment()
                     FragmentUtil.replaceFragment(
                         supportFragmentManager,
                         contactsFragment,
@@ -94,7 +91,7 @@ class HomePageActivity : AppCompatActivity() {
                 }
 
                 ID_PROFILE -> {
-                    userProfile = UserProfile()
+                    val userProfile = UserProfile()
                     FragmentUtil.replaceFragment(
                         supportFragmentManager,
                         userProfile,

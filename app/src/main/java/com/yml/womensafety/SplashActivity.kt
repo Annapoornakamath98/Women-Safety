@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.cuberto.liquid_swipe.LiquidPager
+import com.yml.womensafety.adapters.ScreenSlidePagerAdapter
 import com.yml.womensafety.navigationdrawer.home.IntroductionFragmentContacts
 import com.yml.womensafety.navigationdrawer.home.IntroductionFragmentLocation
 import com.yml.womensafety.navigationdrawer.home.IntroductionFragmentTips
@@ -13,14 +14,14 @@ import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
     companion object {
-        private const val NUM_PAGES = 3
+        const val NUM_PAGES = 3
         private const val SPLASH_IMAGE_TRANSLATION_Y = -2400f
         private const val ANIMATION_DURATION: Long = 1000
         private const val ANIMATION_DELAY: Long = 3000
         private const val ANIMATION_TRANSLATION_Y = 2400f
-        private const val INTRODUCTION_FRAGMENT_ONE = 0
-        private const val INTRODUCTION_FRAGMENT_TWO = 1
-        private const val INTRODUCTION_FRAGMENT_THREE = 2
+        const val INTRODUCTION_FRAGMENT_ONE = 0
+        const val INTRODUCTION_FRAGMENT_TWO = 1
+        const val INTRODUCTION_FRAGMENT_THREE = 2
     }
 
     private lateinit var viewPager: LiquidPager
@@ -45,24 +46,5 @@ class SplashActivity : AppCompatActivity() {
             .startDelay = ANIMATION_DELAY
     }
 
-    inner class ScreenSlidePagerAdapter(fm: FragmentManager) :
-        FragmentStatePagerAdapter(fm) {
-
-        override fun getItem(position: Int): Fragment {
-            when (position) {
-                INTRODUCTION_FRAGMENT_ONE ->
-                    return IntroductionFragmentContacts()
-                INTRODUCTION_FRAGMENT_TWO ->
-                    return IntroductionFragmentLocation()
-                INTRODUCTION_FRAGMENT_THREE ->
-                    return IntroductionFragmentTips()
-            }
-            return IntroductionFragmentContacts()
-        }
-
-        override fun getCount(): Int {
-            return NUM_PAGES
-        }
-    }
 
 }

@@ -21,7 +21,6 @@ class ContactsRepository {
      * This function gets the list of emergency contacts
      */
     fun getContactsList(response: ContactsResponse) {
-        FirebaseUtil.firebaseDatabase?.setPersistenceEnabled(true)
         databaseReference?.keepSynced(true)
         databaseReference?.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

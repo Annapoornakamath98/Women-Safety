@@ -3,21 +3,23 @@ package com.yml.womensafety.authentication
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.database.DatabaseReference
-import com.yml.womensafety.Alert.alert
 import com.yml.womensafety.FirebaseUtil
 import com.yml.womensafety.R
 import kotlinx.android.synthetic.main.activity_registration.*
 
 class RegistrationActivity : AppCompatActivity() {
+    private lateinit var loginPasswordViewModel: LoginPasswordViewModel
     private var databaseReference: DatabaseReference? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
+        loginPasswordViewModel = ViewModelProvider(this).get(LoginPasswordViewModel()::class.java)
+        loginPasswordViewModel.initializeUserLoginRepository()
         databaseReference =
-            FirebaseUtil.firebaseDatabase?.getReference(getString(R.string.name_column))
+                FirebaseUtil.firebaseDatabase?.getReference(getString(R.string.name_column))
         btnRegister.setOnClickListener {
             register()
         }
@@ -54,38 +56,8 @@ class RegistrationActivity : AppCompatActivity() {
             registerEmailId.requestFocus()
             return
         }
+        loginPasswordViewModel.registerUser(this, registerEmailId.text.toString(), registerPassword.text.toString(),
+                registerFullName.text.toString(), registerPhone.text.toString())
 
-        FirebaseUtil.user?.createUserWithEmailAndPassword(
-            registerEmailId.text.toString(),
-            registerPassword.text.toString()
-        )
-            ?.addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val appUser = FirebaseUtil.user?.currentUser
-                    appUser?.sendEmailVerification()?.addOnCompleteListener { taskEmail ->
-                        if (taskEmail.isSuccessful) {
-                            val userName = appUser.uid.let { databaseReference?.child(it) }
-                            userName?.child(getString(R.string.full_name_column))
-                                ?.setValue(registerFullName.text.toString())
-                            userName?.child(getString(R.string.user_phone_number))
-                                ?.setValue(registerPhone.text.toString())
-                            alert(
-                                this,
-                                getString(R.string.reg_success),
-                                getString(R.string.alert_check_mail),
-                                getString(R.string.alert_ok)
-                            )
-                        }
-                    }
-
-                } else {
-                    Toast.makeText(
-                        applicationContext,
-                        getString(R.string.reg_fail),
-                        Toast.LENGTH_SHORT
-                    )
-                        .show()
-                }
-            }
     }
 }

@@ -12,5 +12,6 @@ object FirebaseUtil {
 
     fun initializeDatabase() {
         firebaseDatabase = FirebaseDatabase.getInstance()
+        firebaseDatabase?.setPersistenceEnabled(true)
     }
 }

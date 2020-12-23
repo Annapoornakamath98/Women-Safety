@@ -6,6 +6,7 @@ import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
+import com.yml.womensafety.Alert.alert
 import com.yml.womensafety.FirebaseUtil
 import com.yml.womensafety.R
 import kotlinx.android.synthetic.main.activity_registration.btnRegister
@@ -65,22 +66,25 @@ class RegistrationActivity : AppCompatActivity() {
             registerEmailId.text.toString(),
             registerPassword.text.toString()
         )
-            ?.addOnCompleteListener { task ->
+            ?.addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val appUser = FirebaseUtil.user?.currentUser
-                    val userName = appUser?.uid?.let { databaseReference?.child(it) }
-                    userName?.child(getString(R.string.full_name_column))
-                        ?.setValue(registerFullName.text.toString())
-                    userName?.child(getString(R.string.user_phone_number))
-                        ?.setValue(registerPhone.text.toString())
-                    Toast.makeText(
-                        applicationContext,
-                        getString(R.string.reg_success),
-                        Toast.LENGTH_SHORT
-                    )
-                        .show()
-                    startActivity(Intent(applicationContext, LoginActivity::class.java))
-                    finish()
+                    appUser?.sendEmailVerification()?.addOnCompleteListener { taskEmail ->
+                        if (taskEmail.isSuccessful) {
+                            val userName = appUser.uid.let { databaseReference?.child(it) }
+                            userName?.child(getString(R.string.full_name_column))
+                                ?.setValue(registerFullName.text.toString())
+                            userName?.child(getString(R.string.user_phone_number))
+                                ?.setValue(registerPhone.text.toString())
+                            alert(
+                                this,
+                                getString(R.string.reg_success),
+                                getString(R.string.alert_check_mail),
+                                getString(R.string.alert_ok)
+                            )
+                        }
+                    }
+
                 } else {
                     Toast.makeText(
                         applicationContext,

@@ -9,14 +9,14 @@ import com.yml.womensafety.repository.YouTubeRepository
 class YouTubeViewModel : ViewModel() {
     lateinit var youTubeRepository: YouTubeRepository
     private var youTubeVideosDataSet = ArrayList<YouTubeVideos>()
-    var youTubeVideosData = MutableLiveData<ArrayList<YouTubeVideos>>()
+    var youTubeVideosData = MutableLiveData<List<YouTubeVideos>>()
 
     fun initializeRepository() {
         youTubeRepository = YouTubeRepository()
         youTubeVideosDataSet = youTubeRepository.getYouTubeVideos()
     }
 
-    fun getYouTubeVideos(): LiveData<ArrayList<YouTubeVideos>> {
+    fun getYouTubeVideos(): LiveData<List<YouTubeVideos>> {
         youTubeVideosData.value = youTubeVideosDataSet
         return youTubeVideosData
     }

@@ -12,7 +12,6 @@
     <color name="background_pink">#e75480</color>
     <color name="light_pink">#F7BDCC</color>
     <color name="bright_pink">#ff007f</color>
-    <color name="rogue_pink">#f26b8a</color>
     <color name="bubblegum_pink">#fd5da8</color>
     <color name="purple">#FFBB86FC</color>
     <color name="pink">#F469A9</color>
@@ -20,7 +19,4 @@
     <color name="color_background">#ECECEC</color>
     <color name="color_blue">#65c1d6</color>
     <color name="rogue_pink">#F469A9</color>
-    <color name="purple">#CCADF3</color>
-    <color name="pink">#f26b8a</color>
-    <color name="blue">#88BEF5</color>
 </resources>

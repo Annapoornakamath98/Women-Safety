@@ -21,8 +21,6 @@
     <dimen name="card_shape_width">305dp</dimen>
     <dimen name="card_shape_height">205dp</dimen>
     <dimen name="stroke_width">1dp</dimen>
-
-
     <dimen name="layout_margin">32dp</dimen>
     <dimen name="btn_margin_top1">270dp</dimen>
     <dimen name="btn_margin_top2">330dp</dimen>
@@ -106,25 +104,6 @@
     <dimen name="contact_view_margin_start">10dp</dimen>
     <dimen name="contact_frame_margin_top">8dp</dimen>
     <dimen name="contact_font">25sp</dimen>
-
-    <!--  Splash Screen  -->
-    <dimen name="ss_layout_height">900dp</dimen>
-    <dimen name="ss_animation_layout_height">200dp</dimen>
-    <dimen name="app_title_text_size">48sp</dimen>
-    <dimen name="ss_elevation">2dp</dimen>
-
-    <!--  Splash Screen Fragment  -->
-    <dimen name="ss_image_height_width">200dp</dimen>
-    <dimen name="ss_text_view_margin_top">25dp</dimen>
-    <dimen name="ss_title_text_size">16sp</dimen>
-    <dimen name="ss_skip_text_margin_end">30dp</dimen>
-    <dimen name="ss_text_view_2_size">42sp</dimen>
-    <dimen name="ss_text_view_3_size">56sp</dimen>
-    <dimen name="ss_text_description_width_height">0dp</dimen>
-    <dimen name="ss_text_view_4_margin_top">5dp</dimen>
-    <dimen name="ss_tab_width">50dp</dimen>
-    <dimen name="ss_tab_height">10dp</dimen>
-    <dimen name="ss_tab_margin_start">5dp</dimen>
 
     <!--  Logo  -->
     <dimen name="logo_height_width">60dp</dimen>

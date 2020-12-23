@@ -78,6 +78,9 @@
     <string name="login">Login</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="register_here">Not a user? Click here to register</string>
+    <string name="alert_send">Send</string>
+    <string name="email_sent">Email sent.</string>
+    <string name="alert_check_mail">Please check your mail.</string>
 
     <!--  Registration Activity  -->
     <string name="enter_your_name">Enter your name</string>

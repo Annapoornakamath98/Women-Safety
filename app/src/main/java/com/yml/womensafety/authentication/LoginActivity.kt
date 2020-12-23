@@ -11,10 +11,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.yml.womensafety.FirebaseUtil
 import com.yml.womensafety.R
 import com.yml.womensafety.navigationdrawer.home.HomePageActivity
-import kotlinx.android.synthetic.main.activity_login.btnLogin
-import kotlinx.android.synthetic.main.activity_login.loginEmailId
-import kotlinx.android.synthetic.main.activity_login.loginPassword
-import kotlinx.android.synthetic.main.activity_login.registerHere
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -34,6 +30,7 @@ class LoginActivity : AppCompatActivity() {
         }
         btnForgotPassword.setOnClickListener {
             val builder = MaterialAlertDialogBuilder(this)
+
             val alertView = layoutInflater.inflate(R.layout.dialog_forgot_password, null)
             val userMail = alertView.findViewById<EditText>(R.id.etUserEmail)
             if (userMail.text.toString()
@@ -64,7 +61,6 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this, getString(R.string.email_sent), Toast.LENGTH_LONG).show()
                 }
             }
-
     }
 
     override fun onStart() {

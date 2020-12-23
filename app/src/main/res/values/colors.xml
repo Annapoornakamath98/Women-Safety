@@ -20,4 +20,5 @@
     <color name="color_blue">#65c1d6</color>
     <color name="light_gray">#D3D3D3</color>
     <color name="rogue_pink">#F469A9</color>
+    <color name="shadow_black">#5000</color>
 </resources>

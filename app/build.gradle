@@ -59,6 +59,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    //bottom nav bar
+    implementation 'com.etebarian:meow-bottom-navigation:1.0.4'
     //liquid swipe
     implementation 'com.cuberto:liquid-swipe:1.0.0'
 }

@@ -81,4 +81,5 @@
     <dimen name="contact_view_margin_start">10dp</dimen>
     <dimen name="contact_frame_margin_top">8dp</dimen>
     <dimen name="contact_font">25sp</dimen>
+    <dimen name="forgot_password">230dp</dimen>
 </resources>

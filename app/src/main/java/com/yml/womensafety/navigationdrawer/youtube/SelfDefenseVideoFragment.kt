@@ -1,5 +1,7 @@
 package com.yml.womensafety.navigationdrawer.youtube
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -18,21 +20,17 @@ class SelfDefenseVideoFragment : Fragment(R.layout.fragment_self_defense_video) 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        youTubeViewModel = ViewModelProvider(this).get(YouTubeViewModel::class.java)
+        youTubeViewModel = ViewModelProvider(this).get(YouTubeViewModel()::class.java)
         youTubeViewModel.initializeRepository()
+        videoRecyclerView = view.findViewById(R.id.recyclerViewVideos)
+        videoAdapter = VideoAdapter()
+        videoRecyclerView.apply {
+            layoutManager = LinearLayoutManager(view.context)
+            adapter = videoAdapter
+        }
         youTubeViewModel.getYouTubeVideos().observe(viewLifecycleOwner, {
-            videoAdapter.notifyDataSetChanged()
+           videoAdapter.setYouTubeVideos(it)
         })
-        initializeRecyclerView()
     }
-
-    private fun initializeRecyclerView() {
-        videoAdapter = VideoAdapter(youTubeViewModel.getYouTubeVideos().value!!)
-        videoRecyclerView = view?.findViewById(R.id.recyclerViewVideos)!!
-        videoRecyclerView.setHasFixedSize(true)
-        videoRecyclerView.layoutManager = LinearLayoutManager(view?.context)
-        videoRecyclerView.adapter = videoAdapter
-    }
-
 
 }

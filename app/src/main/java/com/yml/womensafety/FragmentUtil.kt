@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 
 object FragmentUtil {
-    fun replaceFragmentToActivity(fragmentManager: FragmentManager, fragment: Fragment, frameId: Int) {
+    fun replaceFragment(fragmentManager: FragmentManager, fragment: Fragment, frameId: Int) {
         val transaction: FragmentTransaction = fragmentManager.beginTransaction()
         transaction.replace(frameId, fragment).commit()
     }

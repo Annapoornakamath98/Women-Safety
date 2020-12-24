@@ -27,8 +27,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"
-        android:layout_marginBottom="100dp"
-        android:src="@drawable/sos_2" />
+        android:layout_marginBottom="@dimen/hp_sos_image_bottom_margin"
+        android:src="@drawable/sos_image" />
 
     <com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:id="@+id/bottomNavigation"

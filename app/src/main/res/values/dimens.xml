@@ -45,7 +45,7 @@
     <dimen name="recycler_view_width_height">0dp</dimen>
     <dimen name="image_button_width_height">25dp</dimen>
     <dimen name="fragment_expand_text_size">15sp</dimen>
-    <dimen name="hp_bottom_margin">100dp</dimen>
+    <dimen name="hp_bottom_margin">250dp</dimen>
     <dimen name="horizontal_margin">16dp</dimen>
     <dimen name="vertical_margin">16dp</dimen>
     <dimen name="user_card_elevation">50dp</dimen>

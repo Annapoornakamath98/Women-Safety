@@ -1,17 +1,20 @@
 package com.yml.womensafety.navigationdrawer.home
 
 import android.Manifest
+import android.app.Activity
 import android.content.*
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.telephony.SmsManager
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.yml.womensafety.*
 import com.yml.womensafety.AlertDialogUtil.showAlert
@@ -58,6 +61,10 @@ class HomePageActivity : AppCompatActivity() {
         startAccelerometerService()
         receiveBroadcast()
 
+        btnSos.setOnClickListener {
+            sendSms()
+        }
+
         bottomNavigation.apply {
             show(ID_HOME)
             add(MeowBottomNavigation.Model(ID_HOME, R.drawable.ic_outline_home))
@@ -97,9 +104,20 @@ class HomePageActivity : AppCompatActivity() {
                 }
 
                 ID_LOGOUT -> {
-                    FirebaseUtil.user?.signOut()
-                    startActivity(Intent(this, LoginActivity::class.java))
+                    val builder = MaterialAlertDialogBuilder(this)
+                    val logoutIntent = Intent(this, LoginActivity::class.java)
+                    builder.apply {
+                        setTitle("Logout?")
+                        setPositiveButton("Yes") { dialog, which ->
+                            FirebaseUtil.user?.signOut()
+                    startActivity(logoutIntent)
                     finish()
+                        }
+                        setNegativeButton("No") { dialog, which ->
+                            dialog.dismiss()
+                        }
+                        show()
+                    }
                 }
             }
         }

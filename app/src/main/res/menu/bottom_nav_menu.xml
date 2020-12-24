@@ -3,21 +3,17 @@
 
     <item
         android:id="@+id/navHome"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/ic_outline_home"
         android:title="@string/home" />
 
     <item
         android:id="@+id/navContacts"
-        android:icon="@drawable/ic_contacts"
+        android:icon="@drawable/ic_add_contacts"
         android:title="@string/add_contacts" />
 
     <item
-        android:id="@+id/nav_placeholder"
-        android:title="" />
-
-    <item
         android:id="@+id/navProfile"
-        android:icon="@drawable/ic_account"
+        android:icon="@drawable/ic_outline_account"
         android:title="@string/user_profile" />
 
     <item
